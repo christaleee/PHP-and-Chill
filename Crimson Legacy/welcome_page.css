@@ -1,3 +1,11 @@
+/* FONTS */
+@font-face {
+    font-family: pixelated;
+    src: url(fonts/pixel.ttf);
+}
+
+/* UNIVERSAL AND BODY */
+
 * {
     margin: 0;
     padding: 0;
