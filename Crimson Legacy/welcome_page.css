@@ -101,7 +101,7 @@ body {
 
 .playerAcquiredContainer::before {
     filter: blur(1.5rem);
-    opacity: 0.5;
+    opacity: 0.7;
 }
 
 @keyframes spin{
@@ -110,5 +110,41 @@ body {
     }
     to{
         --angle: 360deg;
+    }
+}
+
+@media (max-width: 800px) {
+    .playerAcquiredContainer{
+        height: 400px;
+        width: 600px;
+    }
+
+    .playerAcquiredContainer::after, .playerAcquiredContainer::before {
+    height: 400px;
+    width: 600px;
+    }
+}
+
+@media (max-width: 650px) {
+    .playerAcquiredContainer{
+        height: 400px;
+        width: 400px;
+    }
+
+    .playerAcquiredContainer::after, .playerAcquiredContainer::before {
+    height: 400px;
+    width: 400px;
+    }
+}
+
+@media (max-width: 450px) {
+    .playerAcquiredContainer{
+        height: 400px;
+        width: 300px;
+    }
+
+    .playerAcquiredContainer::after, .playerAcquiredContainer::before {
+    height: 400px;
+    width: 300px;
     }
 }
