@@ -1,16 +1,19 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 body {
-    min-height: 100vh;
     background: #070707;
 }
 
 .wrapper {
+    position: relative;
     display: flex;
+
+    width: 100%;
+    height: 100vh;
+
     justify-content: center;
     align-items: center;
 }
@@ -56,7 +59,6 @@ body {
 
 @media (max-width: 800px) {
     .bubbleBackground span {
-        position: relative;
         width: 15px;
         height: 15px;
     }
@@ -67,14 +69,46 @@ body {
 .playerAcquiredContainer{
     height: 400px;
     width: 750px;
-    border-width: 7px;
-    border-style: solid;
-    border-color: pink;
-    border-radius: 40px;
+    border-radius: 35px;
 
     display: flex;
     justify-content: center;
-    align-items: center;
     
     background-color: #070707;
+}
+
+@property --angle{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.playerAcquiredContainer::after, .playerAcquiredContainer::before {
+    --angle: 0deg;
+    content: '';
+    position: absolute;
+    height: 400px;
+    width: 750px;
+    background-image: conic-gradient(from var(--angle), #970000, #531212, #d51818, #970000, #531212, #d51818, #970000);
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: -1;
+    padding: 8px;
+    border-radius: 40px;
+    animation: 3s spin linear infinite;
+}
+
+.playerAcquiredContainer::before {
+    filter: blur(1.5rem);
+    opacity: 0.5;
+}
+
+@keyframes spin{
+    from{
+        --angle: 0deg;
+    }
+    to{
+        --angle: 360deg;
+    }
 }
