@@ -1,0 +1,80 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: #070707;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* BUBBLE BACKGROUND */
+
+.backgroundContainer {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.bubbleBackground {
+    position: absolute;
+    display: flex;
+}
+
+.bubbleBackground span {
+    width: 20px;
+    height: 20px;
+    background: #c51a1a;
+
+    border-radius: 50%;
+    box-shadow: 0 0 0 0px #c51a1a44,
+        0 0 50px #c51a1a,
+        0 0 60px #c51a1a;
+    animation: animate 15s linear infinite;
+    animation-duration: calc(125s / var(--i));
+}
+
+
+@keyframes animate {
+    0% {
+        transform: translateY(100vh) scale(0);
+    }
+
+    100% {
+        transform: translateY(-10vh) scale(1);
+    }
+}
+
+@media (max-width: 800px) {
+    .bubbleBackground span {
+        position: relative;
+        width: 15px;
+        height: 15px;
+    }
+}
+
+/* PLAYER AQUIRED NOTIFICATION */
+
+.playerAcquiredContainer{
+    height: 400px;
+    width: 750px;
+    border-width: 7px;
+    border-style: solid;
+    border-color: #970000;
+    border-radius: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: #070707;
+}
