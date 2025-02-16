@@ -20,7 +20,7 @@
         let Age = localStorage.getItem("age");
 
         if (name && Age) {
-            document.getElementById("output").innerHTML = `<strong>Name:</strong> ${name} <br> <strong>Email:</strong> ${Age}`;
+            document.getElementById("output").innerHTML = `<strong>Name:</strong> ${Uname} <br> <strong>Email:</strong> ${Age}`;
         } else {
             document.getElementById("output").innerHTML = "No data found!";
         }

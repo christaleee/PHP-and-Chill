@@ -35,13 +35,17 @@
             <div class="registrationInputsContainer">
                 <!-- <label for="gender">Gender:</label> -->
                 <label for="male">Male</label>
-                <input type="radio" id="Gender" name="Gender" required />
+                <input type="radio" id="Gender" name="Gender" value="Male" required />
                 <label for="female">Female</label>
-                <input type="radio" id="Gender" name="Gender"  required />
+                <input type="radio" id="Gender" name="Gender" value="Female"  required />
             </div>
             <div class="registrationInputsContainer">
                 <!-- <label for="age">Age:</label> -->
                 <input type="number" id="Age" name="Age" placeholder="Age" required />
+            </div>
+            <div class="registrationInputsContainer">
+                <!-- <label for="age">Age:</label> -->
+                <input type="text" id="Address" name="Address" placeholder="Address" required />
             </div>
         </div>
 
@@ -54,11 +58,14 @@
         function validateForm() {
             var fname = document.getElementById("Fname").value.trim();
             var lname = document.getElementById("Lname").value.trim();
-            var Gender = document.getElementById("Gender").value.trim();
+            var Uname = document.getElementById("Uname").value.trim();
             var Age = document.getElementById("Age").value.trim();
-            var Address = document.getElementById("Address").value;
+            var Address = document.getElementById("Address").value.trim();
 
-            if (fname === "" || lname === "" || Gender === "" || Age === "" || Address === "" ) {
+            var Gender = document.querySelector('input[name="Gender"]:checked');
+
+
+            if (fname === "" || lname === "" || Uname === "" || Gender === "" || Age === "" || Address === "" ) {
                 alert("All fields are required!");
                 return;
             }
@@ -72,25 +79,33 @@
                 return;
              }
 
-             Age.addEventListener("input", function() {
-                let newValue = "";
-                for (let i = 0; i < this.value.length; i++) {
-                 if (this.value[i] >= "0" && this.value[i] <= "9") {
-                    newValue += this.value[i]; // Keep only numbers
-                    }
+            //  for gender
+             if (!Gender) {
+                alert("Please select your gender!");
+                return;
+            }
+            Gender = Gender.value;
+        
+            // Ensure Age is a valid number
+            let isNumber = true;
+            for (let i = 0; i < Age.length; i++) {
+                if (Age[i] < "0" || Age[i] > "9") {
+                    isNumber = false;
+                    break;
                 }
+            }
 
-                if (this.value !== newValue) {
-                alert("Error: Age must contain only numbers!"); // Show error if letters are entered
-                 }
-
-                 this.value = newValue;
-                });
+            if (!isNumber || Age <= 0) {
+                alert("Error: Age must be a valid positive number!");
+                return;
+            }
+            
 
             // Show confirmation alert
             if (confirm(`Confirm submission:\n\nName: ${fname}" "${lname}\nGender ${Gender}\nAge: ${Age}\nAddress: ${Address}\n\nProceed to Regiter?`)) {
                 // Store data in localStorage
                 localStorage.setItem("Name", fname + " " + lname);
+                localStorage.setItem("Username" , Uname);
                 localStorage.setItem("Gender", Gender);
                 localStorage.setItem("Age", Age);
                 localStorage.setItem("Address", Address);
