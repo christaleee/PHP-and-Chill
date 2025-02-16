@@ -141,14 +141,14 @@ body {
     font-size: 20px;
     color: #e1d9d9;
     text-shadow: 
-        0 0 5px #970000,  
-        0 0 10px #970000,
-        0 0 15px #970000,
-        0 0 20px #970000;
+        0 0 2px #970000,  
+        0 0 2px #970000,
+        0 0 2px #970000,
+        0 0 2px #970000;
     letter-spacing: 5px;
 
     border-right: 2px solid;
-    width: 463pX;
+    width: 463px;
     white-space: nowrap;
     overflow: hidden;
 
@@ -310,7 +310,6 @@ a:hover i::after {
     .welcomeMessage{
         font-size: 12px;
     }
-}
 
     a{
         padding: 8px 40px;
