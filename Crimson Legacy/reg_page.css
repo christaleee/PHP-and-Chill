@@ -146,8 +146,17 @@ body {
         0 0 15px #970000,
         0 0 20px #970000;
     letter-spacing: 5px;
-    animation: flicker 1.5s infinite alternate;
-}
+
+    border-right: 2px solid;
+    width: 463pX;
+    white-space: nowrap;
+    overflow: hidden;
+
+    animation: 
+        flicker 1.5s infinite alternate,
+        typing 1.6s steps(24),
+        cursor .4s step-end infinite alternate;
+    }
 
 .welcomeMessage {
     font-size: 15px;
@@ -158,9 +167,11 @@ body {
         0 0 10px #970000,
         0 0 15px #970000,
         0 0 20px #970000;
+    animation: 
+        flicker 1.5s infinite alternate;
 }
 
-/* For flickering animation */
+/* For animation */
 @keyframes flicker {
     0% {
         opacity: 1;
@@ -173,8 +184,16 @@ body {
     }
 }
 
-.welcome-message {
-    animation: flicker 1.5s infinite alternate; 
+@keyframes cursor{
+    50%{
+        border-color: transparent;
+    }
+}
+
+@keyframes typing{
+    from{
+        width:0;
+    }
 }
 
 /* BUTTON */
@@ -283,9 +302,15 @@ a:hover i::after {
     }
 
     .registrationSuccessfulBox h1{
-        font-size: 15px;
+        font-size: 14px;
         letter-spacing: 2px;
+        width: 290px;
     }
+
+    .welcomeMessage{
+        font-size: 12px;
+    }
+}
 
     a{
         padding: 8px 40px;
@@ -309,11 +334,12 @@ a:hover i::after {
     }
 
     .registrationSuccessfulBox h1{
-        font-size: 12px;
+        font-size: 10px;
         letter-spacing: 1px;
+        width: 200px;
     } 
 
     .welcomeMessage{
-        font-size: 11px;
+        font-size: 9px;
     }
 }
