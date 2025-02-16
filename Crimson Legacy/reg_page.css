@@ -73,7 +73,7 @@ body {
 
 .successfulRegistrationContainer {
     height: 350px;
-    width: 750px;
+    width: 700px;
     border-radius: 35px;
 
     display: flex;
@@ -97,7 +97,7 @@ body {
     content: '';
     position: absolute;
     height: 350px;
-    width: 750px;
+    width: 700px;
     background-image: conic-gradient(from var(--angle), #970000, #531212, #d51818, #970000, #531212, #d51818, #970000);
     top: 50%;
     left: 50%;
@@ -135,8 +135,6 @@ body {
 
     color: #e1d9d9;
     box-shadow: 0 0 35px #970000;
-
-    margin-bottom: 20px;
 }
 
 .registrationSuccessfulBox h1 {
@@ -185,7 +183,7 @@ a {
     background: #181818;
     color: #e1d9d9;
     text-decoration: none;
-    font-size: 1.5em;
+    font-size: 1em;
     letter-spacing: 2px;
     padding: 8px 80px;
     transition: 0.5s;
@@ -259,36 +257,63 @@ a:hover i::after {
 
 @media (max-width: 800px) {
     .successfulRegistrationContainer{
-        height: 400px;
+        height: 300px;
         width: 600px;
     }
 
     .successfulRegistrationContainer::after, .successfulRegistrationContainer::before {
-    height: 400px;
+    height: 300px;
     width: 600px;
     }
 }
 
 @media (max-width: 650px) {
     .successfulRegistrationContainer{
-        height: 400px;
+        height: 300px;
         width: 400px;
     }
 
     .successfulRegistrationContainer::after, .successfulRegistrationContainer::before {
-    height: 400px;
+    height: 300px;
     width: 400px;
+    }
+
+    .registrationSuccessfulBox{
+        width: 350px;
+    }
+
+    .registrationSuccessfulBox h1{
+        font-size: 15px;
+        letter-spacing: 2px;
+    }
+
+    a{
+        padding: 8px 40px;
+        font-size: 11px;
     }
 }
 
 @media (max-width: 450px) {
     .successfulRegistrationContainer{
-        height: 400px;
+        height: 300px;
         width: 300px;
     }
 
     .successfulRegistrationContainer::after, .successfulRegistrationContainer::before {
-    height: 400px;
+    height: 300px;
     width: 300px;
+    }
+
+    .registrationSuccessfulBox{
+        width: 250px;
+    }
+
+    .registrationSuccessfulBox h1{
+        font-size: 12px;
+        letter-spacing: 1px;
+    }
+
+    .welcomeMessage{
+        font-size: 11px;
     }
 }
