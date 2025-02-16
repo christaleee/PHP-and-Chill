@@ -95,20 +95,14 @@ body {
         display: flex;
         justify-content: center;
         align-items: center;
-    
      
-        width: 320px;
+        width: 350px;
         height:40px; 
         background-color: #070707;
         border: 1px solid #e1d9d9;
     
         color: #e1d9d9;
         box-shadow: 0 0 35px #970000;
-}
-
-.notificationBar img{
-    margin-top: 12px;
-    max-width: 70px;
 }
 
 .notificationBar h1{
@@ -124,13 +118,13 @@ body {
     letter-spacing: 5px;
 
     border-right: 2px solid;
-    width: 463pX;
+    width: 250px;
     white-space: nowrap;
     overflow: hidden;
 
     animation: 
         flicker 1.5s infinite alternate,
-        typing 1.6s steps(24),
+        typing 1.6s steps(13),
         cursor .4s step-end infinite alternate;
     }
 
@@ -164,6 +158,9 @@ body {
 .openingNote{
     margin-top: 50px;
     margin-bottom: 50px;
+    margin-left: 30px;
+    margin-right: 30px;
+
     font-size: 15px;
     letter-spacing: 2px;
     color: #e1d9d9; 
@@ -177,24 +174,39 @@ body {
         flicker 1.5s infinite alternate;
 }
 
+/* ANIMATIONS */
+
+@keyframes flicker {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes cursor {
+    50% {
+        border-color: transparent;
+    }
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+}
 @keyframes spin{
     from{
         --angle: 0deg;
     }
     to{
         --angle: 360deg;
-    }
-}
-
-@media (max-width: 800px) {
-    .playerAcquiredContainer{
-        height: 400px;
-        width: 600px;
-    }
-
-    .playerAcquiredContainer::after, .playerAcquiredContainer::before {
-    height: 400px;
-    width: 600px;
     }
 }
 
@@ -205,7 +217,8 @@ a{
     background:#181818;
     color:#e1d9d9;
     text-decoration: none;
-    font-size: 1.5em;
+    font-size: 1em;
+    letter-spacing: 2px;
     padding: 8px 80px;
     transition: 0.5s;
 }
@@ -275,6 +288,19 @@ a:hover i::after {
 
 /* RESPONSIVENESS */
 
+@media (max-width: 800px) {
+    .playerAcquiredContainer {
+        height: 400px;
+        width: 600px;
+    }
+
+    .playerAcquiredContainer::after,
+    .playerAcquiredContainer::before {
+        height: 400px;
+        width: 600px;
+    }
+}
+
 @media (max-width: 650px) {
     .playerAcquiredContainer {
         height: 400px;
@@ -286,6 +312,25 @@ a:hover i::after {
         height: 400px;
         width: 400px;
     }
+
+    .notificationBar{
+        width: 250px;
+    }
+
+    .notificationBar h1{
+        font-size: 14px;
+        letter-spacing: 2px;
+        width: 155px;
+    }
+
+    .openingNote{
+        font-size: 12px;
+    }
+
+    a{
+        padding: 8px 40px;
+        font-size: 11px;
+    }
 }
 
 @media (max-width: 450px) {
@@ -294,9 +339,22 @@ a:hover i::after {
         width: 300px;
     }
 
-    .playerAcquiredContainer::after,
-    .playerAcquiredContainer::before {
+    .playerAcquiredContainer::after, .playerAcquiredContainer::before {
         height: 400px;
         width: 300px;
+    }
+
+    .notificationBar{
+        width: 200px;
+    }
+
+    .notificationBar h1{
+        font-size: 10px;
+        letter-spacing: 1px;
+        width: 110px;
+    } 
+
+    .openingNote{
+        font-size: 9px;
     }
 }
