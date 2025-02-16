@@ -95,20 +95,18 @@
         </div>
     </div>
 
-    <div class="playerAcquiredContainer">
-        <div class="notification-box">
+    <div class="successfulRegistrationContainer">
+        <div class="registrationSuccessfulBox">
           <h1>REGISTER SUCCESSFULLY</h1>
         </div>
-        <br>
-        <div class="welcome-message">(WELCOME, PLAYER 01)</div>
-        <br>
-        <button class="login-button">LOGIN</button>
+        <p class="welcomeMessage">(WELCOME, PLAYER 01)</p>
+        <a href="#" style="--clr:#c51a1a"><span>SEE DETAILS</span><i></i></a>
       </div>
     
 
         <script>
-            const button = document.querySelector('.login-button');
-            button.addEventListener('click', () => {
+            const a = document.querySelector('.loginButton');
+            a.addEventListener('click', () => {
             alert('Logging in...');
             });
         </script>
