@@ -11,7 +11,6 @@
     </style>
 </head>
 <body>
-
         <form id="userForm">
         <div class="registration box">
             <h2>Player Registration</h2>
@@ -35,7 +34,10 @@
         <div class="regRow">
             <div class="registrationInputsContainer">
                 <!-- <label for="gender">Gender:</label> -->
-                <input type="text" id="Gender" name="Gender" placeholder="Gender" required />
+                <label for="male">Male</label>
+                <input type="radio" id="Gender" name="Gender" required />
+                <label for="female">Female</label>
+                <input type="radio" id="Gender" name="Gender"  required />
             </div>
             <div class="registrationInputsContainer">
                 <!-- <label for="age">Age:</label> -->
