@@ -26,6 +26,7 @@ body {
     align-items: center;
 }
 
+
 /* BUBBLE BACKGROUND */
 
 .backgroundContainer {
@@ -79,12 +80,59 @@ body {
     width: 750px;
     border-radius: 35px;
 
-    display: flex;
     justify-content: center;
+    align-items: center;
+    display: flex;
     flex-direction: column;;
     
     background-color: #070707;
+    color: white;
+    font-family: pixelated;
+
 }
+
+.notificationBar{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+     
+        width: 320px;
+        height:40px; 
+        background-color: #070707;
+        border: 1px solid #e1d9d9;
+    
+        color: #e1d9d9;
+        box-shadow: 0 0 35px #970000;
+}
+
+.notificationBar img{
+    margin-top: 12px;
+    max-width: 70px;
+}
+
+.notificationBar h1{
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: #e1d9d9;
+    text-shadow: 
+        0 0 2px #970000,  
+        0 0 2px #970000,
+        0 0 2px #970000,
+        0 0 2px #970000;
+    letter-spacing: 5px;
+
+    border-right: 2px solid;
+    width: 463pX;
+    white-space: nowrap;
+    overflow: hidden;
+
+    animation: 
+        flicker 1.5s infinite alternate,
+        typing 1.6s steps(24),
+        cursor .4s step-end infinite alternate;
+    }
 
 @property --angle{
     syntax: "<angle>";
@@ -111,6 +159,22 @@ body {
 .playerAcquiredContainer::before {
     filter: blur(1.5rem);
     opacity: 0.7;
+}
+
+.openingNote{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-size: 15px;
+    letter-spacing: 2px;
+    color: #e1d9d9; 
+    text-align: center;
+    text-shadow: 
+        0 0 5px #970000, 
+        0 0 10px #970000,
+        0 0 15px #970000,
+        0 0 20px #970000;
+    animation: 
+        flicker 1.5s infinite alternate;
 }
 
 @keyframes spin{
