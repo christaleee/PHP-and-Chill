@@ -124,7 +124,7 @@ body {
 
     animation: 
         flicker 1.5s infinite alternate,
-        typing 1.6s steps(13),
+        typing 0.5s steps(13),
         cursor .4s step-end infinite alternate;
     }
 
