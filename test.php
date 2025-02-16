@@ -12,32 +12,40 @@
 </head>
 <body>
 
-    <form id="userForm">
-        <div class="form-group.FirstName">
-            <!-- <label for="Fname">First Name:</label> -->
+        <form id="userForm">
+        <div class="registration box">
+            <h2>Player Registration</h2>
+        </div>
+        <form>
+        <div class="registrationInputsContainer">
+            <!-- <label for="first-name">First Name:</label> -->
             <input type="text" id="Fname" name="Fname" placeholder="First Name" required />
-        </div><br> 
+        </div>
 
-        <div class="form-group.LastName">
-            <!-- <label for="Lname">Last Name:</label> -->
+        <div class="registrationInputsContainer">
+            <!-- <label for="last-name">Last Name:</label> -->
             <input type="text" id="Lname" name="Lname" placeholder="Last Name" required />
-        </div><br>
+        </div>
 
-        <div class="form-group.Gender">
-            <!-- <label for="Fname">Gender:</label> -->
-             <input type="text" id="Gender" name="Gender" placeholder="Gender" required />
-        </div><br>
+        <div class="registrationInputsContainer">
+            <!-- <label for="username">UserName:</label> -->
+            <input type="text" id="Uname" name="Username" placeholder="Username" required />
+        </div>
 
-        <div class="form-group.Age">
-            <!-- <label for="Fname">Age:</label> -->
-            <input type="text" id="Age" name="Age" placeholder="Age" required />
-        </div><br>
+        <div class="regRow">
+            <div class="registrationInputsContainer">
+                <!-- <label for="gender">Gender:</label> -->
+                <input type="text" id="Gender" name="Gender" placeholder="Gender" required />
+            </div>
+            <div class="registrationInputsContainer">
+                <!-- <label for="age">Age:</label> -->
+                <input type="number" id="Age" name="Age" placeholder="Age" required />
+            </div>
+        </div>
 
-        <div class="form-group.Address">
-            <!-- <label for="Address">Address:</label> -->
-            <input type="text" id="Address" name="Address" placeholder="Address" required />
-        </div><br>
-        <button type="button" onclick="validateForm()">Register now</button>
+        <button type="submit" onclick="validateForm()">Register now</button>
+
+       
     </form>
 
     <script>
@@ -52,7 +60,7 @@
                 alert("All fields are required!");
                 return;
             }
-
+            // for Capitalization
             if (
             fname.charAt(0) !== fname.charAt(0).toUpperCase() || 
             lname.charAt(0) !== lname.charAt(0).toUpperCase()
@@ -80,7 +88,7 @@
             // Show confirmation alert
             if (confirm(`Confirm submission:\n\nName: ${fname}" "${lname}\nGender ${Gender}\nAge: ${Age}\nAddress: ${Address}\n\nProceed to Regiter?`)) {
                 // Store data in localStorage
-                localStorage.setItem("Name", fname);
+                localStorage.setItem("Name", fname + " " + lname);
                 localStorage.setItem("Gender", Gender);
                 localStorage.setItem("Age", Age);
                 localStorage.setItem("Address", Address);
