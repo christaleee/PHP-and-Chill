@@ -49,7 +49,7 @@
             </div>
         </div>
 
-        <button type="submit" onclick="validateForm()">Register now</button>
+        <button type="button" onclick="validateForm()">Register now</button>
 
        
     </form>
@@ -102,7 +102,7 @@
             
 
             // Show confirmation alert
-            if (confirm(`Confirm submission:\n\nName: ${fname}" "${lname}\nGender ${Gender}\nAge: ${Age}\nAddress: ${Address}\n\nProceed to Regiter?`)) {
+            if (confirm(`Confirm submission:\n\nName: ${fname}" "${lname}\nUsername: ${Uname}\nGender ${Gender}\nAge: ${Age}\nAddress: ${Address}\n\nProceed to Regiter?`)) {
                 // Store data in localStorage
                 localStorage.setItem("Name", fname + " " + lname);
                 localStorage.setItem("Username" , Uname);

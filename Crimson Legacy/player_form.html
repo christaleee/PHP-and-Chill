@@ -102,37 +102,103 @@
     <form>
         <div>
             <label for="firstName" class="firstName">First Name:</label>
-            <input id="firstName" type="text" name="firstName">
+            <input id="Fname" type="text" name="Fname">
         </div>
 
         <div>
             <label for="lastName" class="lastName">Last Name:</label>
-            <input id="lastName" type="text" name="lastName">
+            <input id="Lname" type="text" name="Lname">
         </div>
 
         <div>
             <label for="userName" class="userName">Username:</label>
-            <input id="userName" type="text" name="userName">
+            <input id="Uname" type="text" name="Username">
         </div>
 
         <div class="genderOption">
             <p>Gender:</p>
             <div>
                 <label for="male">Male</label>
-                <input type="radio" id="Gender" name="Gender" required />
+                <input type="radio" id="Gender" name="Gender" value="Male" required />
                 <label for="female">Female</label>
-                <input type="radio" id="Gender" name="Gender" required />
+                <input type="radio" id="Gender" name="Gender" value="Female"  required />
             </div>
         </div>
 
         <div>
             <label for="age" class="age">Age:</label>
-            <input id="age" type="number" name="age">
+            <input type="number" id="Age" name="Age">
         </div>
-    </form>
+        <div class="registrationInputsContainer">
+            <label for="age" class="age">Address:</label>
+            <input type="text" id="Address" name="Address"  required />
+        </div>
 
+    </form>
+       <button type="button" onclick="validateForm()">Register now</button>
     <a href="#" style="--clr:#c51a1a"><span>REGISTER</span><i></i></a>
 </div>
+<script>
+    function validateForm() {
+        var fname = document.getElementById("Fname").value.trim();
+        var lname = document.getElementById("Lname").value.trim();
+        var Uname = document.getElementById("Uname").value.trim();
+        var Age = document.getElementById("Age").value.trim();
+        var Address = document.getElementById("Address").value.trim();
+
+        var Gender = document.querySelector('input[name="Gender"]:checked');
+
+
+        if (fname === "" || lname === "" || Uname === "" || Gender === "" || Age === "" || Address === "" ) {
+            alert("All fields are required!");
+            return;
+        }
+        // for Capitalization
+        if (
+        fname.charAt(0) !== fname.charAt(0).toUpperCase() || 
+        lname.charAt(0) !== lname.charAt(0).toUpperCase()
+         )
+         {
+            alert("First letters of firstname and lastname must be capitalized");
+            return;
+         }
+
+        //  for gender
+         if (!Gender) {
+            alert("Please select your gender!");
+            return;
+        }
+        Gender = Gender.value;
     
+        // Ensure Age is a valid number
+        let isNumber = true;
+        for (let i = 0; i < Age.length; i++) {
+            if (Age[i] < "0" || Age[i] > "9") {
+                isNumber = false;
+                break;
+            }
+        }
+
+        if (!isNumber || Age <= 0) {
+            alert("Error: Age must be a valid positive number!");
+            return;
+        }
+        
+
+        // Show confirmation alert
+        if (confirm(`Confirm submission:\n\nName: ${fname}" "${lname}\nUsername: ${Uname}\nGender ${Gender}\nAge: ${Age}\nAddress: ${Address}\n\nProceed to Regiter?`)) {
+            // Store data in localStorage
+            localStorage.setItem("Name", fname + " " + lname);
+            localStorage.setItem("Username" , Uname);
+            localStorage.setItem("Gender", Gender);
+            localStorage.setItem("Age", Age);
+            localStorage.setItem("Address", Address);
+
+            // Redirect to new page
+            window.location.href = "welcome_page.html";
+        }
+    }
+</script>
+
 </body>
 </html>
