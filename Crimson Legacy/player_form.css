@@ -189,6 +189,26 @@ input{
     padding: 2px;
 }
 
+.lastName {
+    margin-right: 11px;
+}
+
+.userName{
+    margin-right: 23px;
+}
+
+.genderOption p{
+    margin-right: 59px;
+}
+
+.age{
+    margin-right: 81px;
+}
+
+.address{
+    margin-right: 34px;
+}
+
 /* ANIMATIONS */
 
 @keyframes flicker {
