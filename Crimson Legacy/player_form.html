@@ -114,12 +114,8 @@
 
         <div>
             <label for="userName" class="userName">Username:</label>
-<<<<<<< HEAD
-            <input id="Username" type="text" name="Username">
-=======
             <input id="Uname" type="text" name="Username">
             <br><span id="errorUname" class="error-message"></span>
->>>>>>> 4e811b6ba92398624c66f3cf4deace4454081453
         </div>
 
         <div class="genderOption">
@@ -138,25 +134,15 @@
             <input type="number" id="Age" name="Age">
             <br><span id="errorAge" class="error-message"></span>
         </div>
-<<<<<<< HEAD
-
-        <div>
-            <label for="address" class="address">Address:</label>
-=======
         <div class="registrationInputsContainer">
             <label for="Address" class="Address">Address:</label>
->>>>>>> 4e811b6ba92398624c66f3cf4deace4454081453
             <input type="text" id="Address" name="Address"  required />
             <br><span id="errorAddress" class="error-message"></span>
         </div>
 
     </form>
-<<<<<<< HEAD
-    <a href="#" style="--clr:#c51a1a"><span>REGISTER</span><i></i></a>
-=======
     <a href="#" id="registrationButton" style="--clr:#c51a1a" onclick="validateForm()"><span>REGISTER</span><i></i></a>
     <br><span id="errorAll" class="error-message"></span>
->>>>>>> 4e811b6ba92398624c66f3cf4deace4454081453
 </div>
 
 
@@ -226,7 +212,6 @@ document.addEventListener("DOMContentLoaded", function() {
             return;
             containError = true;
          }
-
         //  pang gender
          if (!Gender) {
             document.getElementById("errorGender").innerText = "Error: Please select your gender!";
@@ -255,9 +240,9 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         // Show confirmation alert
-        if (confirm(`Confirm submission:\n\nName: ${fname} ${lname}\nUsername: ${Uname}\nGender ${Gender}\nAge: ${Age}\nAddress: ${Address}\n\nProceed to Register?`)) {
+        if (confirm(`Confirm submission:\n\nName: ${fname}" "${lname}\nUsername: ${Uname}\nGender ${Gender}\nAge: ${Age}\nAddress: ${Address}\n\nProceed to Register?`)) {
             // Store data in localStorage
-            localStorage.setItem("Name", fname +""+ lname);
+            localStorage.setItem("Name", fname + " " + lname);
             localStorage.setItem("Username" , Uname);
             localStorage.setItem("Gender", Gender);
             localStorage.setItem("Age", Age);
