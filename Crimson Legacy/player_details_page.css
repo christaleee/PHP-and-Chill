@@ -1,0 +1,343 @@
+/* FONTS */
+@font-face {
+    font-family: pixelated;
+    src: url(fonts/pixel.ttf);
+}
+
+/* UNIVERSAL AND BODY */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: pixelated;
+}
+
+body {
+    background: #070707;
+}
+
+.wrapper {
+    position: relative;
+    display: flex;
+
+    width: 100%;
+    height: 100vh;
+
+    justify-content: center;
+    align-items: center;
+}
+
+/* BUBBLE BACKGROUND */
+
+.backgroundContainer {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.bubbleBackground {
+    position: absolute;
+    display: flex;
+}
+
+.bubbleBackground span {
+    width: 20px;
+    height: 20px;
+    background: #c51a1a;
+    border-radius: 50%;
+    box-shadow: 0 0 0 0px #c51a1a44,
+        0 0 50px #c51a1a,
+        0 0 60px #c51a1a;
+    animation: animate 15s linear infinite;
+    animation-duration: calc(125s / var(--i));
+}
+
+@keyframes animate {
+    0% {
+        transform: translateY(100vh) scale(0);
+    }
+
+    100% {
+        transform: translateY(-10vh) scale(1);
+    }
+}
+
+@media (max-width: 800px) {
+    .bubbleBackground span {
+        width: 15px;
+        height: 15px;
+    }
+}
+
+/* PLAYER DETAILS */
+
+.playerDetailsContainer {
+    height: 450px;
+    width: 550px;
+    border-radius: 35px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #070707;
+    position: relative;
+
+    color: white;
+}
+
+@property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.playerDetailsContainer::after, .playerDetailsContainer::before {
+    --angle: 0deg;
+    content: '';
+    position: absolute;
+    height: 450px;
+    width: 550px;
+    background-image: conic-gradient(from var(--angle), #970000, #531212, #d51818, #970000, #531212, #d51818, #970000);
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: -1;
+    padding: 8px;
+    border-radius: 40px;
+    animation: 3s spin linear infinite;
+}
+
+.playerDetailsContainerBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 450px;
+    height: 50px;
+    background-color: #070707;
+    border: 1px solid #e1d9d9;
+
+    color: #e1d9d9;
+    box-shadow: 0 0 35px #970000;
+}
+
+.playerDetails {
+    width: 480px;
+    display: flex;
+    justify-content: start;
+    position: left;
+}
+
+.playerDetailsContainer::before {
+    filter: blur(1.5rem);
+    opacity: 0.7;
+}
+
+@keyframes spin {
+    from {
+        --angle: 0deg;
+    }
+
+    to {
+        --angle: 360deg;
+    }
+}
+
+p {
+    font-size: 15px;
+    letter-spacing: 2px;
+    color: #e1d9d9;
+    text-shadow:
+        0 0 5px #970000,
+        0 0 10px #970000,
+        0 0 15px #970000,
+        0 0 20px #970000;
+    animation:
+        flicker 1.5s infinite alternate;
+}
+
+h2 {
+    font-size: 20px;
+    letter-spacing: 2px;
+    color: #e1d9d9;
+    text-shadow:
+        0 0 5px #970000,
+        0 0 10px #970000,
+        0 0 15px #970000,
+        0 0 20px #970000;
+    animation:
+        flicker 1.5s infinite alternate;
+}
+
+
+/* Player Details Display Bar */
+
+.playerDetailsBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 370px;
+    height: 50px;
+    background-color: #070707;
+    border: 1px solid #e1d9d9;
+
+    color: #e1d9d9;
+    box-shadow: 0 0 35px #970000;
+}
+
+.playerDetailsContainer h1 {
+    font-size: 20px;
+    color: #e1d9d9;
+    text-shadow:
+        0 0 2px #970000,
+        0 0 2px #970000,
+        0 0 2px #970000,
+        0 0 2px #970000;
+    letter-spacing: 5px;
+
+    border-right: 2px solid;
+    width: 290px;
+    white-space: nowrap;
+    overflow: hidden;
+
+    animation:
+        flicker 1.5s infinite alternate,
+        typing 0.8s steps(15),
+        cursor .4s step-end infinite alternate;
+}
+
+.playerDetails{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.playerAge{
+    margin-bottom: 30px;
+}
+
+/* For animation */
+
+@keyframes flicker {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes cursor {
+    50% {
+        border-color: transparent;
+    }
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+}
+
+/* RESPONSIVENESS */
+
+@media (max-width: 800px) {
+    .playerDetailsContainer {
+        height: 450px;
+        width: 550px;
+    }
+
+
+    .playerDetailsContainer::after,
+    .playerDetailsContainer::before {
+        height: 450px;
+        width: 550px;
+    }
+}
+
+
+@media (max-width: 650px) {
+    .playerDetailsContainer {
+        height: 350px;
+        width: 400px;
+    }
+
+
+    .playerDetailsContainer::after,
+    .playerDetailsContainer::before {
+        height: 350px;
+        width: 400px;
+    }
+
+    .playerDetailsBar {
+        width: 270px;
+    }
+
+
+    .playerDetailsBar h1 {
+        font-size: 14px;
+        letter-spacing: 2px;
+        width: 180px;
+    }
+
+
+    p {
+        font-size: 12px;
+    }
+
+
+    h2 {
+        font-size: 13px;
+    }
+
+    .playerDetails{
+        margin-left:150px;
+    }
+}
+
+
+@media (max-width: 450px) {
+    .playerDetailsContainer {
+        height: 300px;
+        width: 300px;
+    }
+
+
+    .playerDetailsContainer::after,
+    .playerDetailsContainer::before {
+        height: 300px;
+        width: 300px;
+    }
+
+    .playerDetailsBar {
+        width: 200px;
+    }
+
+    .playerDetailsBar h1 {
+        font-size: 13px;
+        letter-spacing: 2px;
+        width: 170px;
+    }
+
+    p {
+        font-size: 12px;
+    }
+
+    h2 {
+        font-size: 13px;
+    }
+
+    .playerDetails{
+        margin-left:190px;
+    }
+}
