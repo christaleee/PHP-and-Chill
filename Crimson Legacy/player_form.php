@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $age = isset($_POST["Age"]) ? intval($_POST["Age"]) : 0;
     $address = trim(htmlspecialchars($_POST["Address"]));
 
-    // If JavaScript validation works, PHP doesn't need to show errors. It only ensures valid data.
+    // Only ensures data validation error handling is in javascript
     $assignedClass = assignClass($lname, $gender);
 
     $_SESSION["Name"] = $fname . " " . $lname;
@@ -35,15 +35,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $_SESSION["Address"] = $address;
     $_SESSION["Class"] = $assignedClass;
 
-    header("Location: player_details_page.php");
+    header("Location: reg_page.php");
     exit();
 } else {
     echo "Invalid request method.";
 }
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -191,16 +188,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
          <span>REGISTER</span><i></i>
         </button>
     </form>
-     <!-- <button type="submit" id="registrationButton" style="--clr:#c51a1a" onclick="validateForm();">
-         <span>REGISTER</span><i></i>
-        </button>
-</div>  -->
-
 
 
 <script>
     function validateForm(event) {
-        event.preventDefault(); // Prevent form from submitting
+        event.preventDefault(); // Prevent form from submitting 
 
         var fname = document.getElementById("Fname").value.trim();
         var lname = document.getElementById("Lname").value.trim();
@@ -216,7 +208,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         var errorAddress = document.getElementById("errorAddress");
         var errorGender = document.getElementById("errorGender");
 
-        // Clear previous errors
+        // Clearing previous errors sa mga input
         errorFname.innerText = "";
         errorLname.innerText = "";
         errorUname.innerText = "";
@@ -251,7 +243,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             valid = false;
         }
 
-        // If validation passes, submit the form
+        // passes submission kung valid
         if (valid) {
             document.getElementById("registrationForm").submit();
         }

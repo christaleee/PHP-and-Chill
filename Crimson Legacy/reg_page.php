@@ -1,3 +1,21 @@
+<?php
+session_start(); 
+
+if (!isset($_SESSION["Name"])) {
+    echo "No player data found. Please register first.";
+    exit();
+}
+
+// stored session values
+$name = $_SESSION["Name"];
+$username = $_SESSION["Username"];
+$gender = $_SESSION["Gender"];
+$age = $_SESSION["Age"];
+$address = $_SESSION["Address"];
+$assignedClass = $_SESSION["Class"]; 
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -99,26 +117,20 @@
         <div class="registrationSuccessfulBox">
           <h1>REGISTRATION SUCCESSFUL</h1>
         </div>
-        <p class="welcomeMessage">(WELCOME, PLAYER 01)</p>
-        <a href="player_details_page.html" style="--clr:#c51a1a"><span>SEE DETAILS</span><i></i></a>
+        <p class="welcomeMessage">
+    WELCOME, <?php echo isset($_SESSION["Username"]) ? htmlspecialchars($_SESSION["Username"]) : "Guest"; ?>
+</p>
+
       </div>
         </div>
     </div>
+    <script>
+        setTimeout(function() {
+            window.location.href = "player_details_page.php";
+        }, 5000); 
+    </script>
     
-    <script>// Retrieve stored data
-    let name = localStorage.getItem("name");
-    let Age = localStorage.getItem("age");
 
-    if (name && Age) {
-        document.getElementById("output").innerHTML = `<strong>Name:</strong> ${name} <br> <strong>Email:</strong> ${Age}`;
-    } else {
-        document.getElementById("output").innerHTML = "No data found!";
-    }
-
-    function goBack() {
-        window.location.href = "test.php"; // Go back to form
-    }
-</script>
 </body>
 
 </html>

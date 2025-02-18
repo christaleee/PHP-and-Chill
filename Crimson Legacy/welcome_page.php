@@ -1,3 +1,12 @@
+<?php
+session_start();
+if (!isset($_SESSION["Name"])) {
+    header("Location: player_form.php");
+    exit();
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -105,20 +114,8 @@
         </div>
     </div>
     
-    <!-- <script>// Retrieve stored data
-    let name = localStorage.getItem("name");
-    let Age = localStorage.getItem("age");
-
-    if (name && Age) {
-        document.getElementById("output").innerHTML = `<strong>Name:</strong> ${name} <br> <strong>Email:</strong> ${Age}`;
-    } else {
-        document.getElementById("output").innerHTML = "No data found!";
-    }
-
-    function goBack() {
-        window.location.href = "player_form.php"; // Go back to form
-    } -->
-</script>
+    
+  
 </body>
 
 </html>
