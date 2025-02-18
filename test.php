@@ -75,7 +75,7 @@
             lname.charAt(0) !== lname.charAt(0).toUpperCase()
              )
              {
-                alert("First letters of firstname and lastname must be capitalized")
+                alert("First letters of firstname and lastname must be capitalized");
                 return;
              }
 
