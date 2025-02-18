@@ -1,5 +1,5 @@
 <?php
-session_start(); // Start session before anything else
+session_start(); 
 
 function assignClass($lname, $gender) {
     $firstLetter = strtoupper(substr($lname, 0, 1)); // Get first letter and convert to uppercase
@@ -13,7 +13,7 @@ function assignClass($lname, $gender) {
     } elseif ($firstLetter >= 'A' && $firstLetter <= 'M' && $gender == "Female") {
         return "Class D";
     } else {
-        return false; 
+        return "Unassigned"; 
     }
 }
 
@@ -187,13 +187,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <textarea class="addressInput" style="resize:none;overflow:hidden"id="Address" name="Address"  required></textarea>
         </div>
         <br><span id="errorAddress" class="error-message"></span>
-
-        <button type="submit" id="registrationButton" style="--clr:#c51a1a">
+<!-- 
+        <button type="submit" id="registrationButton" style="--clr:#c51a1a" onclick="validateForm();">
          <span>REGISTER</span><i></i>
-        </button>
+        </button> -->
         <div><br><span id="errorAddress" class="error-message"></span></div>
 
     </form>
+    <button type="submit" id="registrationButton" style="--clr:#c51a1a" onclick="validateForm();">
+         <span>REGISTER</span><i></i>
+        </button>
 
     <!-- <a href="#" id="registrationButton" style="--clr:#c51a1a" onclick="validateForm();"><span>REGISTER</span><i></i></a>
     <br><span id="errorAll" class="error-message"></span> -->
@@ -202,41 +205,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var fname = document.getElementById("Fname");
-        var lname = document.getElementById("Lname");
-        var Uname = document.getElementById("Uname");
-        var Age = document.getElementById("Age");
-        var Address = document.getElementById("Address");
-        var Gender = document.getElementsByName('Gender');
-
-        // clearing function
-        function clearError(event) {
-            let errorId = "error" + event.target.id;
-            let errorElement = document.getElementById(errorId);
-            if (errorElement) {
-                errorElement.innerText = "";
-            }
-            document.getElementById("errorAll").innerText = ""; // Clear general error
-        }
-
-        // Attach event listeners to inputs
-        fname.addEventListener("input", clearError);
-        lname.addEventListener("input", clearError);
-        Uname.addEventListener("input", clearError);
-        Age.addEventListener("input", clearError);
-        Address.addEventListener("input", clearError);
-
-        // Attach event listeners to radio buttons
-        Gender.forEach(input => {
-            input.addEventListener("change", function () {
-                document.getElementById("errorGender").innerText = "";
-                document.getElementById("errorAll").innerText = "";
-            });
-        });
-
-    });
-
     // Function moved outside the DOMContentLoaded listener
     function validateForm() {
         var fname = document.getElementById("Fname").value.trim();
@@ -289,15 +257,48 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         if (containError) {
-            return false;
+            return;
         } 
-        return true;
         
         // var confirmation = confirm(`Confirm submission:\n\nName: ${fname} ${lname}\nUsername: ${Uname}\nGender: ${Gender}\nAge: ${Age}\nAddress: ${Address}\n\nProceed to Register?`);
         // window.location.href = "player_details_page.php";
         // return confirmation;
-    } 
-    
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        var fname = document.getElementById("Fname");
+        var lname = document.getElementById("Lname");
+        var Uname = document.getElementById("Uname");
+        var Age = document.getElementById("Age");
+        var Address = document.getElementById("Address");
+        var Gender = document.getElementsByName('Gender');
+
+        // clearing function
+        function clearError(event) {
+            let errorId = "error" + event.target.id;
+            let errorElement = document.getElementById(errorId);
+            if (errorElement) {
+                errorElement.innerText = "";
+            }
+            document.getElementById("errorAll").innerText = ""; // Clear general error
+        }
+
+        // Attach event listeners to inputs
+        fname.addEventListener("input", clearError);
+        lname.addEventListener("input", clearError);
+        Uname.addEventListener("input", clearError);
+        Age.addEventListener("input", clearError);
+        Address.addEventListener("input", clearError);
+
+        // Attach event listeners to radio buttons
+        Gender.forEach(input => {
+            input.addEventListener("change", function () {
+                document.getElementById("errorGender").innerText = "";
+                document.getElementById("errorAll").innerText = "";
+            });
+        });
+
+    });
 </script>
 
 </body>
