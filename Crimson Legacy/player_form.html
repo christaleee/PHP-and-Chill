@@ -203,14 +203,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // pang Capitalization
         if (
-        fname.charAt(0) !== fname.charAt(0).toUpperCase() || 
-        lname.charAt(0) !== lname.charAt(0).toUpperCase()
-         )
+        fname.charAt(0) !== fname.charAt(0).toUpperCase() )
          {
             document.getElementById("errorFname").innerText = "Error: First letter must be capitalized!";
+            containError = true;
+         }
+         if(lname.charAt(0) !== lname.charAt(0).toUpperCase()){
             document.getElementById("errorLname").innerText = "Error: First letter must be capitalized!";
             return;
-            containError = true;
          }
         //  pang gender
          if (!Gender) {
