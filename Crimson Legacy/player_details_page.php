@@ -1,15 +1,19 @@
 <?php
-session_start();
-if (isset($_SESSION["Name"]) && isset($_SESSION["Username"]) && isset($_SESSION["Gender"]) && isset($_SESSION["Age"]) && isset($_SESSION["Address"])) {
-    $name = $_SESSION["Name"];
-    $username = $_SESSION["Username"];
-    $gender = $_SESSION["Gender"];
-    $age = $_SESSION["Age"];
-    $address = $_SESSION["Address"];
-} else {
-    echo "No player data available.";
+session_start(); // Start session to access stored data
+
+if (!isset($_SESSION["Name"])) {
+    echo "No player data found. Please register first.";
     exit();
 }
+
+// Retrieve stored session values
+$name = $_SESSION["Name"];
+$username = $_SESSION["Username"];
+$gender = $_SESSION["Gender"];
+$age = $_SESSION["Age"];
+$address = $_SESSION["Address"];
+$assignedClass = $_SESSION["Class"]; // Retrieve assigned class
+
 ?>
 
 <!DOCTYPE html>
@@ -116,28 +120,28 @@ if (isset($_SESSION["Name"]) && isset($_SESSION["Username"]) && isset($_SESSION[
 
             <div class="playerDetails">
                 <div class="playerFName">
-                <p><strong>First Name:</strong> <span id="Fname"><?php echo $_SESSION["Name"] ?></span></p>
+                <p><strong>Name:</strong> <?php echo htmlspecialchars($name); ?></p>
                 </div>
 
                 <div class="playerUsername">
-                <p><strong>Username:</strong> <span id="Uname"><?php echo $_SESSION["Username"] ?></span></p>
+                <p><strong>Username:</strong> <?php echo htmlspecialchars($username); ?></p>
                 </div>
 
                 <div class="playerGender">
-                <p><strong>Gender:</strong> <span id="Gender"><?php echo $_SESSION["Gender"] ?></span></p>
+                <p><strong>Gender:</strong> <?php echo htmlspecialchars($gender); ?></p>
                 </div>
 
                 <div class="playerAge">
-                <p><strong>First Name:</strong> <span id="Age"><?php echo $_SESSION["Age"] ?></span></p>
+                <p><strong>Age:</strong> <?php echo htmlspecialchars($age); ?></p>
                 </div>
 
                 <div class="playerAddress">
-                <p><strong>First Name:</strong> <span id="Address"><?php echo $_SESSION["Address"] ?></span></p>
+                <p><strong>Address:</strong> <?php echo htmlspecialchars($address); ?></p>
                 </div>
             </div>
 
             <div class="playerAssignedClass">
-                <h2>ASSIGNED CLASS: <span id="Class"></span></h2>
+            <h2>ASSIGNED CLASS: <?php echo htmlspecialchars($assignedClass); ?></span></h2>
             </div>
     </div>
 

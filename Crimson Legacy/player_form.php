@@ -1,6 +1,22 @@
 <?php
 session_start(); // Start session before anything else
 
+function assignClass($lname, $gender) {
+    $firstLetter = strtoupper(substr($lname, 0, 1)); // Get first letter and convert to uppercase
+
+    if ($firstLetter >= 'A' && $firstLetter <= 'M' && $gender == "Male") {
+        return "Class A";
+    } elseif ($firstLetter >= 'N' && $firstLetter <= 'Z' && $gender == "Female") {
+        return "Class B";
+    } elseif ($firstLetter >= 'N' && $firstLetter <= 'Z' && $gender == "Male") {
+        return "Class C";
+    } elseif ($firstLetter >= 'A' && $firstLetter <= 'M' && $gender == "Female") {
+        return "Class D";
+    } else {
+        return "Unassigned"; 
+    }
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fname = htmlspecialchars($_POST["Fname"]);
     $lname = htmlspecialchars($_POST["Lname"]);
@@ -9,12 +25,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $age = intval($_POST["Age"]);
     $address = htmlspecialchars($_POST["Address"]);
 
+    // Fix function call and assigned variable
+    $assignedClass = assignClass($lname, $gender);
+
     // Store data in session
     $_SESSION["Name"] = $fname . " " . $lname;
     $_SESSION["Username"] = $username;
     $_SESSION["Gender"] = $gender;
     $_SESSION["Age"] = $age;
     $_SESSION["Address"] = $address;
+    $_SESSION["Class"] = $assignedClass; // Corrected variable name
 
     // Redirect to player details page
     header("Location: player_details_page.php");
@@ -23,6 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "Invalid request method.";
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -166,6 +187,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <textarea class="addressInput" style="resize:none;overflow:hidden"id="Address" name="Address"  required> </textarea>
         </div>
         <br><span id="errorAddress" class="error-message"></span>
+        <button type="submit" id="registrationButton" style="--clr:#c51a1a">
+         <span>REGISTER</span><i></i>
+        </button>
 
     </form>
 
@@ -232,7 +256,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } 
         
         // var confirmation = confirm(`Confirm submission:\n\nName: ${fname} ${lname}\nUsername: ${Uname}\nGender: ${Gender}\nAge: ${Age}\nAddress: ${Address}\n\nProceed to Register?`);
-        window.location.href = "player_details_page.php";
+        // window.location.href = "player_details_page.php";
         // return confirmation;
     }
 
