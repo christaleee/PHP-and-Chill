@@ -1,7 +1,5 @@
 <?php
-session_start();
-$errors = []; // Start session before anything else
-
+session_start(); // Start session before anything else
 
 function assignClass($lname, $gender) {
     $firstLetter = strtoupper(substr($lname, 0, 1)); // Get first letter and convert to uppercase
@@ -15,7 +13,7 @@ function assignClass($lname, $gender) {
     } elseif ($firstLetter >= 'A' && $firstLetter <= 'M' && $gender == "Female") {
         return "Class D";
     } else {
-        return "Unassigned"; 
+        return false; 
     }
 }
 
@@ -27,36 +25,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $age = intval($_POST["Age"]);
     $address = htmlspecialchars($_POST["Address"]);
 
-    if (empty($fname) || empty($lname) || empty($username) || empty($gender) || empty($age) || empty($address)) {
-        $errors[] = "All fields are required.";
-    }
-    if ($gender !== "Male" && $gender !== "Female") {
-        $errors[] = "Invalid gender selected.";
-    }
-    if (!is_numeric($age) || $age <= 0 || $age > 125) {
-        $errors[] = "Age must be a valid number between 1 and 125.";
-    }
+    // Fix function call and assigned variable
+    $assignedClass = assignClass($lname, $gender);
 
+    // Store data in session
+    $_SESSION["Name"] = $fname . " " . $lname;
+    $_SESSION["Username"] = $username;
+    $_SESSION["Gender"] = $gender;
+    $_SESSION["Age"] = $age;
+    $_SESSION["Address"] = $address;
+    $_SESSION["Class"] = $assignedClass; // Corrected variable name
 
-
- if (empty($errors)) {
-        // Assign class
-        $assignedClass = assignClass($lname, $gender);
-
-        // Store in session
-        $_SESSION["Name"] = "$fname $lname";
-        $_SESSION["Username"] = $username;
-        $_SESSION["Gender"] = $gender;
-        $_SESSION["Age"] = $age;
-        $_SESSION["Address"] = $address;
-        $_SESSION["Class"] = $assignedClass;
-
-        // Redirect to player details page
-        header("Location: player_details_page.php");
-        exit();
-    } 
+    // Redirect to player details page
+    header("Location: player_details_page.php");
+    exit();
+} else {
+    echo "Invalid request method.";
 }
-
 ?>
 
 
@@ -252,7 +237,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     });
 
-    
+    // Function moved outside the DOMContentLoaded listener
     function validateForm() {
         var fname = document.getElementById("Fname").value.trim();
         var lname = document.getElementById("Lname").value.trim();
@@ -304,14 +289,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         if (containError) {
-            return;
+            return false;
         } 
+        return true;
         
         // var confirmation = confirm(`Confirm submission:\n\nName: ${fname} ${lname}\nUsername: ${Uname}\nGender: ${Gender}\nAge: ${Age}\nAddress: ${Address}\n\nProceed to Register?`);
         // window.location.href = "player_details_page.php";
         // return confirmation;
     } 
-
+    
 </script>
 
 </body>
