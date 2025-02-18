@@ -166,8 +166,6 @@ body {
 form{
     display: flex;
     flex-direction: column;
-    gap:15px;
-
     margin-bottom: 50px;
 
     font-size: 17px;
@@ -361,7 +359,6 @@ a:hover i::after {
 
     form{
         font-size: 13px;
-        margin-left: 100px;
     }
 
     .firstNameInput,
@@ -411,20 +408,6 @@ a:hover i::after {
         width: 400px;
     }
 
-    .notificationBar {
-        width: 250px;
-    }
-
-    .notificationBar h1 {
-        font-size: 14px;
-        letter-spacing: 2px;
-        width: 155px;
-    }
-
-    .openingNote {
-        font-size: 12px;
-    }
-
     a {
         padding: 8px 40px;
         font-size: 11px;
@@ -443,18 +426,54 @@ a:hover i::after {
         width: 300px;
     }
 
-    .notificationBar {
-        width: 200px;
+    .playerRegistrationBar{
+        width: 260px;
+        height: 40px;
+        margin-bottom: 30px;
     }
 
-    .notificationBar h1 {
-        font-size: 10px;
+    .playerRegistrationBar h1{
+        font-size: 11px;
         letter-spacing: 1px;
-        width: 110px;
+        width: 180px;
     }
 
-    .openingNote {
-        font-size: 9px;
+    form{
+        font-size: 10px;
+    }
+
+    .firstNameInput,
+    .lastNameInput,
+    .userNameInput,
+    .ageInput {
+        width: 150px;
+        height: 10px;
+    }
+    
+    .addressInput {
+        width: 150px;
+        height: 40px;
+    }
+    
+    .lastName {
+        margin-right: 10px;
+    }
+    
+    .userName {
+        margin-right: 20px;
+    }
+    
+    .genderLabel {
+        margin-right:41px;
+    }
+    
+    .age {
+        margin-right: 68px;
+    }
+    
+    .registrationInputsContainer {
+        display: flex;
+        gap: 40px;
     }
 }
 
