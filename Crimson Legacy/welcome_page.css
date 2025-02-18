@@ -381,19 +381,18 @@ a:hover i::after {
     }
 
     .registrationSuccessfulBox{
-        width: 350px;
+        width: 250px;
     }
 
     .registrationSuccessfulBox h1{
         font-size: 14px;
         letter-spacing: 2px;
-        width: 290px;
+        width: 155px;
     }
 
     .welcomeMessage{
         font-size: 12px;
     }
-
 
     a{
         padding: 8px 40px;
@@ -413,13 +412,13 @@ a:hover i::after {
     }
 
     .registrationSuccessfulBox{
-        width: 250px;
+        width: 200px;
     }
 
     .registrationSuccessfulBox h1{
         font-size: 10px;
         letter-spacing: 1px;
-        width: 200px;
+        width: 110px;
     } 
 
     .welcomeMessage{
