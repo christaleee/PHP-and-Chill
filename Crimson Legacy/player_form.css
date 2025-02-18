@@ -84,7 +84,6 @@ body {
     align-items: center;
     display: flex;
     flex-direction: column;
-    ;
 
     background-color: #070707;
     color: white;
@@ -166,8 +165,7 @@ body {
 form{
     display: flex;
     flex-direction: column;
-    margin-bottom: 50px;
-
+    margin-bottom: 30px;
     font-size: 17px;
     letter-spacing: 2px;
     color: #e1d9d9; 
@@ -348,6 +346,7 @@ a:hover i::after {
     }
 
     .playerRegistrationBar{
+        margin-bottom: 40px;
         width: 370px;
         height: 40px;
     }
@@ -359,6 +358,7 @@ a:hover i::after {
 
     form{
         font-size: 13px;
+        margin-bottom: 30px;
     }
 
     .firstNameInput,
@@ -440,7 +440,7 @@ a:hover i::after {
 
     form{
         font-size: 10px;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
     }
 
     .firstNameInput,
@@ -449,11 +449,13 @@ a:hover i::after {
     .ageInput {
         width: 150px;
         height: 10px;
+        font-size: 10px;
     }
     
     .addressInput {
         width: 150px;
         height: 40px;
+        font-size: 10px;
     }
     
     .lastName {
