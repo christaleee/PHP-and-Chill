@@ -191,7 +191,7 @@ input, textarea{
 
 .addressContainer{
     display: flex;
-    gap: 13px;
+    gap: 12px;
 }
 
 .addressInput{
@@ -428,6 +428,7 @@ a:hover i::after {
 
     .addressInput{
         width:150px;
+        font-size: 10px;
     }
 
     form{
