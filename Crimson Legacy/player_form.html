@@ -102,25 +102,25 @@
     <form>
         <div>
             <label for="firstName" class="firstName">First Name:</label>
-            <input id="Fname" type="text" name="Fname">
+            <input id="Fname" type="text" name="Fname" placeholder="Ada">
             <br><span id="errorFname" class="error-message"></span>
         </div>
 
         <div>
             <label for="lastName" class="lastName">Last Name:</label>
-            <input id="Lname" type="text" name="Lname">
+            <input id="Lname" type="text" name="Lname" placeholder="Wong">
             <br><span id="errorLname" class="error-message"></span>
         </div>
 
         <div>
             <label for="userName" class="userName">Username:</label>
-            <input id="Uname" type="text" name="Username">
+            <input id="Uname" type="text" name="Username" placeholder="@adawongRE">
             <br><span id="errorUname" class="error-message"></span>
         </div>
 
         <div class="genderOption">
             <div>
-                <label>Gender:</label>&nbsp;
+                <label class="genderLabel">Gender:</label>
                 <label for="male">Male</label>
                 <input type="radio" id="Gender" name="Gender" value="Male" required />
                 <label for="female">Female</label>
@@ -131,12 +131,15 @@
 
         <div>
             <label for="age" class="age">Age:</label>
-            <input type="number" id="Age" name="Age">
+            <input type="number" id="Age" name="Age" placeholder="25">
             <br><span id="errorAge" class="error-message"></span>
         </div>
-        <div class="registrationInputsContainer">
+
+        <div class="addressContainer">
             <label for="Address" class="Address">Address:</label>
-            <input type="text" id="Address" name="Address"  required />
+            <div>
+                <textarea style="overflow:hidden" class="addressInput" id="Address" name="Address"  placeholder="Espana" required></textarea>
+            </div>
             <br><span id="errorAddress" class="error-message"></span>
         </div>
 

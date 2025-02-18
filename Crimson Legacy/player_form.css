@@ -7,7 +7,7 @@
 
 /* UNIVERSAL AND BODY */
 * {
-    margin: 7;
+    margin: 0;
     padding: 0;
     font-family: pixelated;
 }
@@ -182,11 +182,20 @@ form{
         flicker 1.5s infinite alternate;
 }
 
-input{
+input, textarea{
     background: #070707;
     border: 1px solid #e1d9d9;
     color: #e1d9d9;
     padding: 2px;
+}
+
+.addressContainer{
+    display: flex;
+    gap: 13px;
+}
+
+.addressInput{
+    height: 65px;
 }
 
 .lastName {
@@ -197,15 +206,15 @@ input{
     margin-right: 23px;
 }
 
-.genderOption p{
-    margin-right: 59px;
+.genderLabel{
+    margin-right: 47px;
 }
 
 .age{
     margin-right: 81px;
 }
 
-.address{
+.Address{
     margin-right: 34px;
 }
 
@@ -405,19 +414,25 @@ a:hover i::after {
     margin-right: 20px;
     }
 
-    .genderOption p{
-    margin-right: 51px;
+    .genderLabel{
+    margin-right: 39px;
     }
 
     .age{
     margin-right: 67px;
     }
 
-    .address{
+    .Address{
     margin-right: 29px;
     }
 
+    .addressInput{
+        width:150px;
+    }
 
+    form{
+        margin-left: 25px;
+    }
 }
 
 /*
