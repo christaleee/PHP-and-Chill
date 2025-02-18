@@ -96,7 +96,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 50px;
+    margin-bottom: 60px;
 
     width: 500px;
     height: 40px;
@@ -167,7 +167,10 @@ form{
     display: flex;
     flex-direction: column;
     gap:15px;
-    margin-bottom: 30px;
+
+    margin-left: 115px;
+    margin-bottom: 50px;
+
     font-size: 17px;
     letter-spacing: 2px;
     color: #e1d9d9; 
@@ -207,6 +210,15 @@ input, textarea{
 
 .genderLabel{
     margin-right: 60px;
+}
+
+.age{
+    margin-right: 105px;
+}
+
+.registrationInputsContainer{
+    display: flex;
+    gap: 60px;
 }
 
 /* ANIMATIONS */
