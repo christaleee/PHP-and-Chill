@@ -102,19 +102,19 @@
     <form>
         <div>
             <label for="firstName" class="firstName">First Name:</label>
-            <input class="firstNameInput" id="Fname" type="text" name="Fname" placeholder="(Ex. Cristian)">
+            <input class="firstNameInput" id="Fname" type="text" name="Fname" placeholder="Juan">
         </div>
         <br><span id="errorFname" class="error-message"></span>
 
         <div>
             <label for="lastName" class="lastName">Last Name:</label>
-            <input class="lastNameInput" id="Lname" type="text" name="Lname" placeholder="(Ex. Lumaad)">
+            <input class="lastNameInput" id="Lname" type="text" name="Lname" placeholder="Dela Cruz">
         </div>
         <br><span id="errorLname" class="error-message"></span>
 
         <div>
             <label for="userName" class="userName">Username:</label>
-            <input class="userNameInput" id="Uname" type="text" name="Username">
+            <input class="userNameInput" id="Uname" type="text" name="Username" >
         </div>
         <br><span id="errorUname" class="error-message"></span>
 
@@ -127,7 +127,7 @@
                 <input type="radio" id="Gender" name="Gender" value="Female"  required />
             </div>
         </div>
-        <br><span id="errorGender" class="error-message"></span>
+        <br><span id="errorGender" class="genderErrorMessage"></span>
 
         <div>
             <label for="age" class="age">Age:</label>
@@ -221,7 +221,7 @@ document.addEventListener("DOMContentLoaded", function() {
          }
         //  pang gender
          if (!Gender) {
-            document.getElementById("errorGender").innerText = "Error: Please select your gender!";
+            document.getElementById("errorGender").innerText = "Please select your gender!";
             return;
             containError = true; 
         }
