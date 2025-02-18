@@ -76,8 +76,8 @@ body {
 /* PLAYER REGISTRATION BOX */
 
 .playerRegistrationContainer {
-    height: 500px;
-    width: 400px;
+    height: 600px;
+    width: 650px;
     border-radius: 35px;
 
     justify-content: center;
@@ -96,9 +96,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 50px;
+    margin-bottom: 60px;
 
-    width: 370px;
+    width: 500px;
     height: 40px;
     background-color: #070707;
     border: 1px solid #e1d9d9;
@@ -110,7 +110,7 @@ body {
 .playerRegistrationBar h1 {
     justify-content: center;
     align-items: center;
-    font-size: 15px;
+    font-size: 20px;
     color: #e1d9d9;
     text-shadow:
         0 0 2px #970000,
@@ -120,7 +120,7 @@ body {
     letter-spacing: 5px;
 
     border-right: 2px solid;
-    width: 307px;
+    width: 385px;
     white-space: nowrap;
     overflow: hidden;
 
@@ -141,8 +141,8 @@ body {
     --angle: 0deg;
     content: '';
     position: absolute;
-    height: 500px;
-    width: 400px;
+    height: 600px;
+    width: 650px;
     background-image: conic-gradient(from var(--angle), #970000, #531212, #d51818, #970000, #531212, #d51818, #970000);
     top: 50%;
     left: 50%;
@@ -166,9 +166,9 @@ body {
 form{
     display: flex;
     flex-direction: column;
-    gap:15px;
-    margin-bottom: 30px;
-    font-size: 13px;
+    margin-bottom: 50px;
+
+    font-size: 17px;
     letter-spacing: 2px;
     color: #e1d9d9; 
     text-shadow: 
@@ -180,11 +180,42 @@ form{
         flicker 1.5s infinite alternate;
 }
 
-input{
+input, textarea{
     background: #070707;
     border: 1px solid #e1d9d9;
     color: #e1d9d9;
     padding: 2px;
+}
+
+.firstNameInput, .lastNameInput, .userNameInput, .ageInput{
+    width: 300px;
+    height: 20px;
+}
+
+.addressInput{
+    width: 300px;
+    height: 80px;
+}
+
+.lastName{
+    margin-right: 15px;
+}
+
+.userName{
+    margin-right: 30px;
+}
+
+.genderLabel{
+    margin-right: 60px;
+}
+
+.age{
+    margin-right: 105px;
+}
+
+.registrationInputsContainer{
+    display: flex;
+    gap: 60px;
 }
 
 /* ANIMATIONS */
@@ -315,6 +346,54 @@ a:hover i::after {
         height: 500px;
         width: 400px;
     }
+
+    .playerRegistrationBar{
+        width: 370px;
+        height: 40px;
+    }
+
+    .playerRegistrationBar h1{
+        font-size: 15px;
+        width: 307px;
+    }
+
+    form{
+        font-size: 13px;
+    }
+
+    .firstNameInput,
+    .lastNameInput,
+    .userNameInput,
+    .ageInput {
+        width: 200px;
+        height: 15px;
+    }
+    
+    .addressInput {
+        width: 200px;
+        height: 60px;
+    }
+    
+    .lastName {
+        margin-right: 12px;
+    }
+    
+    .userName {
+        margin-right: 25px;
+    }
+    
+    .genderLabel {
+        margin-right:49px;
+    }
+    
+    .age {
+        margin-right: 85px;
+    }
+    
+    .registrationInputsContainer {
+        display: flex;
+        gap: 50px;
+    }
 }
 
 @media (max-width: 650px) {
@@ -327,20 +406,6 @@ a:hover i::after {
     .playerRegistrationContainer::before {
         height: 500px;
         width: 400px;
-    }
-
-    .notificationBar {
-        width: 250px;
-    }
-
-    .notificationBar h1 {
-        font-size: 14px;
-        letter-spacing: 2px;
-        width: 155px;
-    }
-
-    .openingNote {
-        font-size: 12px;
     }
 
     a {
@@ -361,23 +426,55 @@ a:hover i::after {
         width: 300px;
     }
 
-    .notificationBar {
-        width: 200px;
+    .playerRegistrationBar{
+        width: 260px;
+        height: 40px;
+        margin-bottom: 30px;
     }
 
-    .notificationBar h1 {
-        font-size: 10px;
+    .playerRegistrationBar h1{
+        font-size: 11px;
         letter-spacing: 1px;
-        width: 110px;
+        width: 180px;
     }
 
-    .openingNote {
-        font-size: 9px;
+    form{
+        font-size: 10px;
     }
-}
 
-input::placeholder{
-    color: White;
+    .firstNameInput,
+    .lastNameInput,
+    .userNameInput,
+    .ageInput {
+        width: 150px;
+        height: 10px;
+    }
+    
+    .addressInput {
+        width: 150px;
+        height: 40px;
+    }
+    
+    .lastName {
+        margin-right: 10px;
+    }
+    
+    .userName {
+        margin-right: 20px;
+    }
+    
+    .genderLabel {
+        margin-right:41px;
+    }
+    
+    .age {
+        margin-right: 68px;
+    }
+    
+    .registrationInputsContainer {
+        display: flex;
+        gap: 40px;
+    }
 }
 
 
