@@ -206,7 +206,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
 
-    function validateForm() {
+    function validateForm() { 
         var fname = document.getElementById("Fname").value.trim();
         var lname = document.getElementById("Lname").value.trim();
         var Uname = document.getElementById("Uname").value.trim();
