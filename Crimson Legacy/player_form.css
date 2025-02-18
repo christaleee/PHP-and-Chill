@@ -197,6 +197,18 @@ input, textarea{
     height: 80px;
 }
 
+.lastName{
+    margin-right: 15px;
+}
+
+.userName{
+    margin-right: 30px;
+}
+
+.genderLabel{
+    margin-right: 60px;
+}
+
 /* ANIMATIONS */
 
 @keyframes flicker {
