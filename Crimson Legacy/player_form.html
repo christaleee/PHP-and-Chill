@@ -127,7 +127,7 @@
                 <input type="radio" id="Gender" name="Gender" value="Female"  required />
             </div>
         </div>
-        <br><span id="errorGender" class="error-message"></span>
+        <br><span id="errorGender" class="genderErrorMessage"></span>
 
         <div>
             <label for="age" class="age">Age:</label>
@@ -221,7 +221,7 @@ document.addEventListener("DOMContentLoaded", function() {
          }
         //  pang gender
          if (!Gender) {
-            document.getElementById("errorGender").innerText = "Error: Please select your gender!";
+            document.getElementById("errorGender").innerText = "Please select your gender!";
             return;
             containError = true; 
         }
