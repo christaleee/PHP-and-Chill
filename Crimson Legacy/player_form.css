@@ -331,6 +331,21 @@ a:hover i::after {
     left: 80%;
 }
 
+/* ERROR MESSAGES */
+
+.error-message{
+    font-size: 13px;
+    color: #b73131;
+    margin-top: 4px;
+
+    text-shadow: 
+        0 0 5px #970000, 
+        0 0 10px #970000,
+        0 0 15px #970000,
+        0 0 20px #970000;
+}
+
+
 /* RESPONSIVENESS */
 
 @media (max-width: 800px) {
