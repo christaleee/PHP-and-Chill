@@ -190,7 +190,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!-- 
         <button type="submit" id="registrationButton" style="--clr:#c51a1a" onclick="validateForm();">
          <span>REGISTER</span><i></i>
-        </button> -->
+        </button>
         <div><br><span id="errorAddress" class="error-message"></span></div>
 
     </form>
@@ -198,8 +198,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
          <span>REGISTER</span><i></i>
         </button>
 
+<<<<<<< Updated upstream
     <!-- <a href="#" id="registrationButton" style="--clr:#c51a1a" onclick="validateForm();"><span>REGISTER</span><i></i></a>
     <br><span id="errorAll" class="error-message"></span> -->
+=======
+    <br><span id="errorAll" class="error-message"></span>
+>>>>>>> Stashed changes
 </div>
 
 
@@ -260,7 +264,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             return;
         } 
         
-        // var confirmation = confirm(`Confirm submission:\n\nName: ${fname} ${lname}\nUsername: ${Uname}\nGender: ${Gender}\nAge: ${Age}\nAddress: ${Address}\n\nProceed to Register?`);
+        // var confirmation = confirm(Confirm submission:\n\nName: ${fname} ${lname}\nUsername: ${Uname}\nGender: ${Gender}\nAge: ${Age}\nAddress: ${Address}\n\nProceed to Register?);
         // window.location.href = "player_details_page.php";
         // return confirmation;
     }
