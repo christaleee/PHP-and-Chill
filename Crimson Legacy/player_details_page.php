@@ -119,10 +119,6 @@ if (isset($_SESSION["Name"]) && isset($_SESSION["Username"]) && isset($_SESSION[
                 <p><strong>First Name:</strong> <span id="Fname"><?php echo $_SESSION["Name"] ?></span></p>
                 </div>
 
-                <div class="playerLName">
-                <p><strong>Last Name:</strong> <span id="Lname"><?php echo $_SESSION["Name"] ?></span></p>
-                </div>
-
                 <div class="playerUsername">
                 <p><strong>Username:</strong> <span id="Uname"><?php echo $_SESSION["Username"] ?></span></p>
                 </div>
