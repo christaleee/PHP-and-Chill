@@ -221,7 +221,7 @@ h2 {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    margin-left: -350px;
+    margin-left: -300px;
     margin-bottom: 50px;
 }
 
@@ -271,6 +271,11 @@ h2 {
         height: 450px;
         width: 550px;
     }
+    
+    .playerDetails{
+        margin-left:-300px;
+        margin-bottom: 0px;
+    }
 }
 
 
@@ -307,7 +312,7 @@ h2 {
     }
 
     .playerDetails{
-        margin-left:-200px;
+        margin-left:-150px;
         margin-bottom: 0px;
     }
 }
