@@ -211,7 +211,7 @@ h2 {
     margin-left: -220px;
 }
 
-.playerAge{
+.playerAddress{
     margin-bottom: 30px;
 }
 
@@ -276,7 +276,6 @@ h2 {
     .playerDetailsBar {
         width: 270px;
     }
-
 
     .playerDetailsBar h1 {
         font-size: 14px;
