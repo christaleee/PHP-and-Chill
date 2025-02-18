@@ -146,22 +146,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <h1>Player Registration</h1>
         </div>
    
-    <form action="player_form.php" method="POST" onSubmit="return validateForm();" >
+    <form action="player_form.php" method="POST"  >
         <div>
             <label for="firstName" class="firstName">First Name:</label>
-            <input class="firstNameInput" id="Fname" type="text" name="Fname" placeholder="Juan">
+            <input class="firstNameInput" id="Fname" type="text" name="Fname" placeholder="Juan" required>
         </div>
         <div><br><span id="errorFname" class="error-message"></span></div>
 
         <div>
             <label for="lastName" class="lastName">Last Name:</label>
-            <input class="lastNameInput" id="Lname" type="text" name="Lname" placeholder="Dela Cruz">
+            <input class="lastNameInput" id="Lname" type="text" name="Lname" placeholder="Dela Cruz" required>
         </div>
         <div><br><span id="errorLname" class="error-message"></span></div>
 
         <div>
             <label for="userName" class="userName">Username:</label>
-            <input class="userNameInput" id="Uname" type="text" name="Uname" >
+            <input class="userNameInput" id="Uname" type="text" name="Uname"  required>
         </div>
         <div><br><span id="errorUname" class="error-message"></span></div>
 
@@ -178,7 +178,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <div>
             <label for="age" class="age">Age:</label>
-            <input class="ageInput" type="number" id="Age" name="Age" inputmode="numeric">
+            <input class="ageInput" type="number" id="Age" name="Age" inputmode="numeric" required>
         </div>
         <div><br><span id="errorAge" class="error-message"></span></div>
 
@@ -187,23 +187,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <textarea class="addressInput" style="resize:none;overflow:hidden"id="Address" name="Address"  required></textarea>
         </div>
         <br><span id="errorAddress" class="error-message"></span>
-<!-- 
+
         <button type="submit" id="registrationButton" style="--clr:#c51a1a" onclick="validateForm();">
          <span>REGISTER</span><i></i>
         </button>
         <div><br><span id="errorAddress" class="error-message"></span></div>
 
     </form>
-    <button type="submit" id="registrationButton" style="--clr:#c51a1a" onclick="validateForm();">
+     <button type="submit" id="registrationButton" style="--clr:#c51a1a" onclick="validateForm();">
          <span>REGISTER</span><i></i>
         </button>
 
-<<<<<<< Updated upstream
-    <!-- <a href="#" id="registrationButton" style="--clr:#c51a1a" onclick="validateForm();"><span>REGISTER</span><i></i></a>
-    <br><span id="errorAll" class="error-message"></span> -->
-=======
+    <a href="#" id="registrationButton" style="--clr:#c51a1a" onclick="validateForm();"><span>REGISTER</span><i></i></a>
     <br><span id="errorAll" class="error-message"></span>
->>>>>>> Stashed changes
 </div>
 
 
@@ -222,7 +218,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if (fname === "" || lname === "" || Uname === "" || Gender === "" || Age === "" || Address === "" ) {
             document.getElementById("errorAll").innerText = "Error: All fields are required!";
-            return;
             containError = true;
         }
 
@@ -235,8 +230,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if (!Gender) {
             document.getElementById("errorGender").innerText = "Please select your gender!";
-            return;
+            
             containError = true;
+            return;
         }
         Gender = Gender.value;
 
@@ -250,21 +246,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if (!isNumber || Age <= 0) {
             document.getElementById("errorAge").innerText = "Error: Age must be a valid positive number!";
-            return;
             containError = true;
+            return;
         }
 
         if (Age > 125) {
             document.getElementById("errorAge").innerText = "Error: You have exceeded the age limit";
-            return;
             containError = true;
+            return;
         }
 
         if (containError) {
-            return;
+            return false;
         } 
+        return true;
         
-        // var confirmation = confirm(Confirm submission:\n\nName: ${fname} ${lname}\nUsername: ${Uname}\nGender: ${Gender}\nAge: ${Age}\nAddress: ${Address}\n\nProceed to Register?);
+        // var confirmation = confirm(`Confirm submission:\n\nName: ${fname} ${lname}\nUsername: ${Uname}\nGender: ${Gender}\nAge: ${Age}\nAddress: ${Address}\n\nProceed to Register?`);
         // window.location.href = "player_details_page.php";
         // return confirmation;
     }
