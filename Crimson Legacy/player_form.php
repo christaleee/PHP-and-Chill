@@ -187,16 +187,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <textarea class="addressInput" style="resize:none;overflow:hidden"id="Address" name="Address"  required></textarea>
         </div>
         <br><span id="errorAddress" class="error-message"></span>
+<<<<<<< Updated upstream
 
         <button type="submit" id="registrationButton" style="--clr:#c51a1a">
          <span>REGISTER</span><i></i>
         </button>
+=======
+        <button type="submit" id="registrationButton" style="--clr:#c51a1a"><span>REGISTER</span><i></i></button>
+>>>>>>> Stashed changes
         <div><br><span id="errorAddress" class="error-message"></span></div>
 
     </form>
 
+<<<<<<< Updated upstream
     <!-- <a href="#" id="registrationButton" style="--clr:#c51a1a" onclick="validateForm();"><span>REGISTER</span><i></i></a>
     <br><span id="errorAll" class="error-message"></span> -->
+=======
+    <br><span id="errorAll" class="error-message"></span>
+>>>>>>> Stashed changes
 </div>
 
 
@@ -293,7 +301,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } 
         return true;
         
-        // var confirmation = confirm(`Confirm submission:\n\nName: ${fname} ${lname}\nUsername: ${Uname}\nGender: ${Gender}\nAge: ${Age}\nAddress: ${Address}\n\nProceed to Register?`);
+        // var confirmation = confirm(Confirm submission:\n\nName: ${fname} ${lname}\nUsername: ${Uname}\nGender: ${Gender}\nAge: ${Age}\nAddress: ${Address}\n\nProceed to Register?);
         // window.location.href = "player_details_page.php";
         // return confirmation;
     } 
