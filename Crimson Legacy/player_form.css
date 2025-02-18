@@ -7,7 +7,7 @@
 
 /* UNIVERSAL AND BODY */
 * {
-    margin: 7;
+    margin: 0;
     padding: 0;
     font-family: pixelated;
 }
@@ -161,7 +161,6 @@ body {
 /* FORM SECTION */
 .genderOption{
     display: flex;
-
 }
 
 form{
@@ -169,7 +168,6 @@ form{
     flex-direction: column;
     gap:15px;
     margin-bottom: 30px;
-
     font-size: 13px;
     letter-spacing: 2px;
     color: #e1d9d9; 
@@ -187,26 +185,6 @@ input{
     border: 1px solid #e1d9d9;
     color: #e1d9d9;
     padding: 2px;
-}
-
-.lastName {
-    margin-right: 11px;
-}
-
-.userName{
-    margin-right: 23px;
-}
-
-.genderOption p{
-    margin-right: 59px;
-}
-
-.age{
-    margin-right: 81px;
-}
-
-.address{
-    margin-right: 34px;
 }
 
 /* ANIMATIONS */
@@ -346,7 +324,7 @@ a:hover i::after {
     }
 
     .playerRegistrationContainer::after,
-.playerRegistrationContainer::before {
+    .playerRegistrationContainer::before {
         height: 500px;
         width: 400px;
     }
@@ -373,52 +351,37 @@ a:hover i::after {
 
 @media (max-width: 450px) {
     .playerRegistrationContainer {
-        height: 500px;
+        height: 400px;
         width: 300px;
     }
 
     .playerRegistrationContainer::after,
     .playerRegistrationContainer::before {
-        height: 500px;
+        height: 400px;
         width: 300px;
     }
 
-    .playerRegistrationBar {
-        width: 250px;
+    .notificationBar {
+        width: 200px;
     }
 
-    .playerRegistrationBar h1 {
-        font-size: 11px;
-        letter-spacing: 1px;
-        width: 180px;
-    }
-
-    label, input, .genderOption p {
+    .notificationBar h1 {
         font-size: 10px;
+        letter-spacing: 1px;
+        width: 110px;
     }
 
-    .lastName {
-    margin-right: 10px;
+    .openingNote {
+        font-size: 9px;
     }
-
-    .userName{
-    margin-right: 20px;
-    }
-
-    .genderOption p{
-    margin-right: 51px;
-    }
-
-    .age{
-    margin-right: 67px;
-    }
-
-    .address{
-    margin-right: 29px;
-    }
-
-
 }
+
+input::placeholder{
+    color: White;
+}
+
+
+
 
 /*
 @font-face {
