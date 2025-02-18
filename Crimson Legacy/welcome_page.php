@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="reg_page.css">
+    <link rel="stylesheet" href="welcome_page.css">
     <title>Crimson Legacy</title>
 </head>
 
@@ -97,22 +97,28 @@
 
     <div class="successfulRegistrationContainer">
         <div class="registrationSuccessfulBox">
-          <h1>REGISTRATION SUCCESSFUL</h1>
+          <h1>NOTIFICATION</h1>
         </div>
-        <p class="welcomeMessage">(WELCOME, PLAYER 01)</p>
-        <a href="#" style="--clr:#c51a1a"><span>SEE DETAILS</span><i></i></a>
+        <p class="welcomeMessage">You have a acquired the qualification to be a <b>PLAYER</b>. Will you accept?</p>
+        <a href="player_form.php" style="--clr:#c51a1a"><span>ACCEPT</span><i></i></a>
       </div>
-    
-
-        <script>
-            const a = document.querySelector('.loginButton');
-            a.addEventListener('click', () => {
-            alert('Logging in...');
-            });
-        </script>
-        <!-- <script src="reg_page.js"></script> -->
         </div>
     </div>
+    
+    <!-- <script>// Retrieve stored data
+    let name = localStorage.getItem("name");
+    let Age = localStorage.getItem("age");
+
+    if (name && Age) {
+        document.getElementById("output").innerHTML = `<strong>Name:</strong> ${name} <br> <strong>Email:</strong> ${Age}`;
+    } else {
+        document.getElementById("output").innerHTML = "No data found!";
+    }
+
+    function goBack() {
+        window.location.href = "player_form.php"; // Go back to form
+    } -->
+</script>
 </body>
 
 </html>

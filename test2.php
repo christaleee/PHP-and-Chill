@@ -1,34 +1,41 @@
+<?php
+session_start();
+if (!isset($_SESSION["Name"])) {
+    echo "No data available!";
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Submitted Data</title>
-    <style>
-        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
-    </style>
+    <title>Player Details</title>
 </head>
 <body>
+<div class="playerDetails">
+        <div class="playerName">
+            <p><strong>First Name:</strong> <span id="Fname"><?php echo $_SESSION["Name"] ?></span></p>
+        </div>
 
-    <h2>Submitted Data</h2>
-    <p id="output"></p>
-    <button onclick="goBack()">Go Back</button>
+        <div class="playerUsername">
+            <p><strong>UserName:</strong> <span id="Uname"><?php echo $_SESSION["Username"] ?></span></p>
+        </div>
 
-    <script>
-        // Retrieve stored data
-        let name = localStorage.getItem("name");
-        let Age = localStorage.getItem("age");
+        <div class="playerGender">
+            <p><strong>Gender:</strong> <span id="Gender"><?php echo $_SESSION["Gender"] ?></span></p>
+        </div>
 
-        if (name && Age) {
-            document.getElementById("output").innerHTML = `<strong>Name:</strong> ${Uname} <br> <strong>Email:</strong> ${Age}`;
-        } else {
-            document.getElementById("output").innerHTML = "No data found!";
-        }
+        <div class="playerAge">
+            <p><strong>Age:</strong> <span id="Age"><?php echo $_SESSION["Age"] ?></span></p>
+        </div>
 
-        function goBack() {
-            window.location.href = "test.php"; // Go back to form
-        }
-    </script>
+        <div class="playerAddress">
+            <p><strong>Address:</strong> <span id="Address"><?php echo $_SESSION["Address"] ?></span></p>
+        </div>
+    </div>
 
+    <a href="test.php">Go Back</a>
 </body>
 </html>

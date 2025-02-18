@@ -141,14 +141,14 @@ body {
     font-size: 20px;
     color: #e1d9d9;
     text-shadow: 
-        0 0 2px #970000,  
-        0 0 2px #970000,
-        0 0 2px #970000,
-        0 0 2px #970000;
+        0 0 5px #970000,  
+        0 0 10px #970000,
+        0 0 15px #970000,
+        0 0 20px #970000;
     letter-spacing: 5px;
 
     border-right: 2px solid;
-    width: 463px;
+    width: 463pX;
     white-space: nowrap;
     overflow: hidden;
 

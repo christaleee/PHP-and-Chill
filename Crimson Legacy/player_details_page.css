@@ -83,7 +83,7 @@ body {
     align-items: center;
 
     background-color: #070707;
-    position: relative; 
+    position: relative;
 
     color: white;
 }
@@ -93,7 +93,6 @@ body {
     initial-value: 0deg;
     inherits: false;
 }
-
 
 .playerDetailsContainer::after, .playerDetailsContainer::before {
     --angle: 0deg;
@@ -111,31 +110,21 @@ body {
     animation: 3s spin linear infinite;
 }
 
-
 .playerDetailsContainerBox {
     display: flex;
     justify-content: center;
     align-items: center;
 
     width: 450px;
-    height:50px; 
+    height: 50px;
     background-color: #070707;
     border: 1px solid #e1d9d9;
-    
 
     color: #e1d9d9;
     box-shadow: 0 0 35px #970000;
 }
 
-.playerDetails {
-    width: 480px;
-    display: flex;
-    justify-content: start;
-    position: left;
-}
-
-
-.successfulRegistrationContainer::before {
+.playerDetailsContainer::before {
     filter: blur(1.5rem);
     opacity: 0.7;
 }
@@ -149,187 +138,195 @@ body {
     }
 }
 
-.welcomeMessage {
+p {
     font-size: 15px;
     letter-spacing: 2px;
-    color: #e1d9d9; 
-    text-shadow: 
-        0 0 5px #970000, 
+    color: #e1d9d9;
+    text-shadow:
+        0 0 5px #970000,
         0 0 10px #970000,
         0 0 15px #970000,
         0 0 20px #970000;
-    animation: 
+    animation:
         flicker 1.5s infinite alternate;
 }
 
+h2 {
+    font-size: 20px;
+    letter-spacing: 2px;
+    color: #e1d9d9;
+    text-shadow:
+        0 0 5px #970000,
+        0 0 10px #970000,
+        0 0 15px #970000,
+        0 0 20px #970000;
+    animation:
+        flicker 1.5s infinite alternate;
+}
+
+
+/* Player Details Display Bar */
+
+.playerDetailsBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 370px;
+    height: 50px;
+    background-color: #070707;
+    border: 1px solid #e1d9d9;
+
+    color: #e1d9d9;
+    box-shadow: 0 0 35px #970000;
+}
+
+.playerDetailsContainer h1 {
+    font-size: 20px;
+    color: #e1d9d9;
+    text-shadow:
+        0 0 2px #970000,
+        0 0 2px #970000,
+        0 0 2px #970000,
+        0 0 2px #970000;
+    letter-spacing: 5px;
+
+    border-right: 2px solid;
+    width: 290px;
+    white-space: nowrap;
+    overflow: hidden;
+
+    animation:
+        flicker 1.5s infinite alternate,
+        typing 0.8s steps(15),
+        cursor .4s step-end infinite alternate;
+}
+
+.playerDetails{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-left: -220px;
+}
+
+.playerAddress{
+    margin-bottom: 30px;
+}
+
 /* For animation */
+
 @keyframes flicker {
     0% {
         opacity: 1;
     }
+
     50% {
         opacity: 0.8;
     }
+
     100% {
         opacity: 1;
     }
 }
 
-@keyframes cursor{
-    50%{
+@keyframes cursor {
+    50% {
         border-color: transparent;
     }
 }
 
-@keyframes typing{
-    from{
-        width:0;
+@keyframes typing {
+    from {
+        width: 0;
     }
-}
-
-/* BUTTON */
-a {
-    position: relative;
-    background: #181818;
-    color: #e1d9d9;
-    text-decoration: none;
-    font-size: 1em;
-    letter-spacing: 2px;
-    padding: 8px 80px;
-    transition: 0.5s;
-}
-
-a:hover {
-    letter-spacing: 0.25em;
-    background: var(--clr);
-    color: var(--clr);
-    box-shadow: 0 0 35px var(--clr);
-}
-
-a::before {
-    content: '';
-    position: absolute;
-    inset: 1px;
-    background: #070707;
-}
-
-a span {
-    position: relative;
-    z-index: 1;
-}
-
-a i {
-    position: absolute;
-    inset: 0;
-    display: block;
-}
-
-a i::before {
-    content: '';
-    position: absolute;
-    top: -3.5px;
-    left: 80%;
-    width: 5px;
-    height: 5px;
-    border-radius: 20px;
-    ;
-    border: 2px solid var(--clr);
-    background: #070707;
-    transform: translateX(-50%);
-    transition: 0.5s;
-}
-
-a:hover i::before {
-    width: 20px;
-    left: 20%;
-}
-
-a i::after {
-    content: '';
-    position: absolute;
-    bottom: -3.5px;
-    left: 20%;
-    width: 5px;
-    height: 5px;
-    border-radius: 20px;
-    ;
-    border: 2px solid var(--clr);
-    background: #070707;
-    transition: 0.5s;
-}
-
-a:hover i::after {
-    width: 20px;
-    left: 80%;
 }
 
 /* RESPONSIVENESS */
 
 @media (max-width: 800px) {
-    .successfulRegistrationContainer{
-        height: 300px;
-        width: 600px;
+    .playerDetailsContainer {
+        height: 450px;
+        width: 550px;
     }
 
-    .successfulRegistrationContainer::after, .successfulRegistrationContainer::before {
-    height: 300px;
-    width: 600px;
+
+    .playerDetailsContainer::after,
+    .playerDetailsContainer::before {
+        height: 450px;
+        width: 550px;
     }
 }
 
+
 @media (max-width: 650px) {
-    .successfulRegistrationContainer{
-        height: 300px;
+    .playerDetailsContainer {
+        height: 350px;
         width: 400px;
     }
 
-    .successfulRegistrationContainer::after, .successfulRegistrationContainer::before {
-    height: 300px;
-    width: 400px;
+
+    .playerDetailsContainer::after,
+    .playerDetailsContainer::before {
+        height: 350px;
+        width: 400px;
     }
 
-    .registrationSuccessfulBox{
-        width: 350px;
+    .playerDetailsBar {
+        width: 270px;
     }
 
-    .registrationSuccessfulBox h1{
+    .playerDetailsBar h1 {
         font-size: 14px;
         letter-spacing: 2px;
-        width: 290px;
+        width: 180px;
     }
 
-    .welcomeMessage{
+    p {
         font-size: 12px;
     }
 
-    a{
-        padding: 8px 40px;
-        font-size: 11px;
+    h2 {
+        font-size: 13px;
+    }
+
+    .playerDetails{
+        margin-left:-160px;
     }
 }
 
+
 @media (max-width: 450px) {
-    .successfulRegistrationContainer{
-        height: 300px;
+    .playerDetailsContainer {
+        height: 350px;
         width: 300px;
     }
 
-    .successfulRegistrationContainer::after, .successfulRegistrationContainer::before {
-    height: 300px;
-    width: 300px;
+
+    .playerDetailsContainer::after,
+    .playerDetailsContainer::before {
+        height: 350px;
+        width: 300px;
     }
 
-    .registrationSuccessfulBox{
-        width: 250px;
-    }
-
-    .registrationSuccessfulBox h1{
-        font-size: 10px;
-        letter-spacing: 1px;
+    .playerDetailsBar {
         width: 200px;
-    } 
+    }
 
-    .welcomeMessage{
-        font-size: 9px;
+    .playerDetailsBar h1 {
+        font-size: 13px;
+        letter-spacing: 2px;
+        width: 170px;
+    }
+
+    p {
+        font-size: 12px;
+    }
+
+    h2 {
+        font-size: 13px;
+    }
+
+    .playerDetails{
+        margin-left:-80px;
     }
 }

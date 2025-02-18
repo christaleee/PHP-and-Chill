@@ -1,31 +1,19 @@
-/* FONTS */
-@font-face {
-    font-family: pixelated;
-    src: url(fonts/pixel.ttf);
-}
-
-/* UNIVERSAL AND BODY */
 * {
     margin: 0;
     padding: 0;
-    font-family: pixelated;
+    box-sizing: border-box;
 }
 
 body {
+    min-height: 100vh;
     background: #070707;
 }
 
 .wrapper {
-    position: relative;
     display: flex;
-
-    width: 100%;
-    height: 100vh;
-
     justify-content: center;
     align-items: center;
 }
-
 
 /* BUBBLE BACKGROUND */
 
@@ -68,6 +56,7 @@ body {
 
 @media (max-width: 800px) {
     .bubbleBackground span {
+        position: relative;
         width: 15px;
         height: 15px;
     }
@@ -78,68 +67,117 @@ body {
 .playerAcquiredContainer{
     height: 400px;
     width: 750px;
-    border-radius: 35px;
+    border-width: 7px;
+    border-style: solid;
+    border-color: #970000;
+    border-radius: 40px;
 
+    display: flex;
     justify-content: center;
     align-items: center;
-    display: flex;
-    flex-direction: column;;
     
     background-color: #070707;
-    color: white;
+}
+/* FONTS */
+@font-face {
     font-family: pixelated;
-
+    src: url(fonts/pixel.ttf);
 }
 
-.notificationBar{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-     
-        width: 350px;
-        height:40px; 
-        background-color: #070707;
-        border: 1px solid #e1d9d9;
-    
-        color: #e1d9d9;
-        box-shadow: 0 0 35px #970000;
+/* UNIVERSAL AND BODY */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: pixelated;
 }
 
-.notificationBar h1{
+body {
+    background: #070707;
+}
+
+.wrapper {
+    position: relative;
+    display: flex;
+
+    width: 100%;
+    height: 100vh;
+
     justify-content: center;
     align-items: center;
-    font-size: 20px;
-    color: #e1d9d9;
-    text-shadow: 
-        0 0 2px #970000,  
-        0 0 2px #970000,
-        0 0 2px #970000,
-        0 0 2px #970000;
-    letter-spacing: 5px;
+}
 
-    border-right: 2px solid;
-    width: 250px;
-    white-space: nowrap;
+/* BUBBLE BACKGROUND */
+.backgroundContainer {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
     overflow: hidden;
+    z-index: -1;
+}
 
-    animation: 
-        flicker 1.5s infinite alternate,
-        typing 0.5s steps(13),
-        cursor .4s step-end infinite alternate;
+.bubbleBackground {
+    position: absolute;
+    display: flex;
+}
+
+.bubbleBackground span {
+    width: 20px;
+    height: 20px;
+    background: #c51a1a;
+    border-radius: 50%;
+    box-shadow: 0 0 0 0px #c51a1a44,
+        0 0 50px #c51a1a,
+        0 0 60px #c51a1a;
+    animation: animate 15s linear infinite;
+    animation-duration: calc(125s / var(--i));
+}
+
+@keyframes animate {
+    0% {
+        transform: translateY(100vh) scale(0);
     }
 
-@property --angle{
+    100% {
+        transform: translateY(-10vh) scale(1);
+    }
+}
+
+@media (max-width: 800px) {
+    .bubbleBackground span {
+        width: 15px;
+        height: 15px;
+    }
+}
+
+/* SUCCESSFUL REGISTRATION */
+
+.successfulRegistrationContainer {
+    height: 350px;
+    width: 700px;
+    border-radius: 35px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #070707;
+    position: relative; 
+}
+
+@property --angle {
     syntax: "<angle>";
     initial-value: 0deg;
     inherits: false;
 }
 
-.playerAcquiredContainer::after, .playerAcquiredContainer::before {
+.successfulRegistrationContainer::after, .successfulRegistrationContainer::before {
     --angle: 0deg;
     content: '';
     position: absolute;
-    height: 400px;
-    width: 750px;
+    height: 350px;
+    width: 700px;
     background-image: conic-gradient(from var(--angle), #970000, #531212, #d51818, #970000, #531212, #d51818, #970000);
     top: 50%;
     left: 50%;
@@ -150,19 +188,61 @@ body {
     animation: 3s spin linear infinite;
 }
 
-.playerAcquiredContainer::before {
+.successfulRegistrationContainer::before {
     filter: blur(1.5rem);
     opacity: 0.7;
 }
 
-.openingNote{
-    margin-top: 50px;
-    margin-bottom: 50px;
-    margin-left: 30px;
-    margin-right: 30px;
+@keyframes spin {
+    from {
+        --angle: 0deg;
+    }
+    to {
+        --angle: 360deg;
+    }
+}
 
+/* Notification */
+.registrationSuccessfulBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 350px;
+    height:50px; 
+    background-color: #070707;
+    border: 1px solid #e1d9d9;
+
+    color: #e1d9d9;
+    box-shadow: 0 0 35px #970000;
+}
+
+.registrationSuccessfulBox h1 {
+    font-size: 20px;
+    color: #e1d9d9;
+    text-shadow: 
+        0 0 5px #970000,  
+        0 0 10px #970000,
+        0 0 15px #970000,
+        0 0 20px #970000;
+    letter-spacing: 5px;
+
+    border-right: 2px solid;
+    width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+
+    animation: 
+        flicker 1.5s infinite alternate,
+        typing 1.6s steps(15),
+        cursor .4s step-end infinite alternate;
+    }
+
+ 
+
+.welcomeMessage {
     font-size: 15px;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     color: #e1d9d9; 
     text-align: center;
     text-shadow: 
@@ -174,48 +254,36 @@ body {
         flicker 1.5s infinite alternate;
 }
 
-/* ANIMATIONS */
-
+/* For animation */
 @keyframes flicker {
     0% {
         opacity: 1;
     }
-
     50% {
         opacity: 0.8;
     }
-
     100% {
         opacity: 1;
     }
 }
 
-@keyframes cursor {
-    50% {
+@keyframes cursor{
+    50%{
         border-color: transparent;
     }
 }
 
-@keyframes typing {
-    from {
-        width: 0;
-    }
-}
-@keyframes spin{
+@keyframes typing{
     from{
-        --angle: 0deg;
-    }
-    to{
-        --angle: 360deg;
+        width:0;
     }
 }
 
 /* BUTTON */
-
-a{
+a {
     position: relative;
-    background:#181818;
-    color:#e1d9d9;
+    background: #181818;
+    color: #e1d9d9;
     text-decoration: none;
     font-size: 1em;
     letter-spacing: 2px;
@@ -223,46 +291,47 @@ a{
     transition: 0.5s;
 }
 
-a:hover{
+a:hover {
     letter-spacing: 0.25em;
     background: var(--clr);
     color: var(--clr);
     box-shadow: 0 0 35px var(--clr);
 }
 
-a::before{
+a::before {
     content: '';
     position: absolute;
     inset: 1px;
     background: #070707;
 }
 
-a span{
+a span {
     position: relative;
     z-index: 1;
 }
 
-a i{
+a i {
     position: absolute;
     inset: 0;
     display: block;
 }
 
-a i::before{
+a i::before {
     content: '';
     position: absolute;
     top: -3.5px;
     left: 80%;
     width: 5px;
     height: 5px;
-    border-radius: 20px;;
+    border-radius: 20px;
+    ;
     border: 2px solid var(--clr);
     background: #070707;
     transform: translateX(-50%);
     transition: 0.5s;
 }
 
-a:hover i::before { 
+a:hover i::before {
     width: 20px;
     left: 20%;
 }
@@ -289,41 +358,39 @@ a:hover i::after {
 /* RESPONSIVENESS */
 
 @media (max-width: 800px) {
-    .playerAcquiredContainer {
-        height: 400px;
+    .successfulRegistrationContainer{
+        height: 300px;
         width: 600px;
     }
 
-    .playerAcquiredContainer::after,
-    .playerAcquiredContainer::before {
-        height: 400px;
-        width: 600px;
+    .successfulRegistrationContainer::after, .successfulRegistrationContainer::before {
+    height: 300px;
+    width: 600px;
     }
 }
 
 @media (max-width: 650px) {
-    .playerAcquiredContainer {
-        height: 400px;
+    .successfulRegistrationContainer{
+        height: 300px;
         width: 400px;
     }
 
-    .playerAcquiredContainer::after,
-    .playerAcquiredContainer::before {
-        height: 400px;
-        width: 400px;
+    .successfulRegistrationContainer::after, .successfulRegistrationContainer::before {
+    height: 300px;
+    width: 400px;
     }
 
-    .notificationBar{
+    .registrationSuccessfulBox{
         width: 250px;
     }
 
-    .notificationBar h1{
+    .registrationSuccessfulBox h1{
         font-size: 14px;
         letter-spacing: 2px;
         width: 155px;
     }
 
-    .openingNote{
+    .welcomeMessage{
         font-size: 12px;
     }
 
@@ -334,27 +401,27 @@ a:hover i::after {
 }
 
 @media (max-width: 450px) {
-    .playerAcquiredContainer {
-        height: 400px;
+    .successfulRegistrationContainer{
+        height: 300px;
         width: 300px;
     }
 
-    .playerAcquiredContainer::after, .playerAcquiredContainer::before {
-        height: 400px;
-        width: 300px;
+    .successfulRegistrationContainer::after, .successfulRegistrationContainer::before {
+    height: 300px;
+    width: 300px;
     }
 
-    .notificationBar{
+    .registrationSuccessfulBox{
         width: 200px;
     }
 
-    .notificationBar h1{
+    .registrationSuccessfulBox h1{
         font-size: 10px;
         letter-spacing: 1px;
         width: 110px;
     } 
 
-    .openingNote{
+    .welcomeMessage{
         font-size: 9px;
     }
 }
