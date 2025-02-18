@@ -338,7 +338,6 @@ a:hover i::after {
 .error-message{
     font-size: 13px;
     color: #b73131;
-    margin-top: -5px;
     margin-bottom: 10px;
 
     text-shadow: 
@@ -347,10 +346,17 @@ a:hover i::after {
         0 0 15px #970000,
         0 0 20px #970000;
 }
-
+ 
 .genderErrorMessage{
     font-size: 8px;
+    color: #b73131;
     margin-left: 145px;
+} 
+
+.wholeGenderSection{
+    display: flex;
+    flex-direction: column;
+    gap: -10px;
 }
 
 /* RESPONSIVENESS */
