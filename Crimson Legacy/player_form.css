@@ -346,7 +346,7 @@ a:hover i::after {
     }
 
     .playerRegistrationContainer::after,
-    .playerRegistrationContainer::before {
+.playerRegistrationContainer::before {
         height: 500px;
         width: 400px;
     }
@@ -373,34 +373,52 @@ a:hover i::after {
 
 @media (max-width: 450px) {
     .playerRegistrationContainer {
-        height: 400px;
+        height: 500px;
         width: 300px;
     }
 
     .playerRegistrationContainer::after,
     .playerRegistrationContainer::before {
-        height: 400px;
+        height: 500px;
         width: 300px;
     }
 
-    .notificationBar {
-        width: 200px;
+    .playerRegistrationBar {
+        width: 250px;
     }
 
-    .notificationBar h1 {
-        font-size: 10px;
+    .playerRegistrationBar h1 {
+        font-size: 11px;
         letter-spacing: 1px;
-        width: 110px;
+        width: 180px;
     }
 
-    .openingNote {
-        font-size: 9px;
+    label, input, .genderOption p {
+        font-size: 10px;
     }
+
+    .lastName {
+    margin-right: 10px;
+    }
+
+    .userName{
+    margin-right: 20px;
+    }
+
+    .genderOption p{
+    margin-right: 51px;
+    }
+
+    .age{
+    margin-right: 67px;
+    }
+
+    .address{
+    margin-right: 29px;
+    }
+
+
 }
-
-
-
-
 
 /*
 @font-face {
