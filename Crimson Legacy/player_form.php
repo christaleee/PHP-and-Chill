@@ -1,5 +1,7 @@
 <?php
-session_start(); // Start session before anything else
+session_start();
+$errors = []; // Start session before anything else
+
 
 function assignClass($lname, $gender) {
     $firstLetter = strtoupper(substr($lname, 0, 1)); // Get first letter and convert to uppercase
@@ -25,23 +27,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $age = intval($_POST["Age"]);
     $address = htmlspecialchars($_POST["Address"]);
 
-    // Fix function call and assigned variable
-    $assignedClass = assignClass($lname, $gender);
+    if (empty($fname) || empty($lname) || empty($username) || empty($gender) || empty($age) || empty($address)) {
+        $errors[] = "All fields are required.";
+    }
+    if ($gender !== "Male" && $gender !== "Female") {
+        $errors[] = "Invalid gender selected.";
+    }
+    if (!is_numeric($age) || $age <= 0 || $age > 125) {
+        $errors[] = "Age must be a valid number between 1 and 125.";
+    }
 
-    // Store data in session
-    $_SESSION["Name"] = $fname . " " . $lname;
-    $_SESSION["Username"] = $username;
-    $_SESSION["Gender"] = $gender;
-    $_SESSION["Age"] = $age;
-    $_SESSION["Address"] = $address;
-    $_SESSION["Class"] = $assignedClass; // Corrected variable name
 
-    // Redirect to player details page
-    header("Location: player_details_page.php");
-    exit();
-} else {
-    echo "Invalid request method.";
+
+ if (empty($errors)) {
+        // Assign class
+        $assignedClass = assignClass($lname, $gender);
+
+        // Store in session
+        $_SESSION["Name"] = "$fname $lname";
+        $_SESSION["Username"] = $username;
+        $_SESSION["Gender"] = $gender;
+        $_SESSION["Age"] = $age;
+        $_SESSION["Address"] = $address;
+        $_SESSION["Class"] = $assignedClass;
+
+        // Redirect to player details page
+        header("Location: player_details_page.php");
+        exit();
+    } 
 }
+
 ?>
 
 
@@ -146,7 +161,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <h1>Player Registration</h1>
         </div>
    
-    <form action="player_form.php" method="POST">
+    <form action="player_form.php" method="POST" onSubmit="return validateForm();" >
         <div>
             <label for="firstName" class="firstName">First Name:</label>
             <input class="firstNameInput" id="Fname" type="text" name="Fname" placeholder="Juan">
@@ -168,9 +183,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="genderOption">
             <div>
                 <label class="genderLabel">Gender:</label>
-                <input type="radio" id="Gender" name="Gender" value="Male" required />
+                <input type="radio" id="Male" name="Gender" value="Male" required />
                 <label for="male">Male</label>
-                <input type="radio" id="Gender" name="Gender" value="Female" required />
+                <input type="radio" id="Female" name="Gender" value="Female" required />
                 <label for="female">Female</label>
             </div>
         </div>
@@ -187,6 +202,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <textarea class="addressInput" style="resize:none;overflow:hidden"id="Address" name="Address"  required></textarea>
         </div>
         <br><span id="errorAddress" class="error-message"></span>
+
         <button type="submit" id="registrationButton" style="--clr:#c51a1a">
          <span>REGISTER</span><i></i>
         </button>
@@ -194,14 +210,49 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     </form>
 
-    <a href="#" id="registrationButton" style="--clr:#c51a1a" onclick="validateForm();"><span>REGISTER</span><i></i></a>
-    <br><span id="errorAll" class="error-message"></span>
+    <!-- <a href="#" id="registrationButton" style="--clr:#c51a1a" onclick="validateForm();"><span>REGISTER</span><i></i></a>
+    <br><span id="errorAll" class="error-message"></span> -->
 </div>
 
 
 
 <script>
-    // Function moved outside the DOMContentLoaded listener
+    document.addEventListener("DOMContentLoaded", function() {
+        var fname = document.getElementById("Fname");
+        var lname = document.getElementById("Lname");
+        var Uname = document.getElementById("Uname");
+        var Age = document.getElementById("Age");
+        var Address = document.getElementById("Address");
+        var Gender = document.getElementsByName('Gender');
+
+        // clearing function
+        function clearError(event) {
+            let errorId = "error" + event.target.id;
+            let errorElement = document.getElementById(errorId);
+            if (errorElement) {
+                errorElement.innerText = "";
+            }
+            document.getElementById("errorAll").innerText = ""; // Clear general error
+        }
+
+        // Attach event listeners to inputs
+        fname.addEventListener("input", clearError);
+        lname.addEventListener("input", clearError);
+        Uname.addEventListener("input", clearError);
+        Age.addEventListener("input", clearError);
+        Address.addEventListener("input", clearError);
+
+        // Attach event listeners to radio buttons
+        Gender.forEach(input => {
+            input.addEventListener("change", function () {
+                document.getElementById("errorGender").innerText = "";
+                document.getElementById("errorAll").innerText = "";
+            });
+        });
+
+    });
+
+    
     function validateForm() {
         var fname = document.getElementById("Fname").value.trim();
         var lname = document.getElementById("Lname").value.trim();
@@ -259,42 +310,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // var confirmation = confirm(`Confirm submission:\n\nName: ${fname} ${lname}\nUsername: ${Uname}\nGender: ${Gender}\nAge: ${Age}\nAddress: ${Address}\n\nProceed to Register?`);
         // window.location.href = "player_details_page.php";
         // return confirmation;
-    }
+    } 
 
-    document.addEventListener("DOMContentLoaded", function() {
-        var fname = document.getElementById("Fname");
-        var lname = document.getElementById("Lname");
-        var Uname = document.getElementById("Uname");
-        var Age = document.getElementById("Age");
-        var Address = document.getElementById("Address");
-        var Gender = document.getElementsByName('Gender');
-
-        // clearing function
-        function clearError(event) {
-            let errorId = "error" + event.target.id;
-            let errorElement = document.getElementById(errorId);
-            if (errorElement) {
-                errorElement.innerText = "";
-            }
-            document.getElementById("errorAll").innerText = ""; // Clear general error
-        }
-
-        // Attach event listeners to inputs
-        fname.addEventListener("input", clearError);
-        lname.addEventListener("input", clearError);
-        Uname.addEventListener("input", clearError);
-        Age.addEventListener("input", clearError);
-        Address.addEventListener("input", clearError);
-
-        // Attach event listeners to radio buttons
-        Gender.forEach(input => {
-            input.addEventListener("change", function () {
-                document.getElementById("errorGender").innerText = "";
-                document.getElementById("errorAll").innerText = "";
-            });
-        });
-
-    });
 </script>
 
 </body>
