@@ -78,7 +78,6 @@ body {
 
     display: flex;
     flex-direction: column;
-    gap: 50px;
     justify-content: center;
     align-items: center;
 
@@ -86,6 +85,22 @@ body {
     position: relative;
 
     color: white;
+}
+
+.playerDetailsBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 500px;
+    height: 40px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    background-color: #070707;
+    border: 1px solid #e1d9d9;
+
+    color: #e1d9d9;
+    box-shadow: 0 0 35px #970000;
 }
 
 @property --angle {
@@ -206,7 +221,8 @@ h2 {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    margin-left: -220px;
+    margin-left: -350px;
+    margin-bottom: 50px;
 }
 
 .playerAddress{
@@ -273,6 +289,7 @@ h2 {
 
     .playerDetailsBar {
         width: 270px;
+        margin-bottom: 30px;
     }
 
     .playerDetailsBar h1 {
@@ -290,7 +307,8 @@ h2 {
     }
 
     .playerDetails{
-        margin-left:-160px;
+        margin-left:-200px;
+        margin-bottom: 0px;
     }
 }
 
@@ -300,7 +318,6 @@ h2 {
         height: 350px;
         width: 300px;
     }
-
 
     .playerDetailsContainer::after,
     .playerDetailsContainer::before {
@@ -327,6 +344,7 @@ h2 {
     }
 
     .playerDetails{
-        margin-left:-80px;
+        margin-left: -150px;
+        margin-bottom: 0px;
     }
 }
