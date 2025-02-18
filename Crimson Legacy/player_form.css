@@ -436,10 +436,11 @@ a:hover i::after {
         font-size: 11px;
         letter-spacing: 1px;
         width: 180px;
-    }
+    } 
 
     form{
         font-size: 10px;
+        margin-bottom: 10px;
     }
 
     .firstNameInput,
