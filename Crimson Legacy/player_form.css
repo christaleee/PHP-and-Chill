@@ -76,8 +76,8 @@ body {
 /* PLAYER REGISTRATION BOX */
 
 .playerRegistrationContainer {
-    height: 500px;
-    width: 400px;
+    height: 600px;
+    width: 650px;
     border-radius: 35px;
 
     justify-content: center;
@@ -98,7 +98,7 @@ body {
     align-items: center;
     margin-bottom: 50px;
 
-    width: 370px;
+    width: 500px;
     height: 40px;
     background-color: #070707;
     border: 1px solid #e1d9d9;
@@ -110,7 +110,7 @@ body {
 .playerRegistrationBar h1 {
     justify-content: center;
     align-items: center;
-    font-size: 15px;
+    font-size: 20px;
     color: #e1d9d9;
     text-shadow:
         0 0 2px #970000,
@@ -120,7 +120,7 @@ body {
     letter-spacing: 5px;
 
     border-right: 2px solid;
-    width: 307px;
+    width: 385px;
     white-space: nowrap;
     overflow: hidden;
 
@@ -141,8 +141,8 @@ body {
     --angle: 0deg;
     content: '';
     position: absolute;
-    height: 500px;
-    width: 400px;
+    height: 600px;
+    width: 650px;
     background-image: conic-gradient(from var(--angle), #970000, #531212, #d51818, #970000, #531212, #d51818, #970000);
     top: 50%;
     left: 50%;
@@ -168,7 +168,7 @@ form{
     flex-direction: column;
     gap:15px;
     margin-bottom: 30px;
-    font-size: 13px;
+    font-size: 17px;
     letter-spacing: 2px;
     color: #e1d9d9; 
     text-shadow: 
@@ -180,11 +180,21 @@ form{
         flicker 1.5s infinite alternate;
 }
 
-input{
+input, textarea{
     background: #070707;
     border: 1px solid #e1d9d9;
     color: #e1d9d9;
     padding: 2px;
+}
+
+.firstNameInput, .lastNameInput, .userNameInput, .ageInput{
+    width: 300px;
+    height: 20px;
+}
+
+.addressInput{
+    width: 300px;
+    height: 80px;
 }
 
 /* ANIMATIONS */
@@ -315,6 +325,20 @@ a:hover i::after {
         height: 500px;
         width: 400px;
     }
+
+    .playerRegistrationBar{
+        width: 370px;
+        height: 40px;
+    }
+
+    .playerRegistrationBar h1{
+        font-size: 15px;
+        width: 307px;
+    }
+
+    form{
+        font-size: 13px;
+    }
 }
 
 @media (max-width: 650px) {
@@ -374,10 +398,6 @@ a:hover i::after {
     .openingNote {
         font-size: 9px;
     }
-}
-
-input::placeholder{
-    color: White;
 }
 
 
