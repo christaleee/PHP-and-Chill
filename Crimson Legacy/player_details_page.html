@@ -104,53 +104,64 @@
 
             <div class="playerDetails">
                 <div class="playerFName">
-                    <p>First Name:</p>
+                    <p><strong>First Name:</strong><span id="Fname"></span></p>
                 </div>
 
                 <div class="playerLName">
-                    <p>Last Name: </p>
+                    <p><strong>Last Name:</strong><span id="Fname"></span></p>
                 </div>
 
                 <div class="playerUsername">
-                    <p>Username: </p>
+                    <p><strong>UserName:</strong><span id="Uname"></span></p>
                 </div>
 
                 <div class="playerGender">
-                    <p>Gender: </p>
+                    <p><strong>Gender:</strong><span id="Gender"></span></p>
                 </div>
 
                 <div class="playerAge">
-                    <p>Age: </p>
+                    <p><strong>Age:</strong><span id="Age"></span></p>
                 </div>
 
                 <div class="playerAddress">
-                    <p>Address: </p>
+                    <p><strong>Address:</strong><span id="Address"></span></p>
                 </div>
 
                 <div class="playerAssignedClass">
-                    <h2>ASSIGNED CLASS: </h2>
+                    <h2>ASSIGNED CLASS: <span id="Class"></span></h2>
                 </div>
             </div>
         </div>
     </div>
 
-        <!-- <div class="successfulRegistrationContainer">
-        <div class="registrationSuccessfulBox">
-          <h1>REGISTRATION SUCCESSFUL</h1>
-        </div>
-        <p class="welcomeMessage">(WELCOME, PLAYER 01)</p>
-        <a href="#" style="--clr:#c51a1a"><span>SEE DETAILS</span><i></i></a>
-      </div> -->
-
                         
-                                <script>
-                                    const a = document.querySelector('.loginButton');
-                                    a.addEventListener('click', () => {
-                                        alert('Logging in...');
-                                    });
-                                </script>
-                            </div>
-                        </div>
+    <script>
+        const a = document.querySelector('.loginButton');
+        a.addEventListener('click', () => {
+            alert('Logging in...');
+        });
+
+        document.addEventListener("DOMContentLoaded", function(){
+            const Fname =localStorage.getItem("Fname");
+            const Lname =localStorage.getItem("Lname");
+            const Uname =localStorage.getItem("Uname");
+            const Gender = localStorage.getItem("Gender");
+            const Age = localStorage.getItem("Age");
+            const Address = localStorage.getItem("Address");
+
+            document.getElementById("Fname").innerText = Fname;
+            document.getElementById("Lname").innerText = Lname;
+            document.getElementById("Uname").innerText = Uname;
+            document.getElementById("Gender").innerText = Gender;
+            document.getElementById("Age").innerText = Age;
+            document.getElementById("Address").innerText = Address;
+            
+            const phpClass = "<?php echo $class; ?>"
+            document.getElementById("Class").innerText = phpClass;
+        });
+    </script>
+</div>
+</div>
 </body>
 
 
