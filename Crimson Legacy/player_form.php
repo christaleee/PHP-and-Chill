@@ -1,3 +1,29 @@
+<?php
+session_start(); // Start session before anything else
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $fname = htmlspecialchars($_POST["Fname"]);
+    $lname = htmlspecialchars($_POST["Lname"]);
+    $username = htmlspecialchars($_POST["Uname"]); // Fixed: Use "Uname" instead of "Username"
+    $gender = htmlspecialchars($_POST["Gender"]);
+    $age = intval($_POST["Age"]);
+    $address = htmlspecialchars($_POST["Address"]);
+
+    // Store data in session
+    $_SESSION["Name"] = $fname . " " . $lname;
+    $_SESSION["Username"] = $username;
+    $_SESSION["Gender"] = $gender;
+    $_SESSION["Age"] = $age;
+    $_SESSION["Address"] = $address;
+
+    // Redirect to player details page
+    header("Location: player_details_page.php");
+    exit();
+} else {
+    echo "Invalid request method.";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -99,7 +125,7 @@
             <h1>Player Registration</h1>
         </div>
    
-    <form>
+    <form action="player_form.php" method="POST">
         <div>
             <label for="firstName" class="firstName">First Name:</label>
             <input class="firstNameInput" id="Fname" type="text" name="Fname" placeholder="Juan">
@@ -114,7 +140,7 @@
 
         <div>
             <label for="userName" class="userName">Username:</label>
-            <input class="userNameInput" id="Uname" type="text" name="Username" >
+            <input class="userNameInput" id="Uname" type="text" name="Uname" >
         </div>
         <br><span id="errorUname" class="error-message"></span>
 
@@ -131,7 +157,7 @@
 
         <div>
             <label for="age" class="age">Age:</label>
-            <input class="ageInput" type="number" id="Age" name="Age">
+            <input class="ageInput" type="number" id="Age" name="Age" inputmode="numeric">
         </div>
         <br><span id="errorAge" class="error-message"></span>
 
@@ -143,47 +169,14 @@
 
     </form>
 
-    <a href="#" id="registrationButton" style="--clr:#c51a1a" onclick="validateForm()"><span>REGISTER</span><i></i></a>
+    <a href="#" id="registrationButton" style="--clr:#c51a1a" onclick="validateForm();"><span>REGISTER</span><i></i></a>
     <br><span id="errorAll" class="error-message"></span>
 </div>
 
 
+
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-
-    var fname = document.getElementById("Fname");
-        var lname = document.getElementById("Lname");
-        var Uname = document.getElementById("Uname");
-        var Age = document.getElementById("Age");
-        var Address = document.getElementById("Address");
-        var Gender = document.getElementsByName('Gender');
-
-      // clearing function
-      function clearError(event) {
-        let errorId = "error" + event.target.id;
-        let errorElement = document.getElementById(errorId);
-        if (errorElement) {
-            errorElement.innerText = "";
-        }
-        document.getElementById("errorAll").innerText = ""; // Clear general error
-    }
-
-     // Attach event listeners to inputs
-     fname.addEventListener("input", clearError);
-    lname.addEventListener("input", clearError);
-    Uname.addEventListener("input", clearError);
-    Age.addEventListener("input", clearError);
-    Address.addEventListener("input", clearError);
-
-    // Attach event listeners to radio buttons
-    Gender.forEach(input => {
-        input.addEventListener("change", function () {
-            document.getElementById("errorGender").innerText = "";
-            document.getElementById("errorAll").innerText = "";
-        });
-    });
-
-
+    // Function moved outside the DOMContentLoaded listener
     function validateForm() {
         var fname = document.getElementById("Fname").value.trim();
         var lname = document.getElementById("Lname").value.trim();
@@ -191,11 +184,8 @@ document.addEventListener("DOMContentLoaded", function() {
         var Age = document.getElementById("Age").value.trim();
         var Address = document.getElementById("Address").value.trim();
         var Gender = document.querySelector('input[name="Gender"]:checked');
-
-
-// -----------------------------------------------------------------------------------------------------------------------------------------------
-
-    var containError = false;
+        
+        var containError = false;
 
         if (fname === "" || lname === "" || Uname === "" || Gender === "" || Age === "" || Address === "" ) {
             document.getElementById("errorAll").innerText = "Error: All fields are required!";
@@ -203,32 +193,21 @@ document.addEventListener("DOMContentLoaded", function() {
             containError = true;
         }
 
-        // pang Capitalization
-        if (
-        fname.charAt(0) !== fname.charAt(0).toUpperCase() )
-         {
+        if (fname.charAt(0) !== fname.charAt(0).toUpperCase()) {
             fname = fname.charAt(0).toUpperCase() + fname.slice(1);
-            // document.getElementById("errorFname").innerText = "Error: First letter must be capitalized!";
-            // containError = true;
-         }
-         if(fname <= fname.charAt(20)){
-            document.getElementById("errorFname").innerText = "Error: You have exceeded the input limit!"
-         }
-         if(lname.charAt(0) !== lname.charAt(0).toUpperCase()){
+        }
+        if (lname.charAt(0) !== lname.charAt(0).toUpperCase()) {
             lname = lname.charAt(0).toUpperCase() + lname.slice(1);
-            // document.getElementById("errorLname").innerText = "Error: First letter must be capitalized!";
-            // return;
-         }
-        //  pang gender
-         if (!Gender) {
+        }
+
+        if (!Gender) {
             document.getElementById("errorGender").innerText = "Please select your gender!";
             return;
-            containError = true; 
+            containError = true;
         }
         Gender = Gender.value;
-    
-        // number checker 
-        let isNumber = true
+
+        let isNumber = true;
         for (let i = 0; i < Age.length; i++) {
             if (Age[i] < "0" || Age[i] > "9") {
                 isNumber = false;
@@ -242,32 +221,55 @@ document.addEventListener("DOMContentLoaded", function() {
             containError = true;
         }
 
-        if(Age > 125){
+        if (Age > 125) {
             document.getElementById("errorAge").innerText = "Error: You have exceeded the age limit";
             return;
             containError = true;
         }
-        
-        if (containError){
+
+        if (containError) {
             return;
-        }
-
-        // Show confirmation alert
-        if (confirm(`Confirm submission:\n\nName: ${fname} ${lname}\nUsername: ${Uname}\nGender ${Gender}\nAge: ${Age}\nAddress: ${Address}\n\nProceed to Register?`)) {
-            // Store data in localStorage
-            localStorage.setItem("Name", fname + " " + lname);
-            localStorage.setItem("Username" , Uname);
-            localStorage.setItem("Gender", Gender);
-            localStorage.setItem("Age", Age);
-            localStorage.setItem("Address", Address);
-
-            // Redirect to new page
-            window.location.href = "player_details_page.html";
-        }
+        } 
+        
+        // var confirmation = confirm(`Confirm submission:\n\nName: ${fname} ${lname}\nUsername: ${Uname}\nGender: ${Gender}\nAge: ${Age}\nAddress: ${Address}\n\nProceed to Register?`);
+        window.location.href = "player_details_page.php";
+        // return confirmation;
     }
-      // Assign validation function to the register button
-      document.querySelector("a[onclick='validateForm()']").onclick = validateForm;
-});
+
+    document.addEventListener("DOMContentLoaded", function() {
+        var fname = document.getElementById("Fname");
+        var lname = document.getElementById("Lname");
+        var Uname = document.getElementById("Uname");
+        var Age = document.getElementById("Age");
+        var Address = document.getElementById("Address");
+        var Gender = document.getElementsByName('Gender');
+
+        // clearing function
+        function clearError(event) {
+            let errorId = "error" + event.target.id;
+            let errorElement = document.getElementById(errorId);
+            if (errorElement) {
+                errorElement.innerText = "";
+            }
+            document.getElementById("errorAll").innerText = ""; // Clear general error
+        }
+
+        // Attach event listeners to inputs
+        fname.addEventListener("input", clearError);
+        lname.addEventListener("input", clearError);
+        Uname.addEventListener("input", clearError);
+        Age.addEventListener("input", clearError);
+        Address.addEventListener("input", clearError);
+
+        // Attach event listeners to radio buttons
+        Gender.forEach(input => {
+            input.addEventListener("change", function () {
+                document.getElementById("errorGender").innerText = "";
+                document.getElementById("errorAll").innerText = "";
+            });
+        });
+
+    });
 </script>
 
 </body>

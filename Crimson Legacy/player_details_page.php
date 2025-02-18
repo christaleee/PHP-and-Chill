@@ -1,7 +1,19 @@
+<?php
+session_start();
+if (isset($_SESSION["Name"]) && isset($_SESSION["Username"]) && isset($_SESSION["Gender"]) && isset($_SESSION["Age"]) && isset($_SESSION["Address"])) {
+    $name = $_SESSION["Name"];
+    $username = $_SESSION["Username"];
+    $gender = $_SESSION["Gender"];
+    $age = $_SESSION["Age"];
+    $address = $_SESSION["Address"];
+} else {
+    echo "No player data available.";
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -104,61 +116,63 @@
 
             <div class="playerDetails">
                 <div class="playerFName">
-                    <p><strong>First Name:</strong><span id="Fname"></span></p>
+                <p><strong>First Name:</strong> <span id="Fname"><?php echo $_SESSION["Name"] ?></span></p>
                 </div>
 
                 <div class="playerLName">
-                    <p><strong>Last Name:</strong><span id="Fname"></span></p>
+                <p><strong>Last Name:</strong> <span id="Lname"><?php echo $_SESSION["Name"] ?></span></p>
                 </div>
 
                 <div class="playerUsername">
-                    <p><strong>UserName:</strong><span id="Uname"></span></p>
+                <p><strong>Username:</strong> <span id="Uname"><?php echo $_SESSION["Username"] ?></span></p>
                 </div>
 
                 <div class="playerGender">
-                    <p><strong>Gender:</strong><span id="Gender"></span></p>
+                <p><strong>Gender:</strong> <span id="Gender"><?php echo $_SESSION["Gender"] ?></span></p>
                 </div>
 
                 <div class="playerAge">
-                    <p><strong>Age:</strong><span id="Age"></span></p>
+                <p><strong>First Name:</strong> <span id="Age"><?php echo $_SESSION["Age"] ?></span></p>
                 </div>
 
                 <div class="playerAddress">
-                    <p><strong>Address:</strong><span id="Address"></span></p>
-                </div>
-
-                <div class="playerAssignedClass">
-                    <h2>ASSIGNED CLASS: <span id="Class"></span></h2>
+                <p><strong>First Name:</strong> <span id="Address"><?php echo $_SESSION["Address"] ?></span></p>
                 </div>
             </div>
-        </div>
+
+            <div class="playerAssignedClass">
+                <h2>ASSIGNED CLASS: <span id="Class"></span></h2>
+            </div>
     </div>
 
                         
     <script>
-        const a = document.querySelector('.loginButton');
-        a.addEventListener('click', () => {
-            alert('Logging in...');
-        });
 
-        document.addEventListener("DOMContentLoaded", function(){
-            const Fname =localStorage.getItem("Fname");
-            const Lname =localStorage.getItem("Lname");
-            const Uname =localStorage.getItem("Uname");
-            const Gender = localStorage.getItem("Gender");
-            const Age = localStorage.getItem("Age");
-            const Address = localStorage.getItem("Address");
+        // document.addEventListener("DOMContentLoaded", function(){
+        //     const Fname =localStorage.getItem("fname");
+        //     const Lname =localStorage.getItem("lname");
+        //     const Uname =localStorage.getItem("Uname");
+        //     const Gender = localStorage.getItem("Gender");
+        //     const Age = localStorage.getItem("Age");
+        //     const Address = localStorage.getItem("Address");
 
-            document.getElementById("Fname").innerText = Fname;
-            document.getElementById("Lname").innerText = Lname;
-            document.getElementById("Uname").innerText = Uname;
-            document.getElementById("Gender").innerText = Gender;
-            document.getElementById("Age").innerText = Age;
-            document.getElementById("Address").innerText = Address;
+        //     document.getElementById("Fname").innerText = Fname;
+        //     document.getElementById("Lname").innerText = Lname;
+        //     document.getElementById("Uname").innerText = Uname;
+        //     document.getElementById("Gender").innerText = Gender;
+        //     document.getElementById("Age").innerText = Age;
+        //     document.getElementById("Address").innerText = Address;
             
-            const phpClass = "<?php echo $class; ?>"
-            document.getElementById("Class").innerText = phpClass;
-        });
+        //     console.log(localStorage.getItem("fname"));
+        //     console.log(localStorage.getItem("lname"));
+        //     console.log(localStorage.getItem("Uname"));
+        //     console.log(localStorage.getItem("Gender"));
+        //     console.log(localStorage.getItem("Age"));
+        //     console.log(localStorage.getItem("Address"));
+
+
+            // document.getElementById("Class").innerText = phpClass;
+        // });
     </script>
 </div>
 </div>

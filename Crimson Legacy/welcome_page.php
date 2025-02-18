@@ -100,12 +100,12 @@
           <h1>NOTIFICATION</h1>
         </div>
         <p class="welcomeMessage">You have a acquired the qualification to be a <b>PLAYER</b>. Will you accept?</p>
-        <a href="player_form.html" style="--clr:#c51a1a"><span>ACCEPT</span><i></i></a>
+        <a href="player_form.php" style="--clr:#c51a1a"><span>ACCEPT</span><i></i></a>
       </div>
         </div>
     </div>
     
-    <script>// Retrieve stored data
+    <!-- <script>// Retrieve stored data
     let name = localStorage.getItem("name");
     let Age = localStorage.getItem("age");
 
@@ -116,8 +116,8 @@
     }
 
     function goBack() {
-        window.location.href = "test.php"; // Go back to form
-    }
+        window.location.href = "player_form.php"; // Go back to form
+    } -->
 </script>
 </body>
 

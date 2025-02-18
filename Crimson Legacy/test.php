@@ -1,24 +1,26 @@
 <?php
-if (isset($_GET['fname'], $_GET['lname'], $_GET['Uname'], $_GET['Gender'], $_GET['Age'], $_GET['Address'])) {
-    $fname = htmlspecialchars($_GET['fname']);
-    $lname = htmlspecialchars($_GET['lname']);
-    $username = htmlspecialchars($_GET['Uname']);
-    $gender = htmlspecialchars($_GET['Gender']);
-    $age = htmlspecialchars($_GET['Age']);
-    $address = htmlspecialchars($_GET['Address']);
+session_start(); // Start session before anything else
 
-    // Determine class based on surname first letter and gender
-    $firstLetter = strtoupper($lname[0]); // Convert to uppercase for consistency
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $fname = htmlspecialchars($_POST["Fname"]);
+    $lname = htmlspecialchars($_POST["Lname"]);
+    $username = htmlspecialchars($_POST["Uname"]); // Fixed: Use "Uname" instead of "Username"
+    $gender = htmlspecialchars($_POST["Gender"]);
+    $age = intval($_POST["Age"]);
+    $address = htmlspecialchars($_POST["Address"]);
 
-    if ($firstLetter >= 'A' && $firstLetter <= 'M') {
-        $class = ($gender == "Male") ? "A" : "D";
-    } 
-    else {
-        $class = ($gender == "Female") ? "B" : "C";
-    }
+    // Store data in session
+    $_SESSION["Name"] = $fname . " " . $lname;
+    $_SESSION["Username"] = $username;
+    $_SESSION["Gender"] = $gender;
+    $_SESSION["Age"] = $age;
+    $_SESSION["Address"] = $address;
 
+    // Redirect to player details page
+    header("Location: test2.php");
+    exit();
 } else {
-    echo "Error: Missing required data!";
+    echo "Invalid request method.";
 }
 ?>
 
@@ -123,7 +125,7 @@ if (isset($_GET['fname'], $_GET['lname'], $_GET['Uname'], $_GET['Gender'], $_GET
             <h1>Player Registration</h1>
         </div>
 
-    <form>
+    <form action="test.php" method="POST" onsubmit="return validateForm();">
         <div>
             <label for="firstName" class="firstName">First Name:</label>
             <input id="Fname" type="text" name="Fname" placeholder="(Ex. Cristian)">
@@ -138,7 +140,7 @@ if (isset($_GET['fname'], $_GET['lname'], $_GET['Uname'], $_GET['Gender'], $_GET
 
         <div>
             <label for="userName" class="userName">Username:</label>
-            <input id="Uname" type="text" name="Username">
+            <input id="Uname" type="text" name="Uname">
             <br><span id="errorUname" class="error-message"></span>
         </div>
 
@@ -273,21 +275,23 @@ document.addEventListener("DOMContentLoaded", function() {
         if (containError){
             return;
         }
+        var confirmation = confirm(`Confirm submission:\n\nName: ${fname} ${lname}\nUsername: ${Uname}\nGender: ${Gender}\nAge: ${Age}\nAddress: ${Address}\n\nProceed to Register?`);
 
-        var PhpClass = "<?php echo $class;?>"
-        // Show confirmation alert
-        if (confirm(`Confirm submission:\n\nName: ${fname} ${lname}\nUsername: ${Uname}\nGender ${Gender}\nAge: ${Age}\nAddress: ${Address}\n\nProceed to Register?`)) {
-            // Store data in localStorage
-            localStorage.setItem("Name", fname + " " + lname);
-            localStorage.setItem("Username" , Uname);
-            localStorage.setItem("Gender", Gender);
-            localStorage.setItem("Age", Age);
-            localStorage.setItem("Address", Address);
+return confirmation;
+
+        // // Show confirmation alert
+        // if (confirm(`Confirm submission:\n\nName: ${fname} ${lname}\nUsername: ${Uname}\nGender ${Gender}\nAge: ${Age}\nAddress: ${Address}\n\nProceed to Register?`)) {
+        //     // Store data in localStorage
+        //     localStorage.setItem("Name", fname + " " + lname);
+        //     localStorage.setItem("Username" , Uname);
+        //     localStorage.setItem("Gender", Gender);
+        //     localStorage.setItem("Age", Age);
+        //     localStorage.setItem("Address", Address);
             
 
-            // Redirect to new page
+        //     // Redirect to new page
             window.location.href = "test2.php";
-        }
+        
     }
       // Assign validation function to the register button
       document.querySelector("a[onclick='validateForm()']").onclick = validateForm;
