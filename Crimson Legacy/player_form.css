@@ -95,10 +95,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 60px;
 
     width: 500px;
     height: 40px;
+    margin-top: 30px;
+    margin-bottom: 50px;
     background-color: #070707;
     border: 1px solid #e1d9d9;
 
@@ -160,13 +161,11 @@ body {
 /* FORM SECTION */
 .genderOption{
     display: flex;
-    margin-bottom: -15px;
 }
 
 form{
     display: flex;
     flex-direction: column;
-    margin-bottom: 30px;
     font-size: 17px;
     letter-spacing: 2px;
     color: #e1d9d9; 
@@ -258,7 +257,7 @@ input, textarea{
 
 /* BUTTON */
 
-a {
+button {
     position: relative;
     background: #181818;
     color: #e1d9d9;
@@ -267,34 +266,35 @@ a {
     letter-spacing: 2px;
     padding: 8px 80px;
     transition: 0.5s;
+    border: 0;
 }
 
-a:hover {
+button:hover {
     letter-spacing: 0.25em;
     background: var(--clr);
     color: var(--clr);
     box-shadow: 0 0 35px var(--clr);
 }
 
-a::before {
+button::before {
     content: '';
     position: absolute;
     inset: 1px;
     background: #070707;
 }
 
-a span {
+button span {
     position: relative;
     z-index: 1;
 }
 
-a i {
+button i {
     position: absolute;
     inset: 0;
     display: block;
 }
 
-a i::before {
+button i::before {
     content: '';
     position: absolute;
     top: -3.5px;
@@ -309,12 +309,12 @@ a i::before {
     transition: 0.5s;
 }
 
-a:hover i::before {
+button:hover i::before {
     width: 20px;
     left: 20%;
 }
 
-a i::after {
+button i::after {
     content: '';
     position: absolute;
     bottom: -3.5px;
@@ -328,7 +328,7 @@ a i::after {
     transition: 0.5s;
 }
 
-a:hover i::after {
+button:hover i::after {
     width: 20px;
     left: 80%;
 }
@@ -352,12 +352,6 @@ a:hover i::after {
     color: #b73131;
     margin-left: 145px;
 } 
-
-.wholeGenderSection{
-    display: flex;
-    flex-direction: column;
-    gap: -10px;
-}
 
 /* RESPONSIVENESS */
 
@@ -457,7 +451,8 @@ a:hover i::after {
     .playerRegistrationBar{
         width: 260px;
         height: 40px;
-        margin-bottom: 30px;
+        margin-top: 30px;
+        margin-bottom: 20px;
     }
 
     .playerRegistrationBar h1{
@@ -468,7 +463,7 @@ a:hover i::after {
 
     form{
         font-size: 10px;
-        margin-bottom: 20px;
+
     }
 
     .firstNameInput,
@@ -507,114 +502,3 @@ a:hover i::after {
         gap: 40px;
     }
 }
-
-
-
-
-/*
-@font-face {
-    font-family: Pixelfy Variable;
-    src: url(PixelfyVariable.ttf);
-}
-
-body {
-    background-color: black;
-    color: white;
-    font-family: PixelfyVariable;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-}
-
-.registrationBox {
-    background: black;
-    padding: 20px;
-    border: 2px solid red;
-    text-align: center;
-    font-size: 15px;
-    color: white;
-    width: 225px;
-    margin-bottom: 20px;
-    box-shadow: 0 0 15px red;
-}
-
-.registrationBox h2 {
-    margin: 0;
-    padding: 8px;
-}
-
-form {
-    background-color: black;
-    border: 2px solid red;
-    padding: 20px;
-    width: 400px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 0 0 15px red;
-}
-
-.registrationInputsContainer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 15px 0;
-    width: 70%;
-}
-
-.registrationInputsContainer label {
-    font-size: 12px;
-    margin-right: 10px;
-    white-space: nowrap;
-}
-
-.registrationInputsContainer input {
-    background: black;
-    border: 1px solid white;
-    padding: 8px;
-    color: white;
-    font-size: 14px;
-    outline: none;
-    box-shadow: 0 0 10px red;
-    flex: 1;
-}
-
-.regRow {
-    display: flex;
-    justify-content: space-between;
-    width: 69%;
-    gap: 3px;
-}
-
-.regRow .registrationInputsContainer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex: 1;
-}
-
-.regRow .registrationInputsContainer input {
-    width: 100%;
-}
-
-button {
-    background-color: black;
-    color: white;
-    border: 1px solid white;
-    padding: 10px 20px;
-    font-size: 14px;
-    cursor: pointer;
-    margin-top: 15px;
-    box-shadow: 0 0 10px red;
-    text-transform: uppercase;
-}
-
-button:hover {
-    background-color: red;
-    color: black;
-    box-shadow: 0 0 20px red;
-}
-
-*/
