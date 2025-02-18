@@ -27,7 +27,6 @@ body {
 }
 
 /* BUBBLE BACKGROUND */
-
 .backgroundContainer {
     position: absolute;
     width: 100%;
@@ -134,7 +133,6 @@ body {
     from {
         --angle: 0deg;
     }
-
     to {
         --angle: 360deg;
     }

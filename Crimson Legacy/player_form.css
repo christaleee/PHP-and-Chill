@@ -160,6 +160,7 @@ body {
 /* FORM SECTION */
 .genderOption{
     display: flex;
+    margin-bottom: -15px;
 }
 
 form{
@@ -176,6 +177,7 @@ form{
         0 0 20px #970000;
     animation: 
         flicker 1.5s infinite alternate;
+    gap: 4px;
 }
 
 input, textarea{

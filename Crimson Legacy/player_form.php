@@ -151,45 +151,46 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <label for="firstName" class="firstName">First Name:</label>
             <input class="firstNameInput" id="Fname" type="text" name="Fname" placeholder="Juan">
         </div>
-        <br><span id="errorFname" class="error-message"></span>
+        <div><br><span id="errorFname" class="error-message"></span></div>
 
         <div>
             <label for="lastName" class="lastName">Last Name:</label>
             <input class="lastNameInput" id="Lname" type="text" name="Lname" placeholder="Dela Cruz">
         </div>
-        <br><span id="errorLname" class="error-message"></span>
+        <div><br><span id="errorLname" class="error-message"></span></div>
 
         <div>
             <label for="userName" class="userName">Username:</label>
             <input class="userNameInput" id="Uname" type="text" name="Uname" >
         </div>
-        <br><span id="errorUname" class="error-message"></span>
+        <div><br><span id="errorUname" class="error-message"></span></div>
 
         <div class="genderOption">
             <div>
                 <label class="genderLabel">Gender:</label>
-                <label for="male">Male</label>
                 <input type="radio" id="Gender" name="Gender" value="Male" required />
+                <label for="male">Male</label>
+                <input type="radio" id="Gender" name="Gender" value="Female" required />
                 <label for="female">Female</label>
-                <input type="radio" id="Gender" name="Gender" value="Female"  required />
             </div>
         </div>
-        <br><span id="errorGender" class="genderErrorMessage"></span>
+        <div><br><span id="errorGender" class="genderErrorMessage"></span></div>
 
         <div>
             <label for="age" class="age">Age:</label>
             <input class="ageInput" type="number" id="Age" name="Age" inputmode="numeric">
         </div>
-        <br><span id="errorAge" class="error-message"></span>
+        <div><br><span id="errorAge" class="error-message"></span></div>
 
         <div class="registrationInputsContainer">
             <label for="Address" class="Address">Address:</label>
-            <textarea class="addressInput" style="resize:none;overflow:hidden"id="Address" name="Address"  required> </textarea>
+            <textarea class="addressInput" style="resize:none;overflow:hidden"id="Address" name="Address"  required></textarea>
         </div>
         <br><span id="errorAddress" class="error-message"></span>
         <button type="submit" id="registrationButton" style="--clr:#c51a1a">
          <span>REGISTER</span><i></i>
         </button>
+        <div><br><span id="errorAddress" class="error-message"></span></div>
 
     </form>
 
