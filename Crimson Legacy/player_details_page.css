@@ -220,9 +220,10 @@ h2 {
 .playerDetails{
     display: flex;
     flex-direction: column;
+    justify-content: left;
     gap: 15px;
-    margin-left: -300px;
     margin-bottom: 50px;
+
 }
 
 .playerAddress{
