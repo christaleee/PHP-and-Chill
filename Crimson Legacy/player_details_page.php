@@ -145,35 +145,6 @@ $assignedClass = $_SESSION["Class"];
             </div>
     </div>
 
-                        
-    <script>
-
-        // document.addEventListener("DOMContentLoaded", function(){
-        //     const Fname =localStorage.getItem("fname");
-        //     const Lname =localStorage.getItem("lname");
-        //     const Uname =localStorage.getItem("Uname");
-        //     const Gender = localStorage.getItem("Gender");
-        //     const Age = localStorage.getItem("Age");
-        //     const Address = localStorage.getItem("Address");
-
-        //     document.getElementById("Fname").innerText = Fname;
-        //     document.getElementById("Lname").innerText = Lname;
-        //     document.getElementById("Uname").innerText = Uname;
-        //     document.getElementById("Gender").innerText = Gender;
-        //     document.getElementById("Age").innerText = Age;
-        //     document.getElementById("Address").innerText = Address;
-            
-        //     console.log(localStorage.getItem("fname"));
-        //     console.log(localStorage.getItem("lname"));
-        //     console.log(localStorage.getItem("Uname"));
-        //     console.log(localStorage.getItem("Gender"));
-        //     console.log(localStorage.getItem("Age"));
-        //     console.log(localStorage.getItem("Address"));
-
-
-            // document.getElementById("Class").innerText = phpClass;
-        // });
-    </script>
 </div>
 </div>
 </body>

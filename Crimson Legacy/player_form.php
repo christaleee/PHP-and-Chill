@@ -146,21 +146,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <form action="player_form.php" method="POST" id="registrationForm" >
         <div>
             <label for="firstName" class="firstName">First Name:</label>
-            <input class="firstNameInput" id="Fname" type="text" name="Fname" placeholder="Ex. Juan" oninput=" this.value = this.value.replace(/[0-9]/g,'')";
-            >
+            <input class="firstNameInput" id="Fname" type="text" name="Fname" maxlength="30" placeholder="Ex. Juan">
+            <h4>Enter up to 30 characters.</h4>
+            <span class="counter"></span>
         </div>
         <div><br><span id="errorFname" class="error-message"></span></div>
 
         <div>
             <label for="lastName" class="lastName">Last Name:</label>
-            <input class="lastNameInput" id="Lname" type="text" name="Lname" placeholder="Ex. Dela Cruz" oninput=" this.value = this.value.replace(/[0-9]/g,'')"
-            >
+            <input class="lastNameInput" id="Lname" type="text" name="Lname" maxlength="30" placeholder="Ex. Dela Cruz" >
+            <h4>Enter up to 30 characters.</h4>
+            <span class="counter"></span>
         </div>
         <div><br><span id="errorLname" class="error-message"></span></div>
 
         <div>
             <label for="userName" class="userName">Username:</label>
-            <input class="userNameInput" id="Uname" type="text" name="Uname" >
+            <input class="userNameInput" id="Uname" type="text" name="Uname"  maxlength="20" >
+            <h4>Enter up to 20 characters.</h4>
         </div>
         <div><br><span id="errorUname" class="error-message"></span></div>
 
@@ -177,15 +180,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <div>
             <label for="age" class="age">Age:</label>
-            <input class="ageInput" type="number" id="Age" name="Age" inputmode="numeric">
+            <input class="ageInput" type="text" id="Age" name="Age" maxlength="2"  oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+            <h4>Only accepts 1-99.</h4>
         </div>
         <div><br><span id="errorAge" class="error-message"></span></div>
 
         <div class="registrationInputsContainer">
             <label for="Address" class="Address">Address:</label>
-            <textarea class="addressInput" style="resize:none;overflow:hidden"id="Address" name="Address" ></textarea>
+            <textarea class="addressInput" style="resize:none;overflow:hidden"id="Address" name="Address" maxlength="70" ></textarea>
         </div>
-        <br><span id="errorAddress" class="error-message"></span>
+            <h4>Enter up to 70 characters.</h4>
+        <br><span id="errorAddress" class="error-message"></span> 
         <button type="submit" id="registrationButton" style="--clr:#c51a1a" onclick="validateForm();">
          <span>REGISTER</span><i></i>
         </button>
@@ -193,6 +198,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 <script>
+    function updateCounter(inputId, counterId) {
+            let inputField = document.getElementById(inputId);
+            let counter = document.getElementById(counterId);
+
+            inputField.addEventListener("input", function () {
+                counter.textContent = `${this.value.length} / ${this.maxLength}`;
+            });
+        }
+
+        updateCounter("name", "nameCounter");
+        updateCounter("bio", "bioCounter");
+    
     function validateForm(event) {
         event.preventDefault(); // Prevent form from submitting 
 
@@ -232,6 +249,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             errorUname.innerText = "Username is required.";
             valid = false;
         }
+        
         if (!Gender) {
             errorGender.innerText = "Please select your gender.";
             valid = false;
