@@ -1,7 +1,7 @@
 <?php
 session_start();
-// if (!isset($_SESSION["user_data"]) || empty($_SESSION["user_data"])) {
-//     header("Location: practiceForms.php");
+// if (!isset($_SESSION['form_data'])) {
+//     header("Location: player_form.php");
 //     exit();
 // }
 

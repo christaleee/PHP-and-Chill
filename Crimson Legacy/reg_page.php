@@ -1,10 +1,10 @@
 <?php
 session_start(); 
 
-if (!isset($_SESSION["form_data"])) {
-    echo "No player data found. Please register first.";
-    exit();
-}
+// if (!isset($_SESSION["form_data"])) {
+//     echo "No player data found. Please register first.";
+//     exit();
+// }
 
 
 

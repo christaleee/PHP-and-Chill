@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         'Class' => $assignedClass
     ];
 
-}
+
     // $_SESSION['form_data'] = [
     //     'Fname' => $_POST['Fname'],
     //     'Lname' => $_POST['Lname'],
@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // ];
  header("Location: reg_page.php");
  exit();
-
+}
 ?>
 
 
@@ -159,7 +159,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <h1>Player Registration</h1>
         </div>
    
-    <form action="practiceForms.php" method="POST" id="registrationForm" >
+    <form action="player_form.php" method="POST" id="registrationForm" >
         <div>
             <label for="Fname" class="firstName">First Name:</label>
             <input class="firstNameInput" id="Fname" type="text" name="Fname" maxlength="30" placeholder="Ex. Juan">
