@@ -1,62 +1,73 @@
 <?php
 session_start();
+class RandomFunctions {
 
 
+    function DeleteUserData($arraykey, $arraymulti) {
+        $sample_variable[] = $_SESSION['array_stuff'];
+        //var_dump($sample_variable);
+        foreach($arraymulti as $key => $arrayValue) {
+            if($arrayValue['id'] == $arraykey) {
+                unset($arraymulti[$key]);
+                echo "<br /><br />";
+                var_dump($arraymulti);
+            }
+        }
+        $_SESSION['array_stuff'] = $sample_variable;
+    }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-    function assignedClass($Lname, $Gender) {
-        $firstLetter = strtoupper(substr($Lname, 0, 1));
-
-        if ($firstLetter >= 'A' && $firstLetter <= 'M' && $Gender == "Male") {
-            return "Class A";
-        } elseif ($firstLetter >= 'N' && $firstLetter <= 'Z' && $Gender == "Female") {
-            return "Class B";
-        } elseif ($firstLetter >= 'N' && $firstLetter <= 'Z' && $Gender == "Male") {
-            return "Class C";
-        } elseif ($firstLetter >= 'A' && $firstLetter <= 'M' && $Gender == "Female") {
-            return "Class D";
-        } else {
-            return "Unassigned";
+    function UpdateUserData($arraykey) {
+        foreach($formArray as $key => $arrayValue) {
+            if($arrayValue['id'] == $arraykey) {
+                $formArray[$key]['Fname'] = "New Value";
+            }
         }
     }
-    // Retrieve user input
-    $Fname = $_POST['Fname'];
-    $Lname = $_POST['Lname'];
-    $Uname = $_POST['Uname'];
-    $Gender = $_POST['Gender'];
-    $Age = $_POST['Age'];
-    $Address = $_POST['Address'];
-
-    // Call the function and store result
-    $assignedClass = assignedClass($Lname, $Gender);
-
-    // Store the data in session
-    $_SESSION['form_data'] = [
-        'Fname' => $Fname,
-        'Lname' => $Lname,
-        'Uname' => $Uname,
-        'Gender' => $Gender,
-        'Age' => $Age,
-        'Address' => $Address,
-        'Class' => $assignedClass
-    ];
 
 }
-    // $_SESSION['form_data'] = [
-    //     'Fname' => $_POST['Fname'],
-    //     'Lname' => $_POST['Lname'],
-    //     'Uname' => $_POST['Uname'],
-    //     'Gender' => $_POST['Gender'],
-    //     'Age'=> $_POST['Age'],
-    //     'Address' => $_POST['Address'],
-    //     'Class' => $_POST['Class']
-    // ];
- header("Location: reg_page.php");
- exit();
+function assignClass($lname, $gender) {
+    $firstLetter = strtoupper(substr($lname, 0, 1));
 
+    if ($firstLetter >= 'A' && $firstLetter <= 'M' && $gender == "Male") {
+        return "Class A";
+    } elseif ($firstLetter >= 'N' && $firstLetter <= 'Z' && $gender == "Female") {
+        return "Class B";
+    } elseif ($firstLetter >= 'N' && $firstLetter <= 'Z' && $gender == "Male") {
+        return "Class C";
+    } elseif ($firstLetter >= 'A' && $firstLetter <= 'M' && $gender == "Female") {
+        return "Class D";
+    } else {
+        return "Unassigned";
+    }
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $fname = trim(htmlspecialchars($_POST["Fname"]));
+    $lname = trim(htmlspecialchars($_POST["Lname"]));
+    $username = trim(htmlspecialchars($_POST["Uname"]));
+    $gender = isset($_POST["Gender"]) ? trim($_POST["Gender"]) : "";
+    $age = isset($_POST["Age"]) ? intval($_POST["Age"]) : 0;
+    $address = trim(htmlspecialchars($_POST["Address"]));
+
+    // Only ensures data validation error handling is in javascript
+    $assignedClass = assignClass($lname, $gender);
+
+    $_SESSION["user_data"] = [
+        "Name" => $fname . " " . $lname,
+        "Username" => $username,
+        "Gender" => $gender,
+        "Age" => $age,
+        "Address" => $address,
+        "Class" => $assignedClass
+    ];
+
+
+    header("Location: reg_page.php");
+    exit();
+} else {
+    echo "Invalid request method.";
+}
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -159,9 +170,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <h1>Player Registration</h1>
         </div>
    
-    <form action="practiceForms.php" method="POST" id="registrationForm" >
+    <form action="player_form.php" method="POST" id="registrationForm" >
         <div>
-            <label for="Fname" class="firstName">First Name:</label>
+            <label for="firstName" class="firstName">First Name:</label>
             <input class="firstNameInput" id="Fname" type="text" name="Fname" maxlength="30" placeholder="Ex. Juan">
             <h4>Enter up to 30 characters.</h4>
             <span class="counter"></span>
@@ -169,7 +180,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div><br><span id="errorFname" class="error-message"></span></div>
 
         <div>
-            <label for="Lname" class="lastName">Last Name:</label>
+            <label for="lastName" class="lastName">Last Name:</label>
             <input class="lastNameInput" id="Lname" type="text" name="Lname" maxlength="30" placeholder="Ex. Dela Cruz" >
             <h4>Enter up to 30 characters.</h4>
             <span class="counter"></span>
@@ -177,26 +188,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div><br><span id="errorLname" class="error-message"></span></div>
 
         <div>
-            <label for="Uname" class="userName">Username:</label>
+            <label for="userName" class="userName">Username:</label>
             <input class="userNameInput" id="Uname" type="text" name="Uname"  maxlength="20" >
             <h4>Enter up to 20 characters.</h4>
         </div>
         <div><br><span id="errorUname" class="error-message"></span></div>
 
         <div class="genderOption">
-    <div>
-        <label class="genderLabel">Gender:</label>
-        <input type="radio" id="Male" name="Gender" value="Male" required />
-        <label for="Male">Male</label>
-        <input type="radio" id="Female" name="Gender" value="Female" required />
-        <label for="Female">Female</label>
-    </div>
-</div>
-
+            <div>
+                <label class="genderLabel">Gender:</label>
+                <input type="radio" id="Male" name="Gender" value="Male" required />
+                <label for="male">Male</label>
+                <input type="radio" id="Female" name="Gender" value="Female" required />
+                <label for="female">Female</label>
+            </div>
+        </div>
         <div><br><span id="errorGender" class="genderErrorMessage"></span></div>
 
         <div>
-            <label for="Age" class="age">Age:</label>
+            <label for="age" class="age">Age:</label>
             <input class="ageInput" type="text" id="Age" name="Age" maxlength="2"  oninput="this.value = this.value.replace(/[^0-9]/g, '');">
             <h4>Only accepts 1-99.</h4>
         </div>
@@ -215,17 +225,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 <script>
-    // function updateCounter(inputId, counterId) {
-    //         let inputField = document.getElementById(inputId);
-    //         let counter = document.getElementById(counterId);
+    function updateCounter(inputId, counterId) {
+            let inputField = document.getElementById(inputId);
+            let counter = document.getElementById(counterId);
 
-    //         inputField.addEventListener("input", function () {
-    //             counter.textContent = `${this.value.length} / ${this.maxLength}`;
-    //         });
-    //     }
+            inputField.addEventListener("input", function () {
+                counter.textContent = `${this.value.length} / ${this.maxLength}`;
+            });
+        }
 
-    //     updateCounter("name", "nameCounter");
-    //     updateCounter("bio", "bioCounter");
+        updateCounter("name", "nameCounter");
+        updateCounter("bio", "bioCounter");
     
     function validateForm(event) {
         event.preventDefault(); // Prevent form from submitting 

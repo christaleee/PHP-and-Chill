@@ -1,18 +1,12 @@
 <?php
 session_start(); 
 
-if (!isset($_SESSION["Name"])) {
+if (!isset($_SESSION["form_data"])) {
     echo "No player data found. Please register first.";
     exit();
 }
 
-// stored session values
-$name = $_SESSION["Name"];
-$username = $_SESSION["Username"];
-$gender = $_SESSION["Gender"];
-$age = $_SESSION["Age"];
-$address = $_SESSION["Address"];
-$assignedClass = $_SESSION["Class"]; 
+
 
 ?>
 
@@ -118,9 +112,8 @@ $assignedClass = $_SESSION["Class"];
           <h1>REGISTRATION SUCCESSFUL</h1>
         </div>
         <p class="welcomeMessage">
-    WELCOME, <?php echo isset($_SESSION["Username"]) ? htmlspecialchars($_SESSION["Username"]) : "Guest"; ?>
+    WELCOME, <?php echo isset($_SESSION['form_data']['Uname']) ? htmlspecialchars($_SESSION['form_data']['Uname']) : "Guest"; ?>
 </p>
-
       </div>
         </div>
     </div>

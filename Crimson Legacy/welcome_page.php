@@ -1,12 +1,11 @@
 <?php
 session_start();
-if (!isset($_SESSION["Name"])) {
-    header("Location: player_form.php");
-    exit();
-}
+// if (!isset($_SESSION["user_data"]) || empty($_SESSION["user_data"])) {
+//     header("Location: practiceForms.php");
+//     exit();
+// }
+
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -108,13 +107,11 @@ if (!isset($_SESSION["Name"])) {
         <div class="registrationSuccessfulBox">
           <h1>NOTIFICATION</h1>
         </div>
-        <p class="welcomeMessage">You have a acquired the qualification to be a <b>PLAYER</b>. Will you accept?</p>
+        <p class="welcomeMessage">You have acquired the qualification to be a <b>PLAYER</b>. Will you accept?</p>
         <a href="player_form.php" style="--clr:#c51a1a"><span>ACCEPT</span><i></i></a>
       </div>
         </div>
     </div>
-    
-    
   
 </body>
 
