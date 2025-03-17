@@ -1,11 +1,11 @@
 <?php
 session_start(); 
-
+$latestUser = end($_SESSION['form_data']); // Get the last registered user
+$newUser = $_SESSION['form_data'];
 if (!isset($_SESSION["form_data"])) {
     echo "No player data found. Please register first.";
     exit();
 }
-$formData = $_SESSION['form_data'];
 ?>
 
 <!DOCTYPE html>
