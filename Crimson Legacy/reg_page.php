@@ -132,7 +132,7 @@ if (!isset($_SESSION["form_data"])) {
         </div>
     </div>
     <script>
-          var seconds = 4;
+          var seconds = 3;
         function countdown() {
             document.getElementById("countdown").innerText = seconds;
             if (seconds > 0) {
