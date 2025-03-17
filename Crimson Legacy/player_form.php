@@ -4,6 +4,49 @@ include 'Array_File.php';
 // $functions = new RandomFunctions();
 // $functions->DeleteUserData("id"); 
 
+$Fname = isset($_SESSION['form_data']['Fname']) ? $_SESSION['form_data']['Fname'] : '';
+$Lname = isset($_SESSION['form_data']['Lname']) ? $_SESSION['form_data']['Lname'] : '';
+$Uname = isset($_SESSION['form_data']['Uname']) ? $_SESSION['form_data']['Uname'] : '';
+$Age = isset($_SESSION['form_data']['Age']) ? $_SESSION['form_data']['Age'] : '';
+$Address = isset($_SESSION['form_data']['Address']) ? $_SESSION['form_data']['Address'] : '';
+$Gender = isset($_SESSION['form_data']['Gender']) ? $_SESSION['form_data']['Gender'] : '';
+
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//     $_SESSION['form_data'] = [
+//         'Fname' => $_POST['Fname']
+//     ];
+// }
+
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//     $_SESSION['form_data'] = [
+//         'Lname' => $_POST['Lname']
+//     ];
+// }
+
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//     $_SESSION['form_data'] = [
+//         'Uname' => $_POST['Uname']
+//     ];
+// }
+
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//     $_SESSION['form_data'] = [
+//         'Age' => $_POST['Age']
+//     ];
+// }
+
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//     $_SESSION['form_data'] = [
+//         'Address' => $_POST['Address']
+//     ];
+// }
+
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//     $_SESSION['form_data'] = [
+//         'Gender' => $_POST['Gender']
+//     ];
+// }
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     function assignedClass($Lname, $Gender) {
@@ -21,13 +64,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             return "Unassigned";
         }
     }
+
+    // if (!isset($_SESSION['form_data'])) {
+    //     $_SESSION['form_data'] = [
+    //         'Fname' => '',
+    //         'Lname' => '',
+    //         'Uname' => '',
+    //         'Gender' => '',
+    //         'Age' => '',
+    //         'Address' => ''
+    //     ];
+    // }
+    
+    //$Fname = $_SESSION['form_data']['Fname'];
+    // $Lname = $_SESSION['form_data']['Lname'];
+    // $Uname = $_SESSION['form_data']['Uname'];
+    // $Gender = $_SESSION['form_data']['Gender'];
+    // $Age = $_SESSION['form_data']['Age'];
+    // $Address = $_SESSION['form_data']['Address'];
+
     // Retrieve user input
-    $Fname = $_POST['Fname'];
-    $Lname = $_POST['Lname'];
-    $Uname = $_POST['Uname'];
-    $Gender = $_POST['Gender'];
-    $Age = $_POST['Age'];
-    $Address = $_POST['Address'];
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $Fname = $_POST['Fname'];
+        $Lname = $_POST['Lname'];
+        $Uname = $_POST['Uname'];
+        $Gender = $_POST['Gender'];
+        $Age = $_POST['Age'];
+        $Address = $_POST['Address'];
+    }
 
     // Call the function and store result
     $assignedClass = assignedClass($Lname, $Gender);
@@ -43,18 +107,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         'Address' => $Address,
         'Class' => $assignedClass
     ];
+
     if(!isset($_SESSION['array_stuff'])){
         $_SESSION['array_stuff'][] = [];
     }
     $_SESSION['array_stuff'][] = $_SESSION['form_data'];
+
  header("Location: reg_page.php");
  exit();
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $Address = $_POST['Address'];
+    $_SESSION['Address'] = $Address;
+}
+else {
+    $Address = isset($_SESSION['Address']) ? $_SESSION['Address'] : '';
 }
 ?>
 
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -158,7 +233,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div>
             <div class="counter">
                 <label for="Fname" class="firstName">First Name:</label>
-                <input class="firstNameInput" id="Fname" type="text" name="Fname" maxlength="30" placeholder="Ex. Juan">
+                <input class="firstNameInput" id="Fname" type="text" name="Fname" maxlength="30" placeholder="Ex. Juan" value="<?php echo htmlspecialchars($Fname); ?>">
                 <span class="remainingFN" id="remainingFN">30</span>
             </div>
             <span class="counter"></span>
@@ -168,7 +243,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div>
             <div class="counter">
                 <label for="Lname" class="lastName">Last Name:</label>
-                <input class="lastNameInput" id="Lname" type="text" name="Lname" maxlength="30" placeholder="Ex. Dela Cruz" >
+                <input class="lastNameInput" id="Lname" type="text" name="Lname" maxlength="30" placeholder="Ex. Dela Cruz" value="<?php echo htmlspecialchars($Lname); ?>">
                 <span class="remainingLN" id="remainingLN">30</span>
             </div>
             <span class="counter"></span>
@@ -178,7 +253,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div>
             <div class="counter">
                 <label for="Uname" class="userName">Username:</label>
-                <input class="userNameInput" id="Uname" type="text" name="Uname" maxlength="20" placeholder="Ex. Juan_DelaCruz1" oninput="this.value = this.value.replace(/[^A-Za-z0-9_]/g, '')">
+                <input class="userNameInput" id="Uname" type="text" name="Uname" maxlength="20" placeholder="Ex. Juan_DelaCruz1" oninput="this.value = this.value.replace(/[^A-Za-z0-9_]/g, '')" value="<?php echo htmlspecialchars($Uname); ?>">
                 <span class="remainingUN" id="remainingUN">20</span>
             </div>
         </div>
@@ -187,9 +262,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="genderOption">
     <div>
         <label class="genderLabel">Gender:</label>
-        <input type="radio" id="Male" name="Gender" value="Male" required />
+        <input type="radio" id="Male" name="Gender" value="Male" <?php echo ($Gender == 'Male') ? 'checked' : ''; ?> required />
         <label for="Male">Male</label>
-        <input type="radio" id="Female" name="Gender" value="Female" required />
+        <input type="radio" id="Female" name="Gender" value="Female" <?php echo ($Gender == 'Female') ? 'checked' : ''; ?> required />
         <label for="Female">Female</label>
     </div>
 </div>
@@ -197,13 +272,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <div>
             <label for="Age" class="age">Age:</label>
-            <input class="ageInput" type="text" id="Age" name="Age" maxlength="2"  placeholder="Only accepts 1-99" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/^0(?!$)/, '')">
+            <input class="ageInput" type="text" id="Age" name="Age" maxlength="2"  placeholder="Only accepts 1-99" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/^0(?!$)/, '')" value="<?php echo htmlspecialchars($Age); ?>">
         </div>
         <br><span id="errorAge" class="error-message"></span>
 
         <div class="registrationInputsContainer">
             <label for="Address" class="Address">Address:</label>
-            <textarea class="addressInput" style="resize:none;overflow:hidden"id="Address" name="Address" maxlength="80" ></textarea>
+            <textarea class="addressInput" style="resize:none;overflow:hidden"id="Address" name="Address" maxlength="80"><?php echo htmlspecialchars($Address); ?></textarea>
             <span class="remainingAdd" id="remainingAdd">80</span>
         </div>
 
@@ -334,7 +409,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         remainingAddress.innerText = inputAddress.getAttribute("maxlength") - inputAddress.value.length
     }
 </script>
-
-
 </body>
 </html>

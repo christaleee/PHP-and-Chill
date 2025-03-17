@@ -1,6 +1,5 @@
 <?php
 session_start(); 
-
 include 'Array_File.php';
 
 $functions = new RandomFunctions();
@@ -41,7 +40,12 @@ if (isset($_POST['update'])) {
         'Age' => $_POST['Age'],
         'Address' => $_POST['Address']
     ];
-    $randomFunctions->UpdateUserData($_POST['user_id'], $newData);
+    //$randomFunctions->UpdateUserData($_POST['user_id'], $newData);
+
+    $_SESSION['form_data'] = $newData;
+
+    header("Location: player_details_page.php");
+    exit();
 }
 
 
@@ -49,6 +53,7 @@ if(!isset($_SESSION['form_data'])){
     echo "No data available!";
     exit();
 }
+
 $formData = $_SESSION['form_data'] ?? [];
 ?>
 
