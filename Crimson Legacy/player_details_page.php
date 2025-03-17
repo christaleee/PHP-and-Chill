@@ -181,7 +181,16 @@ $formData = $_SESSION['form_data'] ?? [];
                 <p><strong>ASSIGNED CLASS:</strong> <?php echo htmlspecialchars($formData['Class']) ?  htmlspecialchars($formData['Class']) : 'Not Assigned'; ?></p>
             </div>
 
-     
+            <div class="updateDeleteButtons">
+                <button type="submit" id="updateButton" style="--clr:#c51a1a"">
+                    <span>UPDATE</span><i></i>
+                </button>
+
+                <button type="submit" id="deleteButton" style="--clr:#c51a1a">
+                    <span>DELETE</span><i></i>
+                </button>
+            </div>
+
         </div>
     </div>
 </body>

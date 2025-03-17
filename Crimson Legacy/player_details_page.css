@@ -265,6 +265,91 @@ h2 {
     }
 }
 
+/* BUTTON */
+
+button {
+    position: relative;
+    background: #181818;
+    color: #e1d9d9;
+    text-decoration: none;
+    font-size: 1em;
+    letter-spacing: 2px;
+    padding: 8px 80px;
+    transition: 0.5s;
+    border: 0;
+    margin-bottom: 20px;
+}
+
+button:hover {
+    letter-spacing: 0.25em;
+    background: var(--clr);
+    color: var(--clr);
+    box-shadow: 0 0 35px var(--clr);
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    inset: 1px;
+    background: #070707;
+}
+
+button span {
+    position: relative;
+    z-index: 1;
+}
+
+button i {
+    position: absolute;
+    inset: 0;
+    display: block;
+}
+
+button i::before {
+    content: '';
+    position: absolute;
+    top: -3.5px;
+    left: 80%;
+    width: 5px;
+    height: 5px;
+    border-radius: 20px;
+    ;
+    border: 2px solid var(--clr);
+    background: #070707;
+    transform: translateX(-50%);
+    transition: 0.5s;
+}
+
+button:hover i::before {
+    width: 20px;
+    left: 20%;
+}
+
+button i::after {
+    content: '';
+    position: absolute;
+    bottom: -3.5px;
+    left: 20%;
+    width: 5px;
+    height: 5px;
+    border-radius: 20px;
+    ;
+    border: 2px solid var(--clr);
+    background: #070707;
+    transition: 0.5s;
+}
+
+button:hover i::after {
+    width: 20px;
+    left: 80%;
+}
+
+.updateDeleteButtons{
+    margin-top: 30px;
+    display: flex;
+    gap: 30px;
+}
+
 /* RESPONSIVENESS */
 
 @media (max-width: 800px) {
