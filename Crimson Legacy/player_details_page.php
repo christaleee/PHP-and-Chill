@@ -182,9 +182,11 @@ $formData = $_SESSION['form_data'] ?? [];
             </div>
 
             <div class="updateDeleteButtons">
-                <button type="submit" id="updateButton" style="--clr:#c51a1a"">
-                    <span>UPDATE</span><i></i>
-                </button>
+                <form action="player_form.php" method="GET">
+                    <button type="submit" id="updateButton" style="--clr:#c51a1a"">
+                        <span>UPDATE</span><i></i>
+                    </button>
+                </form>
 
                 <button type="submit" id="deleteButton" style="--clr:#c51a1a">
                     <span>DELETE</span><i></i>

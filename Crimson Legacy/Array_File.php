@@ -15,9 +15,12 @@ class RandomFunctions {
 
 
 function UpdateUserData($arraykey) {
+
+    $formArray = $_SESSION['form_data'];
+
     foreach($formArray as $key => $arrayValue) {
         if($arrayValue['id'] == $arraykey) {
-            $formArray[$key]['FirstName'] = "New Value";
+            $_SESSION['form_data'][$key]['FirstName'] = "New Value";
         }
     }
 }
