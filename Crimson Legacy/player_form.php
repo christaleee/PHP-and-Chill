@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     $_SESSION['form_data'][] = $newUser;
 
-    header("Location: player_details_page.php");
+    header("Location: reg_page.php");
     exit();
 }
 ?>
