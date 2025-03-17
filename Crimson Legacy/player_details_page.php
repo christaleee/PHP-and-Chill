@@ -115,7 +115,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_id']) && isset(
 
                         <a href="player_details_page.php?delete_id=<?= urlencode($user['id']) ?>" onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
                            <!-- NEW: Update Button -->
-                        <a href="registration_form.php?update_id=<?= urlencode($user['id']) ?>">Update</a> 
+                        <a href="player_form.php?update_id=<?= urlencode($user['id']) ?>">Update</a> 
                         
                     <?php endforeach; ?>
             </div>

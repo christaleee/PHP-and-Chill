@@ -15,6 +15,7 @@ function assignedClass($Lname, $Gender) {
         return "Unassigned";
     }
 }
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // function assignedClass($Lname, $Gender) {
@@ -49,10 +50,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!isset($_SESSION['form_data'])) {
         $_SESSION['form_data'] = [];
     }
-    $_SESSION['form_data'][] = $newUser;
+
+   if ($id) {
+        foreach ($_SESSION['form_data'] as &$user) {
+            if ($user['id'] === $id) {
+                $user = $newUser;
+                $found = true;
+                break;
+            }
+        }
+        unset($user);
+        if(!$found){
+            $_SESSION['form_data'][] = $newUser;
+        }
+    } else {
+        $_SESSION['form_data'][] = $newUser;
+    }
 
     header("Location: reg_page.php");
     exit();
+}
+
+$editUser = null;
+if (isset($_GET['update_id'])) {
+    $updateId = $_GET['update_id'];
+    foreach ($_SESSION['form_data'] as $user) {
+        if ($user['id'] === $updateId) {
+            $editUser = $user;
+            break;
+        }
+    }
 }
 ?>
 
@@ -163,7 +190,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div>
             <div class="counter">
                 <label for="Fname" class="firstName">First Name:</label>
-                <input class="firstNameInput" id="Fname" type="text" name="Fname" maxlength="30" placeholder="Ex. Juan">
+                <input class="firstNameInput" id="Fname" type="text" name="Fname" maxlength="30" placeholder="Ex. Juan" value="<?=$editUser['Fname'] ?? '' ?>">
                 <span class="remainingFN" id="remainingFN">30</span>
             </div>
             <span class="counter"></span>
@@ -173,7 +200,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div>
             <div class="counter">
                 <label for="Lname" class="lastName">Last Name:</label>
-                <input class="lastNameInput" id="Lname" type="text" name="Lname" maxlength="30" placeholder="Ex. Dela Cruz" >
+                <input class="lastNameInput" id="Lname" type="text" name="Lname" maxlength="30" placeholder="Ex. Dela Cruz"value="<?=$editUser['Lname'] ?? '' ?>" >
                 <span class="remainingLN" id="remainingLN">30</span>
             </div>
             <span class="counter"></span>
@@ -183,7 +210,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div>
             <div class="counter">
                 <label for="Uname" class="userName">Username:</label>
-                <input class="userNameInput" id="Uname" type="text" name="Uname" maxlength="20" placeholder="Ex. Juan_DelaCruz1" oninput="this.value = this.value.replace(/[^A-Za-z0-9_]/g, '')">
+                <input class="userNameInput" id="Uname" type="text" name="Uname" maxlength="20" placeholder="Ex. Juan_DelaCruz1" oninput="this.value = this.value.replace(/[^A-Za-z0-9_]/g, '')" value="<?=$editUser['Uname'] ?? '' ?>">
                 <span class="remainingUN" id="remainingUN">20</span>
             </div>
         </div>
@@ -192,9 +219,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="genderOption">
     <div>
         <label class="genderLabel">Gender:</label>
-        <input type="radio" id="Male" name="Gender" value="Male" required />
+        <input type="radio" id="Male" name="Gender" value="Male" value="<?=$editUser['Gender'] ?? '' ?>" required />
         <label for="Male">Male</label>
-        <input type="radio" id="Female" name="Gender" value="Female" required />
+        <input type="radio" id="Female" name="Gender" value="Female" value="<?=$editUser['Gender'] ?? '' ?>" required />
         <label for="Female">Female</label>
     </div>
 </div>
@@ -202,19 +229,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <div>
             <label for="Age" class="age">Age:</label>
-            <input class="ageInput" type="text" id="Age" name="Age" maxlength="2"  placeholder="Only accepts 1-99" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/^0(?!$)/, '')" ?>
+            <input class="ageInput" type="text" id="Age" name="Age" maxlength="2"  placeholder="Only accepts 1-99" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/^0(?!$)/, '')" value="<?= $editUser['Age'] ?? '' ?>" ?>
         </div>
         <br><span id="errorAge" class="error-message"></span>
 
         <div class="registrationInputsContainer">
             <label for="Address" class="Address">Address:</label>
-            <textarea class="addressInput" style="resize:none;overflow:hidden"id="Address" name="Address" maxlength="80"></textarea>
+            <textarea class="addressInput" style="resize:none;overflow:hidden"id="Address" name="Address" maxlength="80" value="<?= $editUser['Age'] ?? '' ?>" ></textarea>
             <span class="remainingAdd" id="remainingAdd">80</span>
         </div>
 
         <br><span id="errorAddress" class="error-message"></span> 
         <button type="submit" id="registrationButton" style="--clr:#c51a1a" onclick="validateForm(event);">
-         <span>REGISTER</span><i></i>
+         <span><?= isset($editUser) ? 'UPDATE' : 'REGISTER' ?></span><i></i>
         </button>
     </form>
 
