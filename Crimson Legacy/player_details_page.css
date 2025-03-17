@@ -112,7 +112,7 @@ body {
 .playerDetailsContainer::after, .playerDetailsContainer::before {
     --angle: 0deg;
     content: '';
-    position: flex;
+    position: absolute;
     height: 450px;
     width: 550px;
     background-image: conic-gradient(from var(--angle), #970000, #531212, #d51818, #970000, #531212, #d51818, #970000);
