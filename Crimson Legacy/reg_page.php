@@ -6,6 +6,7 @@ if (!isset($_SESSION["form_data"])) {
     echo "No player data found. Please register first.";
     exit();
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -123,9 +124,9 @@ if (!isset($_SESSION["form_data"])) {
           <h1>REGISTRATION SUCCESSFUL</h1>
         </div>
         <p class="welcomeMessage">
-    WELCOME, <?php echo isset($formData['Uname']) ? htmlspecialchars($formData['Uname']) : "Guest"; ?>
+        WELCOME, <?php echo isset($latestUser['Uname']) ? htmlspecialchars($latestUser['Uname']) : "Guest"; ?>
 </p>
-    <p class="countdownMessage">Redirecting in <span id="countdown">5</span></p> 
+<p class="countdownMessage">Redirecting in <span id="countdown">5</span></p> 
 
       </div>
         </div>
