@@ -51,21 +51,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['form_data'] = [];
     }
 
-   if ($id) {
-        foreach ($_SESSION['form_data'] as &$user) {
+    $found = false;
+    if ($id) {
+        foreach ($_SESSION['form_data'] as $key => $user) {
             if ($user['id'] === $id) {
-                $user = $newUser;
+                $_SESSION['form_data'][$key] = $newUser; // Update user in session
                 $found = true;
                 break;
             }
         }
-        unset($user);
+    }
+        // unset($user);
         if(!$found){
             $_SESSION['form_data'][] = $newUser;
         }
-    } else {
-        $_SESSION['form_data'][] = $newUser;
-    }
 
     header("Location: reg_page.php");
     exit();
@@ -188,6 +187,7 @@ if (isset($_GET['update_id'])) {
    
     <form action="player_form.php" method="POST" id="registrationForm" >
         <div>
+            <input type="hidden" name="id" value="<?= $editUser['id'] ?? '' ?>">
             <div class="counter">
                 <label for="Fname" class="firstName">First Name:</label>
                 <input class="firstNameInput" id="Fname" type="text" name="Fname" maxlength="30" placeholder="Ex. Juan" value="<?=$editUser['Fname'] ?? '' ?>">
@@ -219,9 +219,9 @@ if (isset($_GET['update_id'])) {
         <div class="genderOption">
     <div>
         <label class="genderLabel">Gender:</label>
-        <input type="radio" id="Male" name="Gender" value="Male" value="<?=$editUser['Gender'] ?? '' ?>" required />
+        <input type="radio" id="Male" name="Gender" value="Male" <?= isset($editUser['Gender']) && $editUser['Gender'] == "Male" ? 'checked' : '' ?> required />
         <label for="Male">Male</label>
-        <input type="radio" id="Female" name="Gender" value="Female" value="<?=$editUser['Gender'] ?? '' ?>" required />
+        <input type="radio" id="Female" name="Gender" value="Female" <?= isset($editUser['Gender']) && $editUser['Gender'] == "Female" ? 'checked' : '' ?> required />
         <label for="Female">Female</label>
     </div>
 </div>

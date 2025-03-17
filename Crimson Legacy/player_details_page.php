@@ -1,6 +1,6 @@
 <?php
 session_start(); 
-
+$_SESSION['form_data'] = array_values($_SESSION['form_data']);
 if (!isset($_SESSION['form_data']) || empty($_SESSION['form_data'])) {
     echo "No users registered.";
     exit();
@@ -32,10 +32,13 @@ function UpdateUserData($arraykey, $newFirstName) {
     if (isset($_SESSION['form_data'])) {
         foreach ($_SESSION['form_data'] as $key => $user) {
             if ($user['id'] == $arraykey) {
-                $_SESSION['form_data'][$key]['Fname'] = $newFirstName;
+                if($user['id'] == $arraykey){
+                    $user['Fname'] = $newFirstName;
+                }
                 break;
             }
         }
+        unset($user);
     }
     header("Location: player_details_page.php");
     exit();
