@@ -128,7 +128,7 @@ $formData = $_SESSION['form_data'];
                 </div>
 
                 <div class="playerAddress">
-                    <p><strong>Address:</strong> <?php echo htmlspecialchars($formData['Address']); ?></p>
+                    <p class="addressFormat"><strong>Address:</strong> <?php echo htmlspecialchars($formData['Address']); ?></p>
                 </div>
             </div>
 

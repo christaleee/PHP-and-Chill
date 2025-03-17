@@ -183,7 +183,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div>
             <div class="counter">
                 <label for="Uname" class="userName">Username:</label>
-                <input class="userNameInput" id="Uname" type="text" name="Uname"  maxlength="20" >
+                <input class="userNameInput" id="Uname" type="text" name="Uname" maxlength="20" placeholder="Ex. Juan_DelaCruz1" oninput="this.value = this.value.replace(/[^A-Za-z0-9_]/g, '')">
                 <span class="remainingUN" id="remainingUN">20</span>
             </div>
         </div>
@@ -203,7 +203,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <div>
             <label for="Age" class="age">Age:</label>
-            <input class="ageInput" type="text" id="Age" name="Age" maxlength="2"  oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+            <input class="ageInput" type="text" id="Age" name="Age" maxlength="2"  placeholder="Only accepts 1-99" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/^0(?!$)/, '')">
         </div>
         <div><br><span id="errorAge" class="error-message"></span></div>
 
