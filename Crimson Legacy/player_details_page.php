@@ -181,15 +181,7 @@ $formData = $_SESSION['form_data'] ?? [];
                 <p><strong>ASSIGNED CLASS:</strong> <?php echo htmlspecialchars($formData['Class']) ?  htmlspecialchars($formData['Class']) : 'Not Assigned'; ?></p>
             </div>
 
-            <?php if (isset($_SESSION['array_stuff'])) {
-    foreach ($_SESSION['array_stuff'] as $user) {
-        echo "<div class='user-card'>";
-        echo "<a href='player_details_page.php?delete_id=" . $user['id'] . "' onclick='return confirm(\"Are you sure?\")'>Delete</a>";
-        echo "</div>";
-         }
-        } else {
-        echo "<p>No users found.</p>";
-        }?>
+     
         </div>
     </div>
 </body>
