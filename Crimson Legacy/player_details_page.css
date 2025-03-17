@@ -230,6 +230,13 @@ h2 {
     margin-bottom: 30px;
 }
 
+.addressFormat{
+    width: 400px;
+    height: 50px;
+    word-break: break-word;
+    line-height: 25px;
+}
+
 /* For animation */
 
 @keyframes flicker {

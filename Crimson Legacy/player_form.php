@@ -156,25 +156,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    
     <form action="player_form.php" method="POST" id="registrationForm" >
         <div>
-            <label for="Fname" class="firstName">First Name:</label>
-            <input class="firstNameInput" id="Fname" type="text" name="Fname" maxlength="30" placeholder="Ex. Juan">
-            <h4>Enter up to 30 characters.</h4>
+            <div class="counter">
+                <label for="Fname" class="firstName">First Name:</label>
+                <input class="firstNameInput" id="Fname" type="text" name="Fname" maxlength="30" placeholder="Ex. Juan">
+                <span class="remainingFN" id="remainingFN">30</span>
+            </div>
             <span class="counter"></span>
         </div>
         <div><br><span id="errorFname" class="error-message"></span></div>
 
         <div>
-            <label for="Lname" class="lastName">Last Name:</label>
-            <input class="lastNameInput" id="Lname" type="text" name="Lname" maxlength="30" placeholder="Ex. Dela Cruz" >
-            <h4>Enter up to 30 characters.</h4>
+            <div class="counter">
+                <label for="Lname" class="lastName">Last Name:</label>
+                <input class="lastNameInput" id="Lname" type="text" name="Lname" maxlength="30" placeholder="Ex. Dela Cruz" >
+                <span class="remainingLN" id="remainingLN">30</span>
+            </div>
             <span class="counter"></span>
         </div>
         <div><br><span id="errorLname" class="error-message"></span></div>
 
         <div>
-            <label for="Uname" class="userName">Username:</label>
-            <input class="userNameInput" id="Uname" type="text" name="Uname"  maxlength="20" >
-            <h4>Enter up to 20 characters.</h4>
+            <div class="counter">
+                <label for="Uname" class="userName">Username:</label>
+                <input class="userNameInput" id="Uname" type="text" name="Uname" maxlength="20" placeholder="Ex. Juan_DelaCruz1" oninput="this.value = this.value.replace(/[^A-Za-z0-9_]/g, '')">
+                <span class="remainingUN" id="remainingUN">20</span>
+            </div>
         </div>
         <div><br><span id="errorUname" class="error-message"></span></div>
 
@@ -192,16 +198,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <div>
             <label for="Age" class="age">Age:</label>
-            <input class="ageInput" type="text" id="Age" name="Age" maxlength="2"  oninput="this.value = this.value.replace(/[^0-9]/g, '');">
-            <h4>Only accepts 1-99.</h4>
+            <input class="ageInput" type="text" id="Age" name="Age" maxlength="2"  placeholder="Only accepts 1-99" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/^0(?!$)/, '')">
         </div>
         <div><br><span id="errorAge" class="error-message"></span></div>
 
         <div class="registrationInputsContainer">
             <label for="Address" class="Address">Address:</label>
             <textarea class="addressInput" style="resize:none;overflow:hidden"id="Address" name="Address" maxlength="70" ></textarea>
+            <span class="remainingAdd" id="remainingAdd">70</span>
         </div>
-            <h4>Enter up to 70 characters.</h4>
+
         <br><span id="errorAddress" class="error-message"></span> 
         <button type="submit" id="registrationButton" style="--clr:#c51a1a" onclick="validateForm(event);">
          <span>REGISTER</span><i></i>
@@ -255,7 +261,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             valid = false;
         }
         if (Age === "" || isNaN(Age) || Age <= 0 || Age > 125) {
-            errorAge.innerText = "Age must be between 1 and 125.";
+            errorAge.innerText = "Age must be between 1 and 99.";
             valid = false;
         }
         if (Address === "") {
@@ -273,6 +279,61 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         var form = document.getElementById("registrationForm");
         form.addEventListener("submit", validateForm);
     });
+
+
+    //COUNTER
+    const inputFirstName = document.getElementById("Fname") 
+    const remainingFirstName = document.getElementById("remainingFN")
+    const inputLastName = document.getElementById("Lname") 
+    const remainingLastName = document.getElementById("remainingLN")
+    const inputUserName = document.getElementById("Uname") 
+    const remainingUserName = document.getElementById("remainingUN")
+    const inputAddress = document.getElementById("Address") 
+    const remainingAddress = document.getElementById("remainingAdd")
+
+    const FN = () => {
+        updateCounterFN()
+    }
+
+    inputFirstName.addEventListener("keyup", FN)
+    updateCounterFN()
+
+    function updateCounterFN(){
+        remainingFirstName.innerText = inputFirstName.getAttribute("maxlength") - inputFirstName.value.length
+    }
+
+    const LN = () => {
+        updateCounterLN()
+    }
+
+    inputLastName.addEventListener("keyup", LN)
+    updateCounterLN()
+
+    function updateCounterLN(){
+        remainingLastName.innerText = inputLastName.getAttribute("maxlength") - inputLastName.value.length
+    }
+
+    const UN = () => {
+        updateCounterUN()
+    }
+
+    inputUserName.addEventListener("keyup", UN)
+    updateCounterUN()
+
+    function updateCounterUN(){
+        remainingUserName.innerText = inputUserName.getAttribute("maxlength") - inputUserName.value.length
+    }
+
+    const A = () => {
+        updateCounterA()
+    }
+
+    inputAddress.addEventListener("keyup", A)
+    updateCounterA()
+
+    function updateCounterA(){
+        remainingAddress.innerText = inputAddress.getAttribute("maxlength") - inputAddress.value.length
+    }
 </script>
 
 

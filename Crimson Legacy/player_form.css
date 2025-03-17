@@ -362,10 +362,28 @@ button:hover i::after {
 
 /* INSTRUCTIONS */
 h4{
-    font-size:8px;
+    font-size:6px;
     color: #b0a1a1;
     margin-left: 180px;
 }
+
+/* COUNTER */
+.counter{
+    display: flex;
+    gap: 15px;
+}
+
+.remainingFN, .remainingLN, .remainingUN{
+    font-size: 10px;
+    margin-top: 7px;
+}
+
+.remainingAdd{
+    font-size: 10px;
+    margin-top: 7px;
+    margin-left: -50px;
+}
+
 /* RESPONSIVENESS */
 
 @media (max-width: 800px) {
