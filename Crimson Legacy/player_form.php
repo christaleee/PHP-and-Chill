@@ -193,19 +193,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <label for="Female">Female</label>
     </div>
 </div>
-
-        <div><br><span id="errorGender" class="genderErrorMessage"></span></div>
+        <br><span id="errorGender" class="error-message"></span>
 
         <div>
             <label for="Age" class="age">Age:</label>
             <input class="ageInput" type="text" id="Age" name="Age" maxlength="2"  placeholder="Only accepts 1-99" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/^0(?!$)/, '')">
         </div>
-        <div><br><span id="errorAge" class="error-message"></span></div>
+        <br><span id="errorAge" class="error-message"></span>
 
         <div class="registrationInputsContainer">
             <label for="Address" class="Address">Address:</label>
-            <textarea class="addressInput" style="resize:none;overflow:hidden"id="Address" name="Address" maxlength="70" ></textarea>
-            <span class="remainingAdd" id="remainingAdd">70</span>
+            <textarea class="addressInput" style="resize:none;overflow:hidden"id="Address" name="Address" maxlength="80" ></textarea>
+            <span class="remainingAdd" id="remainingAdd">80</span>
         </div>
 
         <br><span id="errorAddress" class="error-message"></span> 
