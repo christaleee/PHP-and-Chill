@@ -1,13 +1,11 @@
 <?php
 session_start(); 
 
-// if (!isset($_SESSION["form_data"])) {
-//     echo "No player data found. Please register first.";
-//     exit();
-// }
-
-
-
+if (!isset($_SESSION["form_data"])) {
+    echo "No player data found. Please register first.";
+    exit();
+}
+$formData = $_SESSION['form_data'];
 ?>
 
 <!DOCTYPE html>
@@ -18,6 +16,19 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="reg_page.css">
     <title>Crimson Legacy</title>
+    <style>
+        .countdownMessage {
+    font-size: 17px;
+    font-weight: bold;
+    color: #e1d9d9; 
+    text-shadow: 
+        0 0 5px #970000, 
+        0 0 10px #970000,
+        0 0 15px #970000,
+        0 0 20px #970000;
+    margin-top: 10px;
+}
+    </style>
 </head>
 
 <body>
@@ -112,15 +123,25 @@ session_start();
           <h1>REGISTRATION SUCCESSFUL</h1>
         </div>
         <p class="welcomeMessage">
-    WELCOME, <?php echo isset($_SESSION['form_data']['Uname']) ? htmlspecialchars($_SESSION['form_data']['Uname']) : "Guest"; ?>
+    WELCOME, <?php echo isset($formData['Uname']) ? htmlspecialchars($formData['Uname']) : "Guest"; ?>
 </p>
+    <p class="countdownMessage">Redirecting in <span id="countdown">5</span></p> 
+
       </div>
         </div>
     </div>
     <script>
-        setTimeout(function() {
-            window.location.href = "player_details_page.php";
-        }, 5000); 
+          var seconds = 4;
+        function countdown() {
+            document.getElementById("countdown").innerText = seconds;
+            if (seconds > 0) {
+                seconds--;
+                setTimeout(countdown, 1000);
+            } else {
+                window.location.href = "player_details_page.php";
+            }
+        }
+        countdown(); // Start countdown
     </script>
     
 

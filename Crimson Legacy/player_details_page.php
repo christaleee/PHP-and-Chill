@@ -1,11 +1,55 @@
 <?php
 session_start(); 
 
+include 'Array_File.php';
+
+$functions = new RandomFunctions();
+
+// Check if delete button is pressed
+if (isset($_GET['delete_id'])) {
+    $functions->DeleteUserData($_GET['delete_id']);
+    header("Location: player_details_page.php"); // Redirect to refresh the page
+    exit();
+}
+// else{
+//     header("Location: welcome_page.php");
+//     exit();
+// }
+
+// Display user details
+// if (isset($_SESSION['array_stuff'])) {
+//     foreach ($_SESSION['array_stuff'] as $user) {
+//         echo "<div class='user-card'>";
+//         echo "<p>Name: " . $user['Fname'] . " " . $user['Lname'] . "</p>";
+//         echo "<p>Username: " . $user['Uname'] . "</p>";
+//         echo "<p>Class: " . $user['Class'] . "</p>";
+//         echo "<a href='welcome_page.php?delete_id=" . $user['id'] . "' onclick='return confirm(\"Are you sure?\")'>Delete</a>";
+//         echo "</div>";
+//     }
+// } else {
+//     echo "<p>No users found.</p>";
+// }
+
+
+// update
+if (isset($_POST['update'])) {
+    $newData = [
+        'Fname' => $_POST['Fname'],
+        'Lname' => $_POST['Lname'],
+        'Uname' => $_POST['Uname'],
+        'Gender' => $_POST['Gender'],
+        'Age' => $_POST['Age'],
+        'Address' => $_POST['Address']
+    ];
+    $randomFunctions->UpdateUserData($_POST['user_id'], $newData);
+}
+
+
 if(!isset($_SESSION['form_data'])){
     echo "No data available!";
     exit();
 }
-$formData = $_SESSION['form_data'];
+$formData = $_SESSION['form_data'] ?? [];
 ?>
 
 <!DOCTYPE html>
@@ -111,6 +155,7 @@ $formData = $_SESSION['form_data'];
             </div>
 
             <div class="playerDetails">
+
                 <div class="playerFName">
                     <p><strong>Name:</strong> <?php echo htmlspecialchars($formData['Fname'].' '.$formData['Lname']); ?></p>
                 </div>
@@ -132,19 +177,19 @@ $formData = $_SESSION['form_data'];
                 </div>
             </div>
 
-            <!-- <div class="playerAssignedClass">
-                <h2>ASSIGNED CLASS: <?php echo isset($formData['Class']) ? htmlspecialchars($formData['Class']) : 'Not Assigned'; ?></h2>
-            </div> -->
             <div class="playerAssignedClass">
-                <p><strong>ASSIGNED CLASS:</strong> <?php echo htmlspecialchars($formData['Class']); ?></p>
+                <p><strong>ASSIGNED CLASS:</strong> <?php echo htmlspecialchars($formData['Class']) ?  htmlspecialchars($formData['Class']) : 'Not Assigned'; ?></p>
             </div>
 
-            <!-- <form action="update_player.php" method="POST">
-                <button type="submit" name="update">Update</button>
-            </form>
-            <form action="delete_player.php" method="POST">
-                <button type="submit" name="delete">Delete</button>
-            </form> -->
+            <?php if (isset($_SESSION['array_stuff'])) {
+    foreach ($_SESSION['array_stuff'] as $user) {
+        echo "<div class='user-card'>";
+        echo "<a href='player_details_page.php?delete_id=" . $user['id'] . "' onclick='return confirm(\"Are you sure?\")'>Delete</a>";
+        echo "</div>";
+         }
+        } else {
+        echo "<p>No users found.</p>";
+        }?>
         </div>
     </div>
 </body>

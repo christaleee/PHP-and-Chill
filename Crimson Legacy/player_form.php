@@ -1,7 +1,8 @@
 <?php
 session_start();
-
-
+include 'Array_File.php';
+// $functions = new RandomFunctions();
+// $functions->DeleteUserData("id"); 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -30,9 +31,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Call the function and store result
     $assignedClass = assignedClass($Lname, $Gender);
-
+ 
     // Store the data in session
     $_SESSION['form_data'] = [
+        'id'=> uniqid(),
         'Fname' => $Fname,
         'Lname' => $Lname,
         'Uname' => $Uname,
@@ -41,17 +43,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         'Address' => $Address,
         'Class' => $assignedClass
     ];
-
-
-    // $_SESSION['form_data'] = [
-    //     'Fname' => $_POST['Fname'],
-    //     'Lname' => $_POST['Lname'],
-    //     'Uname' => $_POST['Uname'],
-    //     'Gender' => $_POST['Gender'],
-    //     'Age'=> $_POST['Age'],
-    //     'Address' => $_POST['Address'],
-    //     'Class' => $_POST['Class']
-    // ];
+    if(!isset($_SESSION['array_stuff'])){
+        $_SESSION['array_stuff'][] = [];
+    }
+    $_SESSION['array_stuff'][] = $_SESSION['form_data'];
  header("Location: reg_page.php");
  exit();
 }
@@ -215,18 +210,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 <script>
-    // function updateCounter(inputId, counterId) {
-    //         let inputField = document.getElementById(inputId);
-    //         let counter = document.getElementById(counterId);
-
-    //         inputField.addEventListener("input", function () {
-    //             counter.textContent = `${this.value.length} / ${this.maxLength}`;
-    //         });
-    //     }
-
-    //     updateCounter("name", "nameCounter");
-    //     updateCounter("bio", "bioCounter");
-    
     function validateForm(event) {
         event.preventDefault(); // Prevent form from submitting 
 

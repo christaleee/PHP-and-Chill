@@ -1,10 +1,5 @@
 <?php
 session_start();
-// if (!isset($_SESSION['form_data'])) {
-//     header("Location: player_form.php");
-//     exit();
-// }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
