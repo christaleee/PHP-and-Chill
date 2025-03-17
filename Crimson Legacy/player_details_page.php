@@ -114,12 +114,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_id']) && isset(
                         </div>
 
                         <a href="player_details_page.php?delete_id=<?= urlencode($user['id']) ?>" onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
-
-                        <!-- <form action="practiceDetails.php" method="post">
-                            <input type="hidden" name="update_id" value="<?= htmlspecialchars($user['id']) ?>">
-                            <input type="text" name="new_first_name" placeholder="New First Name" required>
-                            <button type="submit">Update</button>
-                        </form> -->
+                           <!-- NEW: Update Button -->
+                        <a href="registration_form.php?update_id=<?= urlencode($user['id']) ?>">Update</a> 
                         
                     <?php endforeach; ?>
             </div>

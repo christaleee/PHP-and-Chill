@@ -1,26 +1,40 @@
 <?php
 session_start();
+function assignedClass($Lname, $Gender) {
+    $firstLetter = strtoupper(substr($Lname, 0, 1));
 
+    if ($firstLetter >= 'A' && $firstLetter <= 'M' && $Gender == "Male") {
+        return "Class A";
+    } elseif ($firstLetter >= 'N' && $firstLetter <= 'Z' && $Gender == "Female") {
+        return "Class B";
+    } elseif ($firstLetter >= 'N' && $firstLetter <= 'Z' && $Gender == "Male") {
+        return "Class C";
+    } elseif ($firstLetter >= 'A' && $firstLetter <= 'M' && $Gender == "Female") {
+        return "Class D";
+    } else {
+        return "Unassigned";
+    }
+}
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    function assignedClass($Lname, $Gender) {
-        $firstLetter = strtoupper(substr($Lname, 0, 1));
+    // function assignedClass($Lname, $Gender) {
+    //     $firstLetter = strtoupper(substr($Lname, 0, 1));
 
-        if ($firstLetter >= 'A' && $firstLetter <= 'M' && $Gender == "Male") {
-            return "Class A";
-        } elseif ($firstLetter >= 'N' && $firstLetter <= 'Z' && $Gender == "Female") {
-            return "Class B";
-        } elseif ($firstLetter >= 'N' && $firstLetter <= 'Z' && $Gender == "Male") {
-            return "Class C";
-        } elseif ($firstLetter >= 'A' && $firstLetter <= 'M' && $Gender == "Female") {
-            return "Class D";
-        } else {
-            return "Unassigned";
-        }
-    }
-
+    //     if ($firstLetter >= 'A' && $firstLetter <= 'M' && $Gender == "Male") {
+    //         return "Class A";
+    //     } elseif ($firstLetter >= 'N' && $firstLetter <= 'Z' && $Gender == "Female") {
+    //         return "Class B";
+    //     } elseif ($firstLetter >= 'N' && $firstLetter <= 'Z' && $Gender == "Male") {
+    //         return "Class C";
+    //     } elseif ($firstLetter >= 'A' && $firstLetter <= 'M' && $Gender == "Female") {
+    //         return "Class D";
+    //     } else {
+    //         return "Unassigned";
+    //     }
+    // }
+    $id = $_POST['id'] ?? null;
     $newUser = [
-        'id' => uniqid(),  // Unique identifier for each user
+        'id' => $id ?: uniqid(),  // Unique identifier for each user
         'Fname' => $_POST['Fname'],
         'Lname' => $_POST['Lname'],
         'Uname' => $_POST['Uname'],
