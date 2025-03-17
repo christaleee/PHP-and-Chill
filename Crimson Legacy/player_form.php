@@ -235,7 +235,7 @@ if (isset($_GET['update_id'])) {
 
         <div class="registrationInputsContainer">
             <label for="Address" class="Address">Address:</label>
-            <textarea class="addressInput" style="resize:none;overflow:hidden"id="Address" name="Address" maxlength="80" value="<?= $editUser['Age'] ?? '' ?>" ></textarea>
+            <textarea class="addressInput" style="resize:none;overflow:hidden"id="Address" name="Address" maxlength="80" ><?= $editUser['Address'] ?? '' ?></textarea>
             <span class="remainingAdd" id="remainingAdd">80</span>
         </div>
 
