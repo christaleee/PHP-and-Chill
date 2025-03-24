@@ -531,14 +531,14 @@ a:hover i::after {
 @media (max-width: 768px) {
     .playerDetailsContainer {
         height: 370px;
-        width: 400px;
+        width: 350px;
     }
 
 
     .playerDetailsContainer::after,
     .playerDetailsContainer::before {
         height: 370px;
-        width: 400px;
+        width: 350px;
     }
 
     .playerDetailsBar {
@@ -548,12 +548,19 @@ a:hover i::after {
 
     .playerDetailsBar h1 {
         font-size: 14px;
-        letter-spacing: 2px;
-        width: 180px;
+        letter-spacing: 5x;
+        width: 200px;
+    }
+
+    .playerActions{
+        flex-direction: column;
+        align-content: center;
+        margin-left: 40px;
+        margin-top: 225px;
     }
 
     p {
-        font-size: 12px;
+        font-size: 10px;
     }
 
     h2 {
@@ -561,8 +568,14 @@ a:hover i::after {
     }
 
     .playerDetails{
-        margin-left:-150px;
+        margin-left:-100px;
         margin-bottom: 0px;
+    }
+
+    .nameFormat{
+        width: 400px;
+        word-break: break-word;
+        line-height: 20px;
     }
 }
 
@@ -587,6 +600,12 @@ a:hover i::after {
         font-size: 13px;
         letter-spacing: 2px;
         width: 170px;
+    }
+
+    .nameFormat{
+        width: 300px;
+        word-break: break-word;
+        line-height: 10px;
     }
 
     p {
