@@ -397,6 +397,10 @@ a:hover i::after {
 }
 .addPlayerButton {
     position: relative;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    min-width: 200px;
     background: #181818;
     color: #e1d9d9;
     text-decoration: none;
