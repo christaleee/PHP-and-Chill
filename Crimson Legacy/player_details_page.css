@@ -77,9 +77,12 @@ body {
 /* PLAYER DETAILS */
 
 .playerDetailsContainer {
-    height: 320px;
-    width: 700px;
+    min-height: 450px;
+    min-width: 550px;
     border-radius: 35px;
+    max-width: auto;
+    max-height: 90vw;
+
 
     display: flex;
     flex-direction: column;
@@ -97,6 +100,10 @@ body {
 
     width: 500px;
     height: 40px;
+    max-width: auto;
+    max-height: 90vw;
+    margin-top: 30px;
+    margin-bottom: 50px;
     background-color: #070707;
     border: 1px solid #e1d9d9;
 
@@ -174,8 +181,10 @@ h2 {
     justify-content: center;
     align-items: center;
 
-    width: 500px;
-    height:50px; 
+    min-width: 370px;
+    min-height: 50px;
+    max-height: 90vw;
+    max-width: auto;
     background-color: #070707;
     border: 1px solid #e1d9d9;
 
@@ -468,6 +477,15 @@ a:hover i::after {
     margin-bottom: 30px;
 }
 
+a:link{
+    background-color: #970000;
+    color: #070707;
+    text-align: center;
+    text-decoration: none;
+    padding: 5px 5px;
+    display: inline-block;
+}
+
 /* RESPONSIVENESS */
 
 @media (max-width: 800px) {
@@ -479,8 +497,8 @@ a:hover i::after {
 
     .playerDetailsContainer::after,
     .playerDetailsContainer::before {
-        height: 450px;
-        width: 550px;
+        min-height: 450px;
+        min-width: 550px;
     }
     
     .playerDetails{
@@ -537,8 +555,8 @@ a:hover i::after {
 
     .playerDetailsContainer::after,
     .playerDetailsContainer::before {
-        height: 350px;
-        width: 300px;
+        min-height: 350px;
+        min-width: 300px;
     }
 
     .playerDetailsBar {
