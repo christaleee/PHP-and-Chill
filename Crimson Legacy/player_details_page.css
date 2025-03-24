@@ -303,7 +303,7 @@ h2 {
 
 /* BUTTON */
 
-a {
+a{
     position: relative;
     background: #181818;
     color: #e1d9d9;
@@ -467,7 +467,7 @@ a:hover i::after {
 
 /* RESPONSIVENESS */
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
     .playerDetailsContainer {
         height: 450px;
         width: 550px;
@@ -484,6 +484,14 @@ a:hover i::after {
         margin-left:-300px;
         margin-bottom: 0px;
     }
+
+    a{
+        display: flex;
+        padding: 6px 10px;
+        align-self: center;
+        justify-content: center;
+        align-self: center;
+    }
 }
 
 
@@ -491,6 +499,7 @@ a:hover i::after {
     .playerDetailsContainer {
         height: 350px;
         width: 400px;
+        display: flex;
     }
 
 
@@ -523,6 +532,13 @@ a:hover i::after {
         margin-left:-150px;
         margin-bottom: 0px;
     }
+
+    a{
+        display: flex;
+        padding: 6px 10px;
+        align-self: center;
+        justify-content: center;
+    }
 }
 
 
@@ -530,6 +546,7 @@ a:hover i::after {
     .playerDetailsContainer {
         height: 350px;
         width: 300px;
+        display: flex;
     }
 
     .playerDetailsContainer::after,
@@ -560,4 +577,13 @@ a:hover i::after {
         margin-left: -150px;
         margin-bottom: 0px;
     }
+
+    a{
+        display: flex;
+        padding: 3px 5px;
+        justify-content: center;
+        align-self: center;
+    }
+
+
 }
