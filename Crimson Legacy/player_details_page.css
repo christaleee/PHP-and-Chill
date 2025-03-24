@@ -502,8 +502,18 @@ a:hover i::after {
 }
 
 .addPlayerButton{
-    font-size: small;
+    flex-direction: column;
+    align-content: center;
+    text-align: center;
+    min-width: 100px;
+    margin-left: 0px;
 }
+
+.addPlayerButton span{
+    margin-left: -40px;
+}
+
+
     .playerDetailsContainer::after,
     .playerDetailsContainer::before {
         height: 450px;
