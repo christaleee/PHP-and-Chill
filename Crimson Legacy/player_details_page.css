@@ -5,7 +5,8 @@
 }
 
 /* UNIVERSAL AND BODY */
-* {
+*{
+
     margin: 0;
     padding: 0;
     font-family: pixelated;
@@ -31,7 +32,7 @@ body {
     position: absolute;
     width: 100%;
     height: 100vh;
-    overflow: hidden;
+    overflow: hidden; 
     z-index: -1;
 }
 
@@ -72,14 +73,12 @@ body {
 /* PLAYER DETAILS */
 
 .playerDetailsContainer {
-    height: 450px;
-    width: 550px;
+    height: 320px;
+    width: 700px;
     border-radius: 35px;
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
 
     background-color: #070707;
     position: relative;
@@ -94,8 +93,6 @@ body {
 
     width: 500px;
     height: 40px;
-    margin-top: 30px;
-    margin-bottom: 50px;
     background-color: #070707;
     border: 1px solid #e1d9d9;
 
@@ -113,8 +110,8 @@ body {
     --angle: 0deg;
     content: '';
     position: absolute;
-    height: 450px;
-    width: 550px;
+    height: 320px;
+    width: 700px;
     background-image: conic-gradient(from var(--angle), #970000, #531212, #d51818, #970000, #531212, #d51818, #970000);
     top: 50%;
     left: 50%;
@@ -123,20 +120,6 @@ body {
     padding: 8px;
     border-radius: 40px;
     animation: 3s spin linear infinite;
-}
-
-.playerDetailsContainerBox {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    width: 450px;
-    height: 50px;
-    background-color: #070707;
-    border: 1px solid #e1d9d9;
-
-    color: #e1d9d9;
-    box-shadow: 0 0 35px #970000;
 }
 
 .playerDetailsContainer::before {
@@ -187,34 +170,43 @@ h2 {
     justify-content: center;
     align-items: center;
 
-    width: 370px;
-    height: 50px;
+    width: 500px;
+    height:50px; 
     background-color: #070707;
     border: 1px solid #e1d9d9;
 
     color: #e1d9d9;
     box-shadow: 0 0 35px #970000;
+
+    margin-top: 100px;
+    margin-bottom: 50px;
 }
 
-.playerDetailsContainer h1 {
+.playerDetailsBar h1 {
     font-size: 20px;
     color: #e1d9d9;
-    text-shadow:
-        0 0 2px #970000,
-        0 0 2px #970000,
-        0 0 2px #970000,
-        0 0 2px #970000;
+    text-shadow: 
+        0 0 5px #970000,  
+        0 0 10px #970000,
+        0 0 15px #970000,
+        0 0 20px #970000;
     letter-spacing: 5px;
 
     border-right: 2px solid;
-    width: 290px;
+    width: 300px;
     white-space: nowrap;
     overflow: hidden;
 
-    animation:
+    animation: 
         flicker 1.5s infinite alternate,
-        typing 0.8s steps(15),
+        typing 1.0s steps(15),
         cursor .4s step-end infinite alternate;
+    }
+
+.titleCenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .playerDetails{
@@ -223,7 +215,6 @@ h2 {
     justify-content: left;
     gap: 15px;
     margin-bottom: 50px;
-
 }
 
 .playerAddress{
@@ -231,10 +222,53 @@ h2 {
 }
 
 .addressFormat{
-    width: 400px;
-    height: 50px;
+    width: 600px;
     word-break: break-word;
     line-height: 25px;
+
+    margin-bottom: 20px;
+}
+
+.nameFormat{
+    width: 600px;
+    word-break: break-word;
+    line-height: 25px;
+}
+
+.playersFormat{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 1500px;
+    gap: 50px;
+    margin-bottom: 50px;
+}
+
+.mainContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.playerInfo{
+    margin-left: 50px;
+    margin-top: 30px;
+}
+
+.playerInfo > p{
+    margin-bottom: 8px;
+}
+
+
+.playerActions{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+   
+    position: absolute;
+    margin-top: 275px;
+    margin-left: 100px;
 }
 
 /* For animation */
@@ -267,45 +301,47 @@ h2 {
 
 /* BUTTON */
 
-button {
+a {
     position: relative;
     background: #181818;
     color: #e1d9d9;
     text-decoration: none;
     font-size: 1em;
     letter-spacing: 2px;
-    padding: 8px 80px;
+    padding: 6px 60px;
     transition: 0.5s;
     border: 0;
-    margin-bottom: 20px;
+    height: 20px;
+    width: 80px;
+    margin-left: 30px;
 }
 
-button:hover {
+a:hover {
     letter-spacing: 0.25em;
     background: var(--clr);
     color: var(--clr);
     box-shadow: 0 0 35px var(--clr);
 }
 
-button::before {
+a::before {
     content: '';
     position: absolute;
     inset: 1px;
     background: #070707;
 }
 
-button span {
+a span {
     position: relative;
     z-index: 1;
 }
 
-button i {
+a i {
     position: absolute;
     inset: 0;
     display: block;
 }
 
-button i::before {
+a i::before {
     content: '';
     position: absolute;
     top: -3.5px;
@@ -320,12 +356,12 @@ button i::before {
     transition: 0.5s;
 }
 
-button:hover i::before {
+a:hover i::before {
     width: 20px;
     left: 20%;
 }
 
-button i::after {
+a i::after {
     content: '';
     position: absolute;
     bottom: -3.5px;
@@ -339,15 +375,92 @@ button i::after {
     transition: 0.5s;
 }
 
-button:hover i::after {
+a:hover i::after {
     width: 20px;
     left: 80%;
 }
 
-.updateDeleteButtons{
-    margin-top: 30px;
-    display: flex;
-    gap: 30px;
+/* BUTTON */
+
+.addPlayerButton {
+    position: relative;
+    background: #181818;
+    color: #e1d9d9;
+    text-decoration: none;
+    font-size: 1em;
+    letter-spacing: 2px;
+    padding: 8px 80px;
+    transition: 0.5s;
+    border: 0;
+    margin-bottom: 20px;
+}
+
+.addPlayerButton:hover {
+    letter-spacing: 0.25em;
+    background: var(--clr);
+    color: var(--clr);
+    box-shadow: 0 0 35px var(--clr);
+}
+
+.addPlayerButton::before {
+    content: '';
+    position: absolute;
+    inset: 1px;
+    background: #070707;
+}
+
+.addPlayerButton span {
+    position: relative;
+    z-index: 1;
+}
+
+.addPlayerButton i {
+    position: absolute;
+    inset: 0;
+    display: block;
+}
+
+.addPlayerButton i::before {
+    content: '';
+    position: absolute;
+    top: -3.5px;
+    left: 80%;
+    width: 5px;
+    height: 5px;
+    border-radius: 20px;
+    ;
+    border: 2px solid var(--clr);
+    background: #070707;
+    transform: translateX(-50%);
+    transition: 0.5s;
+}
+
+.addPlayerButton:hover i::before {
+    width: 20px;
+    left: 20%;
+}
+
+.addPlayerButton i::after {
+    content: '';
+    position: absolute;
+    bottom: -3.5px;
+    left: 20%;
+    width: 5px;
+    height: 5px;
+    border-radius: 20px;
+    ;
+    border: 2px solid var(--clr);
+    background: #070707;
+    transition: 0.5s;
+}
+
+.addPlayerButton:hover i::after {
+    width: 20px;
+    left: 80%;
+}
+
+.addPlayer{
+    margin-bottom: 30px;
 }
 
 /* RESPONSIVENESS */
