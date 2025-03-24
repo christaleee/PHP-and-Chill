@@ -238,7 +238,9 @@ h2 {
 }
 
 .playersFormat{
+ 
     display: flex;
+   
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
@@ -514,6 +516,7 @@ a:hover i::after {
         height: 350px;
         width: 400px;
         display: flex;
+        flex-direction: column;
     }
 
 
