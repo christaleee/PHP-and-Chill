@@ -90,7 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_id']) && isset(
 
                 <div class="playerInfo">
                 <div class="nameFormat">
-                    <p><strong>Name:</strong> <?= htmlspecialchars($user['Fname'].' '.$user['Lname']); ?></p>
+                    <p class="nameLabel"><strong>Name:</strong> <?= htmlspecialchars($user['Fname'].' '.$user['Lname']); ?></p>
                 </div>
                     <p><strong>Username:</strong> <?= htmlspecialchars($user['Uname']); ?></p>
                     <p><strong>Gender:</strong> <?= htmlspecialchars($user['Gender']); ?></p>

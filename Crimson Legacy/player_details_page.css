@@ -144,20 +144,6 @@ p {
         flicker 1.5s infinite alternate;
 }
 
-h2 {
-    font-size: 20px;
-    letter-spacing: 2px;
-    color: #e1d9d9;
-    text-shadow:
-        0 0 5px #970000,
-        0 0 10px #970000,
-        0 0 15px #970000,
-        0 0 20px #970000;
-    animation:
-        flicker 1.5s infinite alternate;
-}
-
-
 /* Player Details Display Bar */
 
 .playerDetailsBar {
@@ -384,16 +370,11 @@ a:hover i::after {
 /* BUTTON */
 
 .addPlayer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    align-self: center;
 }
+
 .addPlayerButton {
     position: relative;
-    display: inline-block;
-    text-align: center;
-    white-space: nowrap;
-    min-width: 200px;
     background: #181818;
     color: #e1d9d9;
     text-decoration: none;
@@ -414,7 +395,7 @@ a:hover i::after {
 
 .addPlayerButton::before {
     content: '';
-    position: relative;
+    position: absolute;
     inset: 1px;
     background: #070707;
 }
@@ -504,6 +485,11 @@ a:hover i::after {
 
     .addressFormat{
         width: 400px;
+        line-height: 18px;
+    }
+    
+    .nameLabel{
+        margin-bottom:3px;
     }
 
     .playerDetailsBar {
@@ -519,15 +505,11 @@ a:hover i::after {
 
     .playerActions{
         margin-left: 0px;
-        margin-top: 250px;
+        margin-top: 240px;
     }
 
     p {
         font-size: 10px;
-    }
-
-    h2 {
-        font-size: 13px;
     }
 
     .playerDetails{
@@ -538,20 +520,82 @@ a:hover i::after {
     .nameFormat{
         width: 400px;
         word-break: break-word;
-        line-height: 20px;
+        line-height: 15px;
+    }
+}
+
+@media (max-width: 550px) {
+    .playerDetailsContainer {
+        height: 300px;
+        width: 420px;
+    }
+
+    .playersFormat{
+        width: 420px;
+    }
+
+    .playerDetailsContainer::after,
+    .playerDetailsContainer::before {
+        height: 300px;
+        width: 420px;
+    }
+
+    .playerInfo{
+        margin-left: 35px;
+    }
+
+    .addressFormat{
+        width: 350px;
+        line-height: 12px;
+    }
+
+    .nameLabel{
+        margin-bottom: 5px;
+    }
+
+    .playerDetailsBar {
+        width: 300px;
+        margin-bottom: 30px;
+    }
+
+    .playerDetailsBar h1 {
+        font-size: 12px;
+        letter-spacing: 5x;
+        width: 200px;
+    }
+
+    .playerActions{
+        margin-left: 80px;
+        margin-top: 200px;
+        flex-direction: column;
+    }
+
+    p {
+        font-size: 8px;
+    }
+
+    .playerDetails{
+        margin-left:-100px;
+        margin-bottom: 0px;
+    }
+
+    .nameFormat{
+        width: 400px;
+        word-break: break-word;
+        line-height: 12px;
     }
 }
 
 
 @media (max-width: 450px) {
     .playerDetailsContainer {
-        height: 350px;
+        height: 300px;
         width: 300px;
     }
 
     .playerDetailsContainer::after,
     .playerDetailsContainer::before {
-        height: 350px;
+        height: 300px;
         width: 300px;
     }
 
@@ -565,22 +609,23 @@ a:hover i::after {
         width: 170px;
     }
 
+    .playerInfo{
+        margin-left: 25px;
+        gap: 10px;
+    }
+
     .nameFormat{
-        width: 300px;
-        word-break: break-word;
-        line-height: 10px;
+        width: 250px;
+        word-break: break-all;
     }
 
-    p {
-        font-size: 12px;
+    .addressFormat{
+        width: 250px;
+        word-break: break-all;
     }
 
-    h2 {
-        font-size: 13px;
-    }
-
-    .playerDetails{
-        margin-left: -150px;
-        margin-bottom: 0px;
+    .playerActions{
+        margin-left: 20px;
+        margin-top: 200px;
     }
 }
