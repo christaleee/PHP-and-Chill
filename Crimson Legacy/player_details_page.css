@@ -528,16 +528,16 @@ a:hover i::after {
 }
 
 
-@media (max-width: 650px) {
+@media (max-width: 768px) {
     .playerDetailsContainer {
-        height: 350px;
+        height: 370px;
         width: 400px;
     }
 
 
     .playerDetailsContainer::after,
     .playerDetailsContainer::before {
-        height: 350px;
+        height: 370px;
         width: 400px;
     }
 
