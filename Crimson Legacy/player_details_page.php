@@ -278,11 +278,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_id']) && isset(
             </div>
             
         </div>
-    <?php endforeach; ?>
+        <?php endforeach; ?>
         </div>
         <div class="addPlayer">
             <a class="addPlayerButton"style="--clr:#c51a1a" href="welcome_page.php"><i></i><span>ADD NEW PLAYER</span></a>
         </div>
+    </div>
 </div>
 </body>
 </html>
