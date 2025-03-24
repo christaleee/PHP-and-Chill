@@ -395,6 +395,7 @@ a:hover i::after {
 }
 .addPlayerButton {
     position: relative;
+    text-align: left;
     background: #181818;
     color: #e1d9d9;
     text-decoration: none;
