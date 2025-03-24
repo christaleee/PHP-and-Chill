@@ -475,6 +475,12 @@ a:hover i::after {
 
 /* RESPONSIVENESS */
 
+@media (max-width: 1400px) {
+    .playersFormat{
+        width:600px;
+    }
+}
+
 @media (max-width: 800px) {
     .playerDetailsContainer {
         height: 450px;
