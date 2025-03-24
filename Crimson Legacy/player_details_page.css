@@ -5,7 +5,7 @@
 }
 
 /* UNIVERSAL AND BODY */
-* {
+*{
 
     margin: 0;
     padding: 0;
@@ -14,6 +14,9 @@
 
 body {
     background: #070707;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .wrapper {
@@ -309,7 +312,7 @@ h2 {
 
 /* BUTTON */
 
-a{
+a {
     position: relative;
     background: #181818;
     color: #e1d9d9;
@@ -482,61 +485,59 @@ a:hover i::after {
 
 /* RESPONSIVENESS */
 
-@media (max-width: 1000px) {
+@media (max-width: 800px) {
     .playerDetailsContainer {
         height: 450px;
         width: 550px;
         display: flex;
+        flex-direction: column;
     }
 
-.playerInfo{
-    margin-left: 10px;
-    flex: auto;
-}
+    .playerInfo{
+        margin-left: 10px;
+        flex: auto;
+    }
 
-.playerActions{
-    flex-direction: column;
-    align-content: center;
-    margin-left: 20px;
-    margin-top: 225px;
-}
+    .playerActions{
+        flex-direction: column;
+        align-content: center;
+        margin-left: 20px;
+        margin-top: 225px;
+    }
 
-.addPlayerButton{
-    font-size: small;
-}
-    .playerDetailsContainer::after,
-    .playerDetailsContainer::before {
-        height: 450px;
-        width: 550px;
+    .addPlayerButton{
+        flex-direction: column;
+        align-content: center;
+        text-align: center;
+        min-width: 100px;
+        margin-left: 0px;
+    }
+
+    .addPlayerButton span{
+        margin-left: -40px;
+    }
+
+    .playersFormat{
+        flex-direction: column;
     }
     
     .playerDetails{
         margin-left:-300px;
         margin-bottom: 0px;
     }
-
-    a{
-        display: flex;
-        padding: 6px 10px;
-        align-self: center;
-        justify-content: center;
-        align-self: center;
-    }
 }
 
 
-@media (max-width: 650px) {
+@media (max-width: 768px) {
     .playerDetailsContainer {
-        height: 350px;
+        height: 370px;
         width: 400px;
-        display: flex;
-        flex-direction: column;
     }
 
 
     .playerDetailsContainer::after,
     .playerDetailsContainer::before {
-        height: 350px;
+        height: 370px;
         width: 400px;
     }
 
@@ -563,13 +564,6 @@ a:hover i::after {
         margin-left:-150px;
         margin-bottom: 0px;
     }
-
-    a{
-        display: flex;
-        padding: 6px 10px;
-        align-self: center;
-        justify-content: center;
-    }
 }
 
 
@@ -577,7 +571,6 @@ a:hover i::after {
     .playerDetailsContainer {
         height: 350px;
         width: 300px;
-        display: flex;
     }
 
     .playerDetailsContainer::after,
@@ -608,13 +601,4 @@ a:hover i::after {
         margin-left: -150px;
         margin-bottom: 0px;
     }
-
-    a{
-        display: flex;
-        padding: 3px 5px;
-        justify-content: center;
-        align-self: center;
-    }
-
-
 }
