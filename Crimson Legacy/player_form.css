@@ -97,9 +97,9 @@ body {
     align-items: center;
 
     width: 500px;
-    height: 40px;
+    height: 50px;
     margin-top: 30px;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
     background-color: #070707;
     border: 1px solid #e1d9d9;
 
@@ -121,6 +121,8 @@ body {
 
     border-right: 2px solid;
     width: 385px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     white-space: nowrap;
     overflow: hidden;
 
@@ -194,6 +196,7 @@ input, textarea{
 .addressInput{
     width: 300px;
     height: 80px;
+    margin-right: 64px;
 }
 
 .lastName{
@@ -214,7 +217,10 @@ input, textarea{
 
 .registrationInputsContainer{
     display: flex;
-    gap: 60px;
+}
+
+.address{
+    margin-right: 61px;
 }
 
 /* ANIMATIONS */
@@ -340,6 +346,9 @@ button:hover i::after {
     font-size: 10px;
     color: #b73131;
     margin-left: 179px;
+    display: flex;
+    margin-top: -12px;
+    margin-bottom: 10px;
 
     text-shadow: 
         0 0 5px #970000, 
@@ -347,18 +356,7 @@ button:hover i::after {
         0 0 15px #970000,
         0 0 20px #970000;
 }
- 
-/* .genderErrorMessage{
-    font-size: 8px;
-    color: #b73131;
-    margin-left: 180px;
-}  */
 
-.error-message{
-    display: flex;
-    margin-top: -12px;
-    margin-bottom: 10px;
-}
 
 /* INSTRUCTIONS */
 h4{
@@ -399,13 +397,15 @@ h4{
     }
 
     .playerRegistrationBar{
-        margin-bottom: 40px;
+        margin-bottom: 30px;
         width: 370px;
         height: 40px;
     }
 
     .playerRegistrationBar h1{
         font-size: 15px;
+        padding-top: 10px;
+        padding-bottom: 10px;
         width: 307px;
     }
 
@@ -425,6 +425,7 @@ h4{
     .addressInput {
         width: 200px;
         height: 60px;
+        margin-right: 10px;
     }
     
     .lastName {
@@ -442,10 +443,25 @@ h4{
     .age {
         margin-right: 85px;
     }
+
+    .address{
+        margin-right: 50px;
+    }
     
     .registrationInputsContainer {
         display: flex;
-        gap: 50px;
+        
+    }
+
+    .remainingAdd{
+        margin-left: 2px;
+    }
+
+    .error-message{
+        font-size: 7px;
+        margin-left: 145px;
+        margin-top: -12px;
+        margin-bottom: 10px;
     }
 }
 
@@ -468,6 +484,11 @@ h4{
 }
 
 @media (max-width: 450px) {
+    form{
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+
     .playerRegistrationContainer {
         height: 400px;
         width: 300px;
@@ -492,48 +513,69 @@ h4{
         width: 180px;
     } 
 
-    form{
-        font-size: 10px;
-
-    }
-
     .firstNameInput,
     .lastNameInput,
     .userNameInput,
     .ageInput {
         width: 150px;
         height: 10px;
-        font-size: 10px;
+        font-size: 8px;
     }
     
     .addressInput {
         width: 150px;
         height: 40px;
-        font-size: 10px;
+        font-size: 8px;
+
+    }
+
+    .firstName{
+        margin-left: 12px;
     }
     
     .lastName {
-        margin-right: 10px;
+        margin-left: 12px;
+        margin-right: 8px;
     }
     
     .userName {
-        margin-right: 20px;
+        margin-left: 12px;
+        margin-right: 15px;
     }
     
     .genderLabel {
-        margin-right:41px;
+        margin-left: 12px;
+        margin-right: 39px;
     }
     
     .age {
-        margin-right: 68px;
+        margin-left: 12px;
+        margin-right: 59px;
+    }
+
+    .address{
+        margin-left: 12px;
+        margin-right: 39px;
+    }
+
+    .remainingFN, .remainingLN, .remainingUN, .remainingAdd{
+        font-size: 8px;
+        margin-top: 1px;
+        margin-left: -10px;
+    }
+
+    .addressInput{
+        margin-right: 15px;
     }
     
     .registrationInputsContainer {
         display: flex;
-        gap: 40px;
     }
 
     .error-message{
-        font-size: 10px;
+        font-size: 6px;
+        margin-left: 106px;
+        margin-top: -12px;
+        margin-bottom: 10px;
     }
 }
