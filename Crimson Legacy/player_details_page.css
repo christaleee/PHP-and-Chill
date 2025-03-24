@@ -29,34 +29,23 @@ body {
     align-items: center;
 }
 
-/* BUBBLE BACKGROUND */
-.backgroundContainer {
-    position: absolute;
-    display: flex;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden; 
-    z-index: -1;
+/* BACKGROUND */
+body {
+    background: linear-gradient(45deg,#070707,#531212,#070707,#531212,#070707,#531212,#070707,#531212,#070707);
+    background-size: 300% 300%;
+    animation: color 12s ease-in-out infinite;
 }
 
-.bubbleBackground {
-    position: relative;
-    display: flex;
-    width: 100%;
-    height: 100vh;
-    justify-content: center;
-}
-
-.bubbleBackground span {
-    width: 20px;
-    height: 20px;
-    background: #c51a1a;
-    border-radius: 50%;
-    box-shadow: 0 0 0 0px #c51a1a44,
-        0 0 50px #c51a1a,
-        0 0 60px #c51a1a;
-    animation: animate 15s linear infinite;
-    animation-duration: calc(125s / var(--i));
+@keyframes color{
+    0%{
+        background-position: 0 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 0 50%;
+    }
 }
 
 @keyframes animate {
