@@ -76,53 +76,128 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_id']) && isset(
 </head>
 
 <body>
-<div class="wrapper"> 
-        <div class="backgroundContainer">
-            <div class="bubbleBackground">
-                <!-- Bubble effects here -->
-            </div>
-        </div>
-
-        <div class="playerDetailsContainer">
-            <div class="playerDetailsBar">
-                <h1> Player Details </h1>
-        
-           
-
-                     <?php foreach ($_SESSION['form_data'] as $user): ?> 
-                        <div class="playerDetails">
-                      
-                        <div class="playerFName">
-                            <p><strong>Name:</strong> <?= htmlspecialchars($user['Fname'].' '.$user['Lname']); ?></p>
-                        </div>
-
-                        <div class="playerUsername">
-                            <p><strong>Username:</strong> <?= htmlspecialchars($user['Uname']); ?></p>
-                        </div>
-
-                        <div class="playerGender">
-                            <p><strong>Gender:</strong> <?= htmlspecialchars($user['Gender']); ?></p>
-                        </div>
-
-                        <div class="playerAge">
-                            <p><strong>Age:</strong> <?= htmlspecialchars($user['Age']); ?></p>
-                        </div>
-
-                        <div class="playerAddress">
-                            <p><strong>Address:</strong> <?= htmlspecialchars($user['Address']); ?></p>
-                        </div>
-
-                        <div class="playerAssignedClass">
-                            <p><strong>ASSIGNED CLASS:</strong> <?= htmlspecialchars($user['Class']); ?></p>
-                        </div>
-
-                        <a href="player_details_page.php?delete_id=<?= urlencode($user['id']) ?>" onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
-                           <!-- NEW: Update Button -->
-                        <a href="player_form.php?update_id=<?= urlencode($user['id']) ?>">Update</a> 
-                        
-                    <?php endforeach; ?>
-            </div>
+<div class="wrapper">
+    <div class="backgroundContainer">
+        <div class="bubbleBackground">
+            <span style="--i:30;"></span>
+            <span style="--i:24;"></span>
+            <span style="--i:33;"></span>
+            <span style="--i:19;"></span>
+            <span style="--i:37;"></span>
+            <span style="--i:20;"></span>
+            <span style="--i:41;"></span>
+            <span style="--i:18;"></span>
+            <span style="--i:36;"></span>
+            <span style="--i:21;"></span>
+            <span style="--i:48;"></span>
+            <span style="--i:20;"></span>
+            <span style="--i:18;"></span>
+            <span style="--i:39;"></span>
+            <span style="--i:27;"></span>
+            <span style="--i:39;"></span>
+            <span style="--i:13;"></span>
+            <span style="--i:27;"></span>
+            <span style="--i:17;"></span>
+            <span style="--i:31;"></span>
+            <span style="--i:24;"></span>
+            <span style="--i:28;"></span>
+            <span style="--i:19;"></span>
+            <span style="--i:39;"></span>
+            <span style="--i:20;"></span>
+            <span style="--i:21;"></span>
+            <span style="--i:38;"></span>
+            <span style="--i:16;"></span>
+            <span style="--i:21;"></span>
+            <span style="--i:36;"></span>
+            <span style="--i:20;"></span>
+            <span style="--i:27;"></span>
+            <span style="--i:20;"></span>
+            <span style="--i:13;"></span>
+            <span style="--i:43;"></span>
+            <span style="--i:17;"></span>
+            <span style="--i:16;"></span>
+            <span style="--i:31;"></span>
+            <span style="--i:45;"></span>
+            <span style="--i:19;"></span>
+            <span style="--i:20;"></span>
+            <span style="--i:27;"></span>
+            <span style="--i:20;"></span>
+            <span style="--i:13;"></span>
+            <span style="--i:42;"></span>
+            <span style="--i:29;"></span>
+            <span style="--i:32;"></span>
+            <span style="--i:20;"></span>
+            <span style="--i:42;"></span>
+            <span style="--i:17;"></span>
+            <span style="--i:33;"></span>
+            <span style="--i:24;"></span>
+            <span style="--i:42;"></span>
+            <span style="--i:19;"></span>
+            <span style="--i:28;"></span>
+            <span style="--i:17;"></span>
+            <span style="--i:25;"></span>
+            <span style="--i:31;"></span>
+            <span style="--i:46;"></span>
+            <span style="--i:33;"></span>
+            <span style="--i:19;"></span>
+            <span style="--i:37;"></span>
+            <span style="--i:20;"></span>
+            <span style="--i:41;"></span>
+            <span style="--i:18;"></span>
+            <span style="--i:36;"></span>
+            <span style="--i:21;"></span>
+            <span style="--i:48;"></span>
+            <span style="--i:20;"></span>
+            <span style="--i:21;"></span>
+            <span style="--i:36;"></span>
+            <span style="--i:20;"></span>
+            <span style="--i:27;"></span>
+            <span style="--i:20;"></span>
+            <span style="--i:13;"></span>
+            <span style="--i:29;"></span>
+            <span style="--i:32;"></span>
+            <span style="--i:20;"></span>
+            <span style="--i:42;"></span>
+            <span style="--i:17;"></span>
         </div>
     </div>
+
+    <div class="mainContainer">
+        <div class="titleCenter">
+        <div class="playerDetailsBar">
+            <h1> Player Details </h1>
+        </div>
+        </div>
+        <div class="playersFormat">
+
+        <?php foreach ($_SESSION['form_data'] as $index => $user): ?>
+    
+        <div class="playerDetailsContainer" id="player-<?php echo $index; ?>">
+
+            <div class="playerInfo">
+            <div class="nameFormat">
+                <p><strong>Name:</strong> <?= htmlspecialchars($user['Fname'].' '.$user['Lname']); ?></p>
+            </div>
+                <p><strong>Username:</strong> <?= htmlspecialchars($user['Uname']); ?></p>
+                <p><strong>Gender:</strong> <?= htmlspecialchars($user['Gender']); ?></p>
+                <p><strong>Age:</strong> <?= htmlspecialchars($user['Age']); ?></p>
+            <div class="addressFormat">
+                <p><strong>Address:</strong> <?= htmlspecialchars($user['Address']); ?></p>
+            </div>
+                <p><strong>ASSIGNED CLASS:</strong> <?= htmlspecialchars($user['Class']); ?></p>
+            </div>
+
+            <div class="playerActions">
+                <a style="--clr:#c51a1a" href="player_details_page.php?delete_id=<?= urlencode($user['id']) ?>" onclick="return confirm('Are you sure you want to delete this user?');"><i></i><span>DELETE</span></a>
+                <a style="--clr:#c51a1a" href="player_form.php?update_id=<?= urlencode($user['id']) ?>"><i></i><span>UPDATE</span></a> 
+            </div>
+            
+        </div>
+    <?php endforeach; ?>
+        </div>
+        <div class="addPlayer">
+            <a class="addPlayerButton"style="--clr:#c51a1a" href="welcome_page.php"><i></i><span>ADD NEW PLAYER</span></a>
+        </div>
+</div>
 </body>
 </html>
