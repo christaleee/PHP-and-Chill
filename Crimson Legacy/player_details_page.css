@@ -5,21 +5,23 @@
 }
 
 /* UNIVERSAL AND BODY */
-*{
-
+ *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     font-family: pixelated;
 }
 
 body {
     background: #070707;
+    overflow-x: hidden;
 }
 
 .wrapper {
     position: relative;
     display: flex;
-
+    flex-wrap: wrap;
+    max-width: 1920px;
     width: 100%;
     height: 100vh;
 
@@ -30,6 +32,7 @@ body {
 /* BUBBLE BACKGROUND */
 .backgroundContainer {
     position: absolute;
+    max-width: 1920px;
     width: 100%;
     height: 100vh;
     overflow: hidden; 
@@ -39,6 +42,7 @@ body {
 .bubbleBackground {
     position: absolute;
     display: flex;
+    /* background-color: blueviolet; */
 }
 
 .bubbleBackground span {
@@ -393,6 +397,7 @@ a:hover i::after {
     transition: 0.5s;
     border: 0;
     margin-bottom: 20px;
+    overflow: hidden;
 }
 
 .addPlayerButton:hover {
