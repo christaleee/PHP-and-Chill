@@ -487,37 +487,35 @@ a:hover i::after {
         height: 450px;
         width: 550px;
         display: flex;
+        flex-direction: column;
     }
 
-.playerInfo{
-    margin-left: 10px;
-    flex: auto;
-}
+    .playerInfo{
+        margin-left: 10px;
+        flex: auto;
+    }
 
-.playerActions{
-    flex-direction: column;
-    align-content: center;
-    margin-left: 20px;
-    margin-top: 225px;
-}
+    .playerActions{
+        flex-direction: column;
+        align-content: center;
+        margin-left: 20px;
+        margin-top: 225px;
+    }
 
-.addPlayerButton{
-    flex-direction: column;
-    align-content: center;
-    text-align: center;
-    min-width: 100px;
-    margin-left: 0px;
-}
+    .addPlayerButton{
+        flex-direction: column;
+        align-content: center;
+        text-align: center;
+        min-width: 100px;
+        margin-left: 0px;
+    }
 
-.addPlayerButton span{
-    margin-left: -40px;
-}
+    .addPlayerButton span{
+        margin-left: -40px;
+    }
 
-
-    .playerDetailsContainer::after,
-    .playerDetailsContainer::before {
-        height: 450px;
-        width: 550px;
+    .playersFormat{
+        flex-direction: column;
     }
     
     .playerDetails{
