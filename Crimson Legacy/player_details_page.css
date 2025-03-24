@@ -19,10 +19,10 @@ body {
 .wrapper {
     position: relative;
     display: flex;
-
+    flex-direction: column;
     width: 100%;
-    height: 100vh;
-
+    height: auto;
+    background-color: blue;
     justify-content: center;
     align-items: center;
 }
@@ -245,7 +245,9 @@ h2 {
 }
 
 .mainContainer{
+    background-color: #c51a1a;
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
 }

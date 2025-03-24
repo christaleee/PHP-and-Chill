@@ -76,8 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_id']) && isset(
 </head>
 
 <body>
-<div class="wrapper">
-    <div class="backgroundContainer">
+<div class="backgroundContainer">
         <div class="bubbleBackground">
             <span style="--i:30;"></span>
             <span style="--i:24;"></span>
@@ -162,6 +161,92 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_id']) && isset(
         </div>
     </div>
 
+<div class="wrapper">
+    <!-- <div class="backgroundContainer">
+        <div class="bubbleBackground">
+            <span style="--i:30;"></span>
+            <span style="--i:24;"></span>
+            <span style="--i:33;"></span>
+            <span style="--i:19;"></span>
+            <span style="--i:37;"></span>
+            <span style="--i:20;"></span>
+            <span style="--i:41;"></span>
+            <span style="--i:18;"></span>
+            <span style="--i:36;"></span>
+            <span style="--i:21;"></span>
+            <span style="--i:48;"></span>
+            <span style="--i:20;"></span>
+            <span style="--i:18;"></span>
+            <span style="--i:39;"></span>
+            <span style="--i:27;"></span>
+            <span style="--i:39;"></span>
+            <span style="--i:13;"></span>
+            <span style="--i:27;"></span>
+            <span style="--i:17;"></span>
+            <span style="--i:31;"></span>
+            <span style="--i:24;"></span>
+            <span style="--i:28;"></span>
+            <span style="--i:19;"></span>
+            <span style="--i:39;"></span>
+            <span style="--i:20;"></span>
+            <span style="--i:21;"></span>
+            <span style="--i:38;"></span>
+            <span style="--i:16;"></span>
+            <span style="--i:21;"></span>
+            <span style="--i:36;"></span>
+            <span style="--i:20;"></span>
+            <span style="--i:27;"></span>
+            <span style="--i:20;"></span>
+            <span style="--i:13;"></span>
+            <span style="--i:43;"></span>
+            <span style="--i:17;"></span>
+            <span style="--i:16;"></span>
+            <span style="--i:31;"></span>
+            <span style="--i:45;"></span>
+            <span style="--i:19;"></span>
+            <span style="--i:20;"></span>
+            <span style="--i:27;"></span>
+            <span style="--i:20;"></span>
+            <span style="--i:13;"></span>
+            <span style="--i:42;"></span>
+            <span style="--i:29;"></span>
+            <span style="--i:32;"></span>
+            <span style="--i:20;"></span>
+            <span style="--i:42;"></span>
+            <span style="--i:17;"></span>
+            <span style="--i:33;"></span>
+            <span style="--i:24;"></span>
+            <span style="--i:42;"></span>
+            <span style="--i:19;"></span>
+            <span style="--i:28;"></span>
+            <span style="--i:17;"></span>
+            <span style="--i:25;"></span>
+            <span style="--i:31;"></span>
+            <span style="--i:46;"></span>
+            <span style="--i:33;"></span>
+            <span style="--i:19;"></span>
+            <span style="--i:37;"></span>
+            <span style="--i:20;"></span>
+            <span style="--i:41;"></span>
+            <span style="--i:18;"></span>
+            <span style="--i:36;"></span>
+            <span style="--i:21;"></span>
+            <span style="--i:48;"></span>
+            <span style="--i:20;"></span>
+            <span style="--i:21;"></span>
+            <span style="--i:36;"></span>
+            <span style="--i:20;"></span>
+            <span style="--i:27;"></span>
+            <span style="--i:20;"></span>
+            <span style="--i:13;"></span>
+            <span style="--i:29;"></span>
+            <span style="--i:32;"></span>
+            <span style="--i:20;"></span>
+            <span style="--i:42;"></span>
+            <span style="--i:17;"></span>
+        </div>
+    </div> -->
+
     <div class="mainContainer">
         <div class="titleCenter">
         <div class="playerDetailsBar">
@@ -193,11 +278,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_id']) && isset(
             </div>
             
         </div>
-    <?php endforeach; ?>
+        <?php endforeach; ?>
         </div>
         <div class="addPlayer">
             <a class="addPlayerButton"style="--clr:#c51a1a" href="welcome_page.php"><i></i><span>ADD NEW PLAYER</span></a>
         </div>
+    </div>
 </div>
 </body>
 </html>
