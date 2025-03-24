@@ -172,27 +172,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_id']) && isset(
         <div class="playersFormat">
 
         <?php foreach ($_SESSION['form_data'] as $index => $user): ?>
-    
-        <div class="playerDetailsContainer" id="player-<?php echo $index; ?>">
+        <div class="wrapDetails">
+            <div class="playerDetailsContainer" id="player-<?php echo $index; ?>">
 
-            <div class="playerInfo">
-            <div class="nameFormat">
-                <p><strong>Name:</strong> <?= htmlspecialchars($user['Fname'].' '.$user['Lname']); ?></p>
-            </div>
-                <p><strong>Username:</strong> <?= htmlspecialchars($user['Uname']); ?></p>
-                <p><strong>Gender:</strong> <?= htmlspecialchars($user['Gender']); ?></p>
-                <p><strong>Age:</strong> <?= htmlspecialchars($user['Age']); ?></p>
-            <div class="addressFormat">
-                <p><strong>Address:</strong> <?= htmlspecialchars($user['Address']); ?></p>
-            </div>
-                <p><strong>ASSIGNED CLASS:</strong> <?= htmlspecialchars($user['Class']); ?></p>
-            </div>
+                <div class="playerInfo">
+                <div class="nameFormat">
+                    <p><strong>Name:</strong> <?= htmlspecialchars($user['Fname'].' '.$user['Lname']); ?></p>
+                </div>
+                    <p><strong>Username:</strong> <?= htmlspecialchars($user['Uname']); ?></p>
+                    <p><strong>Gender:</strong> <?= htmlspecialchars($user['Gender']); ?></p>
+                    <p><strong>Age:</strong> <?= htmlspecialchars($user['Age']); ?></p>
+                <div class="addressFormat">
+                    <p><strong>Address:</strong> <?= htmlspecialchars($user['Address']); ?></p>
+                </div>
+                    <p><strong>ASSIGNED CLASS:</strong> <?= htmlspecialchars($user['Class']); ?></p>
+                </div>
 
-            <div class="playerActions">
-                <a style="--clr:#c51a1a" href="player_details_page.php?delete_id=<?= urlencode($user['id']) ?>" onclick="return confirm('Are you sure you want to delete this user?');"><i></i><span>DELETE</span></a>
-                <a style="--clr:#c51a1a" href="player_form.php?update_id=<?= urlencode($user['id']) ?>"><i></i><span>UPDATE</span></a> 
+                <div class="playerActions">
+                    <a style="--clr:#c51a1a" href="player_details_page.php?delete_id=<?= urlencode($user['id']) ?>" onclick="return confirm('Are you sure you want to delete this user?');"><i></i><span>DELETE</span></a>
+                    <a style="--clr:#c51a1a" href="player_form.php?update_id=<?= urlencode($user['id']) ?>"><i></i><span>UPDATE</span></a> 
+                </div>
+
             </div>
-            
         </div>
         <?php endforeach; ?>
         </div>
