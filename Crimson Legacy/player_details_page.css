@@ -485,7 +485,21 @@ a:hover i::after {
         display: flex;
     }
 
+.playerInfo{
+    margin-left: 10px;
+    flex: auto;
+}
 
+.playerActions{
+    flex-direction: column;
+    align-content: center;
+    margin-left: 20px;
+    margin-top: 225px;
+}
+
+.addPlayerButton{
+    font-size: small;
+}
     .playerDetailsContainer::after,
     .playerDetailsContainer::before {
         height: 450px;
