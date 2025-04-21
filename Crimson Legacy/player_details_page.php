@@ -111,7 +111,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_id']) && isset(
         <?php endforeach; ?>
         </div>
         <div class="addPlayer">
-            <a class="addPlayerButton"style="--clr:#c51a1a" href="welcome_page.php"><i></i><span>ADD NEW PLAYER</span></a>
+            <a class="addPlayerButton"style="--clr:#c51a1a" href="player_form.php"><i></i><span>ADD NEW PLAYER</span></a>
         </div>
 
     </div>

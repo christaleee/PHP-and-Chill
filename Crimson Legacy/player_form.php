@@ -238,7 +238,9 @@ if (isset($_GET['update_id'])) {
         <div class="playerRegistrationBar">
             <h1>Player Registration</h1>
         </div>
-   
+
+        
+   <!-- Form -->
     <form action="player_form.php" method="POST" id="registrationForm" >
         <div>
             <input type="hidden" name="id" value="<?= $editUser['id'] ?? '' ?>">
@@ -294,6 +296,7 @@ if (isset($_GET['update_id'])) {
         </div>
 
         <br><span id="errorAddress" class="error-message"></span> 
+        
         <button type="submit" id="registrationButton" style="--clr:#c51a1a" onclick="validateForm(event);">
          <span><?= isset($editUser) ? 'UPDATE' : 'REGISTER' ?></span><i></i>
         </button>
